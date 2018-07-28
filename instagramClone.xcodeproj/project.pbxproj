@@ -61,9 +61,10 @@
 				DF6AD30A210C9460002F7D41 /* Controller */,
 				DF6AD30F210CDB48002F7D41 /* Models */,
 				DF6AD30E210CDB3F002F7D41 /* Views */,
-				DF6AD2F8210C9311002F7D41 /* AppDelegate.swift */,
+				DF6AD30D210CDB2E002F7D41 /* UI-Extensions */,
 				DF6AD2FF210C9312002F7D41 /* Assets.xcassets */,
 				DF6AD301210C9312002F7D41 /* LaunchScreen.storyboard */,
+				DF6AD2F8210C9311002F7D41 /* AppDelegate.swift */,
 				DF6AD304210C9312002F7D41 /* Info.plist */,
 			);
 			path = instagramClone;
@@ -89,7 +90,6 @@
 		DF6AD30E210CDB3F002F7D41 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				DF6AD30D210CDB2E002F7D41 /* UI-Extensions */,
 				DF6AD311210CDBF0002F7D41 /* MKTextField.swift */,
 			);
 			path = Views;

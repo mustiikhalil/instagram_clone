@@ -11,6 +11,9 @@
 		DF6AD2FB210C9311002F7D41 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6AD2FA210C9311002F7D41 /* SignUpVC.swift */; };
 		DF6AD300210C9312002F7D41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF6AD2FF210C9312002F7D41 /* Assets.xcassets */; };
 		DF6AD303210C9312002F7D41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF6AD301210C9312002F7D41 /* LaunchScreen.storyboard */; };
+		DF6AD30C210CDAEE002F7D41 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6AD30B210CDAEE002F7D41 /* UIColor.swift */; };
+		DF6AD312210CDBF0002F7D41 /* MKTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6AD311210CDBF0002F7D41 /* MKTextField.swift */; };
+		DF6AD316210CE516002F7D41 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6AD315210CE516002F7D41 /* UIStackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +23,9 @@
 		DF6AD2FF210C9312002F7D41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DF6AD302210C9312002F7D41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DF6AD304210C9312002F7D41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF6AD30B210CDAEE002F7D41 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		DF6AD311210CDBF0002F7D41 /* MKTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKTextField.swift; sourceTree = "<group>"; };
+		DF6AD315210CE516002F7D41 /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +59,8 @@
 			isa = PBXGroup;
 			children = (
 				DF6AD30A210C9460002F7D41 /* Controller */,
+				DF6AD30F210CDB48002F7D41 /* Models */,
+				DF6AD30E210CDB3F002F7D41 /* Views */,
 				DF6AD2F8210C9311002F7D41 /* AppDelegate.swift */,
 				DF6AD2FF210C9312002F7D41 /* Assets.xcassets */,
 				DF6AD301210C9312002F7D41 /* LaunchScreen.storyboard */,
@@ -67,6 +75,31 @@
 				DF6AD2FA210C9311002F7D41 /* SignUpVC.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		DF6AD30D210CDB2E002F7D41 /* UI-Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DF6AD30B210CDAEE002F7D41 /* UIColor.swift */,
+				DF6AD315210CE516002F7D41 /* UIStackView.swift */,
+			);
+			path = "UI-Extensions";
+			sourceTree = "<group>";
+		};
+		DF6AD30E210CDB3F002F7D41 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DF6AD30D210CDB2E002F7D41 /* UI-Extensions */,
+				DF6AD311210CDBF0002F7D41 /* MKTextField.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DF6AD30F210CDB48002F7D41 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +173,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF6AD2FB210C9311002F7D41 /* SignUpVC.swift in Sources */,
+				DF6AD312210CDBF0002F7D41 /* MKTextField.swift in Sources */,
+				DF6AD316210CE516002F7D41 /* UIStackView.swift in Sources */,
+				DF6AD30C210CDAEE002F7D41 /* UIColor.swift in Sources */,
 				DF6AD2F9210C9311002F7D41 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

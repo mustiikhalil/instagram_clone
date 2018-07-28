@@ -75,7 +75,7 @@ build
 !*.xcodeproj/project.pbxproj
 !*.xcworkspace/contents.xcworkspacedata
 
-./instagramClone/GoogleService-Info.plist
+/instagramClone/GoogleService-Info.plist
 ### Objective-C ###
 # OS X
 .DS_Store

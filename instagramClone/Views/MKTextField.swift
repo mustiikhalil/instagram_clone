@@ -10,13 +10,13 @@ import UIKit
 
 class MKTextField: UITextField {
 	
-	init(placeholder text: String, color: UIColor) {
+	init(placeholder text: String, color: UIColor, keyboardType type: UIKeyboardType = .default) {
 		super.init(frame: .zero)
 		placeholder = text
 		backgroundColor = color
 		borderStyle = .roundedRect
-		translatesAutoresizingMaskIntoConstraints = false
 		font = UIFont.systemFont(ofSize: 14)
+		keyboardType = type
 	}
 	
 	override init(frame: CGRect) {

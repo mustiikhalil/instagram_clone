@@ -53,11 +53,14 @@ extension SignUpVC {
 		guard let uploadData = UIImageJPEGRepresentation(image, 0.3) else {return}
 
 		let storageRef = Storage.storage().reference()
-		let upload = storageRef.child("profile_image")
+		let upload = storageRef.child("profile_images").child(NSUUID().uuidString)
 		
 		upload.putData(uploadData, metadata: nil, completion: { (metadata, err) in
 			
-			guard let data = metadata else { return }
+			guard let data = metadata else {
+				onFailure()
+				return
+			}
 			
 			upload.downloadURL(completion: { (url, err) in
 				guard let downloadURL = url else {

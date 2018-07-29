@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		A3E648ED64E55C3088555790 /* Pods_instagramClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E52F55A837118F672EAB1512 /* Pods_instagramClone.framework */; };
+		DF286E86210E575A00B4D722 /* SignUp+PickPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF286E85210E575A00B4D722 /* SignUp+PickPhoto.swift */; };
+		DF28F854210E443F00427302 /* SignUp+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF28F853210E443F00427302 /* SignUp+UI.swift */; };
+		DF28F856210E530600427302 /* SignUp+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF28F855210E530600427302 /* SignUp+Firebase.swift */; };
 		DF6AD2F9210C9311002F7D41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6AD2F8210C9311002F7D41 /* AppDelegate.swift */; };
 		DF6AD2FB210C9311002F7D41 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6AD2FA210C9311002F7D41 /* SignUpVC.swift */; };
 		DF6AD300210C9312002F7D41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF6AD2FF210C9312002F7D41 /* Assets.xcassets */; };
@@ -22,6 +25,9 @@
 /* Begin PBXFileReference section */
 		BAA7EC607766C7FEC41211D1 /* Pods-instagramClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-instagramClone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-instagramClone/Pods-instagramClone.debug.xcconfig"; sourceTree = "<group>"; };
 		DEC1DCED0FB2979497FC8610 /* Pods-instagramClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-instagramClone.release.xcconfig"; path = "Pods/Target Support Files/Pods-instagramClone/Pods-instagramClone.release.xcconfig"; sourceTree = "<group>"; };
+		DF286E85210E575A00B4D722 /* SignUp+PickPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignUp+PickPhoto.swift"; sourceTree = "<group>"; };
+		DF28F853210E443F00427302 /* SignUp+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignUp+UI.swift"; sourceTree = "<group>"; };
+		DF28F855210E530600427302 /* SignUp+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignUp+Firebase.swift"; sourceTree = "<group>"; };
 		DF6AD2F5210C9311002F7D41 /* instagramClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = instagramClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF6AD2F8210C9311002F7D41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DF6AD2FA210C9311002F7D41 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
@@ -65,6 +71,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DF28F852210E442600427302 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				DF6AD2FA210C9311002F7D41 /* SignUpVC.swift */,
+				DF28F853210E443F00427302 /* SignUp+UI.swift */,
+				DF28F855210E530600427302 /* SignUp+Firebase.swift */,
+				DF286E85210E575A00B4D722 /* SignUp+PickPhoto.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
 		DF6AD2EC210C9311002F7D41 = {
 			isa = PBXGroup;
 			children = (
@@ -102,7 +119,7 @@
 		DF6AD30A210C9460002F7D41 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				DF6AD2FA210C9311002F7D41 /* SignUpVC.swift */,
+				DF28F852210E442600427302 /* SignUp */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -249,11 +266,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF6AD2FB210C9311002F7D41 /* SignUpVC.swift in Sources */,
+				DF286E86210E575A00B4D722 /* SignUp+PickPhoto.swift in Sources */,
 				DF6AD312210CDBF0002F7D41 /* MKTextField.swift in Sources */,
+				DF28F856210E530600427302 /* SignUp+Firebase.swift in Sources */,
 				DF6AD30C210CDAEE002F7D41 /* UIColor.swift in Sources */,
 				DF81E758210D1E00003E5C86 /* UIView.swift in Sources */,
 				DF81E75A210D1EAF003E5C86 /* MKButton.swift in Sources */,
 				DF6AD2F9210C9311002F7D41 /* AppDelegate.swift in Sources */,
+				DF28F854210E443F00427302 /* SignUp+UI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SignUpVC: UIViewController {
 
@@ -17,22 +18,28 @@ class SignUpVC: UIViewController {
 	}()
 	
 	let emailTF: MKTextField = {
-		let tf = MKTextField(placeholder: "Email", color: UIColor.rgb(red: 248, green: 248, blue: 248), keyboardType: .emailAddress)
+		let tf = MKTextField(placeholder: .Email, color: UIColor.rgb(red: 248, green: 248, blue: 248), keyboardType: .emailAddress)
+		tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
 		return tf
 	}()
 	
 	let userNameTF: MKTextField = {
-		return MKTextField(placeholder: "Username", color: UIColor.rgb(red: 248, green: 248, blue: 248))
+		let tf = MKTextField(placeholder: .Username, color: UIColor.rgb(red: 248, green: 248, blue: 248))
+		tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
+		return tf
 	}()
 	
 	let passwordTF: MKTextField = {
-		let tf = MKTextField(placeholder: "Username", color: UIColor.rgb(red: 248, green: 248, blue: 248))
+		let tf = MKTextField(placeholder: .Password, color: UIColor.rgb(red: 248, green: 248, blue: 248))
+		tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
 		tf.isSecureTextEntry = true
 		return tf
 	}()
 	
 	let signUpButton: UIButton = {
 		let button = MKButton(title: .signup, titleColor: .white, backgroundColor: UIColor.rgb(red: 149, green: 204, blue: 244), raduis: 5)
+		button.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
+		button.isEnabled = false
 		return button
 	}()
 	
@@ -61,6 +68,39 @@ class SignUpVC: UIViewController {
 		stackView.spacing = 10
 		view.addSubview(stackView)
 		stackView.anchor(leading: view.leadingAnchor, top: plusPhotoButton.bottomAnchor, trailing: view.trailingAnchor, bottom: nil, paddingLeft: 40, paddingTop: 20, paddingRight: 40, paddingBottom: 0, height: 200, width: 0)
+	}
+	
+	@objc fileprivate func handleSignUp() {
+		guard let username = userNameTF.text, username.count != 0  else {return}
+		guard let email = emailTF.text, email.count != 0 else {return}
+		guard let password = passwordTF.text, password.count != 0  else {return}
+		
+		Auth.auth().createUser(withEmail: email, password: password) { (authResult , error) in
+			
+			if let err = error {
+				print(err)
+				return
+			}
+			
+			print("\(authResult?.user.uid) is the UID of the current sign up")
+			
+		}
+	}
+	
+	@objc fileprivate func handleTextInputChange() {
+		let isFormValid = isValid()
+		signUpButton.isEnabled = isFormValid
+	
+		if isFormValid {
+			signUpButton.backgroundColor = UIColor.rgb(red: 17, green: 164, blue: 237)
+
+		} else {
+			signUpButton.backgroundColor = UIColor.rgb(red: 149, green: 204, blue: 244)
+		}
+	}
+	
+	func isValid() -> Bool {
+		return emailTF.text?.isEmpty == false && userNameTF.text?.isEmpty == false && passwordTF.text?.isEmpty == false && passwordTF.text?.count ?? 0 > 6
 	}
 
 }

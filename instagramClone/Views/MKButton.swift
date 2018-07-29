@@ -28,10 +28,11 @@ enum ButtonType {
 	case signup, signin
 	
 	func ID() -> String {
-		if self == ButtonType.signup {
+		switch self {
+		case .signin:
+			return "Sign I n"
+		default:
 			return "Sign Up"
-		} else {
-			return "Sign in"
 		}
 	}
 }

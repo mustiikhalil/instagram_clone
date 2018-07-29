@@ -10,9 +10,9 @@ import UIKit
 
 class MKTextField: UITextField {
 	
-	init(placeholder text: String, color: UIColor, keyboardType type: UIKeyboardType = .default) {
+	init(placeholder text: PlaceholderTextField, color: UIColor, keyboardType type: UIKeyboardType = .default) {
 		super.init(frame: .zero)
-		placeholder = text
+		placeholder = text.ID
 		backgroundColor = color
 		borderStyle = .roundedRect
 		font = UIFont.systemFont(ofSize: 14)
@@ -26,5 +26,14 @@ class MKTextField: UITextField {
 	
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
+	}
+}
+
+enum PlaceholderTextField: String {
+	case Email, Password, Username
+	var ID: String {
+		get {
+			return self.rawValue
+		}
 	}
 }

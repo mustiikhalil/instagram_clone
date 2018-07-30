@@ -23,20 +23,19 @@ class UserProfileVC: UICollectionViewController {
 	}
 	
 	func setupUI() {
-		fetchUser {
+		fetchUser { (dictonary) in
+			self.profile = Profile(dictonary: dictonary)
 			self.navigationItem.title = self.profile?.username ?? ""
 			self.collectionView?.reloadData()
 		}
 	}
 	
-	fileprivate func fetchUser(onSuccess: @escaping ()->Void) {
+	fileprivate func fetchUser(onSuccess: @escaping ([String:Any])->Void) {
 		guard let UID = Auth.auth().currentUser?.uid else { return }
 		
 		Database.database().reference().child("users").child(UID).observeSingleEvent(of: .value, with: { (snapshot) in
-			
 			guard let dictonary = snapshot.value as? [String: Any] else { return }
-			self.profile = Profile(dictonary: dictonary)
-			onSuccess()
+			onSuccess(dictonary)
 		}) { (err) in
 			print(err)
 		}

@@ -18,7 +18,7 @@ extension SignUpVC {
 	
 	fileprivate func setConstraintsAndAddSubViews() {
 		view.addSubview(plusPhotoButton)
-		plusPhotoButton.anchor(leading: nil, top: view.safeAreaLayoutGuide.topAnchor, trailing: nil, bottom: nil, paddingLeft: 0, paddingTop: 40, paddingRight: 0, paddingBottom: 0, height: 140, width: 140)
+		plusPhotoButton.anchor(leading: nil, top: view.safeAreaLayoutGuide.topAnchor, trailing: nil, bottom: nil, paddingLeading: 0, paddingTop: 40, paddingTailing: 0, paddingBottom: 0, height: 140, width: 140)
 		plusPhotoButton.anchorCenter(X: view.centerXAnchor, Y: nil, paddingX: 0, paddingY: 0)
 		setupInputFields()
 	}
@@ -29,7 +29,7 @@ extension SignUpVC {
 		stackView.axis = .vertical
 		stackView.spacing = 10
 		view.addSubview(stackView)
-		stackView.anchor(leading: view.leadingAnchor, top: plusPhotoButton.bottomAnchor, trailing: view.trailingAnchor, bottom: nil, paddingLeft: 40, paddingTop: 20, paddingRight: 40, paddingBottom: 0, height: 200, width: 0)
+		stackView.anchor(leading: view.leadingAnchor, top: plusPhotoButton.bottomAnchor, trailing: view.trailingAnchor, bottom: nil, paddingLeading: 40, paddingTop: 20, paddingTailing: 40, paddingBottom: 0, height: 200, width: 0)
 	}
 	
 	// Checks if the form is valid and enables and colors the button

@@ -29,8 +29,9 @@ enum ButtonType {
 	
 	func ID() -> String {
 		switch self {
+			
 		case .signin:
-			return "Sign I n"
+			return "Sign In"
 		default:
 			return "Sign Up"
 		}

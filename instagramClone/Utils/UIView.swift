@@ -10,14 +10,14 @@ import UIKit
 
 extension UIView {
 	
-	func anchor(leading: NSLayoutXAxisAnchor?, top: NSLayoutYAxisAnchor?, trailing: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, paddingLeft: CGFloat, paddingTop: CGFloat, paddingRight: CGFloat, paddingBottom: CGFloat, height: CGFloat, width: CGFloat) {
+	func anchor(leading: NSLayoutXAxisAnchor?, top: NSLayoutYAxisAnchor?, trailing: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, paddingLeading: CGFloat, paddingTop: CGFloat, paddingTailing: CGFloat, paddingBottom: CGFloat, height: CGFloat, width: CGFloat) {
 		translatesAutoresizingMaskIntoConstraints = false
 		if let topA = top {
 			topAnchor.constraint(equalTo: topA, constant: paddingTop).isActive = true
 		}
 		
 		if let leadingA = leading {
-			leadingAnchor.constraint(equalTo: leadingA, constant: paddingLeft).isActive = true
+			leadingAnchor.constraint(equalTo: leadingA, constant: paddingLeading).isActive = true
 		}
 		
 		if let bottomA = bottom {
@@ -25,7 +25,7 @@ extension UIView {
 		}
 		
 		if let trailingA = trailing {
-			trailingAnchor.constraint(equalTo: trailingA, constant: -paddingRight).isActive = true
+			trailingAnchor.constraint(equalTo: trailingA, constant: -paddingTailing).isActive = true
 		}
 		
 		if height != 0 {

@@ -22,7 +22,7 @@ extension SignUpVC {
 		guard let email = emailTF.text, email.count != 0 else {return}
 		guard let password = passwordTF.text, password.count != 0  else {return}
 		
-		// Creats the auth of the user and adds him to Auth database
+		// Creates the auth of the user and adds him to Auth database
 		Auth.auth().createUser(withEmail: email, password: password) { (authResult , error) in
 			
 			if let err = error {
@@ -33,10 +33,13 @@ extension SignUpVC {
 			
 			self.uploadProfileImage(onSuccess: { (url) in
 				if let user = authResult?.user {
+					
+					// Saves user to database
+					
 					self.createUser(user, withProfilePicture: url)
 				}
 			}, onFailure: {
-				print("fail")
+				print("Fail")
 			})
 		}
 	}
@@ -49,7 +52,9 @@ extension SignUpVC {
 	//MARK:- Uploading the user image
 	func uploadProfileImage(onSuccess: @escaping (String)->Void, onFailure: @escaping ()-> Void) {
 		
-		guard let image = self.plusPhotoButton.imageView?.image else {return}
+		guard let image = self.plusPhotoButton.imageView?.image else {
+			return
+		}
 		guard let uploadData = UIImageJPEGRepresentation(image, 0.3) else {return}
 
 		let storageRef = Storage.storage().reference()
@@ -61,7 +66,6 @@ extension SignUpVC {
 				onFailure()
 				return
 			}
-			
 			upload.downloadURL(completion: { (url, err) in
 				guard let downloadURL = url else {
 					onFailure()

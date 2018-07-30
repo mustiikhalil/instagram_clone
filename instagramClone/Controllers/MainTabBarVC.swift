@@ -21,6 +21,6 @@ class MainTabBarVC: UITabBarController {
 		navController.tabBarItem.image = #imageLiteral(resourceName: "profile_unselected")
 		navController.tabBarItem.selectedImage = #imageLiteral(resourceName: "profile_selected")
 		
-		viewControllers = [navController]
+		viewControllers = [navController, UIViewController()]
 	}
 }

@@ -51,13 +51,13 @@ class UserProfileHeaderView: UICollectionReusableView {
 	}()
 	
 	let postsLabel: UILabel = {
-		return MKLabel()
+		return MKLabel(withNumber: "11", withText: "posts")
 	}()
 	let followersLabel: UILabel = {
-		return MKLabel()
+		return MKLabel(withNumber: "11", withText: "followers")
 	}()
 	let followingLabel: UILabel = {
-		return MKLabel()
+		return MKLabel(withNumber: "11", withText: "following")
 	}()
 	
 	let editProfileButton: UIButton = {
@@ -67,6 +67,7 @@ class UserProfileHeaderView: UICollectionReusableView {
 		button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
 		button.layer.borderColor = UIColor.lightGray.cgColor
 		button.layer.borderWidth = 1
+		button.layer.cornerRadius = 2
 		return button
 	}()
 	

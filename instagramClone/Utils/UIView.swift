@@ -10,7 +10,7 @@ import UIKit
 
 extension UIView {
 	
-	func anchor(leading: NSLayoutXAxisAnchor?, top: NSLayoutYAxisAnchor?, trailing: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, paddingLeading: CGFloat, paddingTop: CGFloat, paddingTailing: CGFloat, paddingBottom: CGFloat, height: CGFloat, width: CGFloat) {
+	func anchor(leading: NSLayoutXAxisAnchor?, top: NSLayoutYAxisAnchor?, trailing: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, paddingLeading: CGFloat, paddingTop: CGFloat, paddingTailing: CGFloat, paddingBottom: CGFloat, width: CGFloat, height: CGFloat) {
 		translatesAutoresizingMaskIntoConstraints = false
 		if let topA = top {
 			topAnchor.constraint(equalTo: topA, constant: paddingTop).isActive = true
@@ -37,13 +37,21 @@ extension UIView {
 		}
 	}
 	
-	func anchorCenter(X: NSLayoutXAxisAnchor?, Y: NSLayoutYAxisAnchor?, paddingX: CGFloat, paddingY: CGFloat) {
+	func anchorCenter(X: NSLayoutXAxisAnchor?, Y: NSLayoutYAxisAnchor?, paddingX: CGFloat, paddingY: CGFloat, width: CGFloat, height: CGFloat) {
 		
 		if let x = X {
 			centerXAnchor.constraint(equalTo: x, constant: paddingX).isActive = true
 		}
 		if let y = Y {
 			centerYAnchor.constraint(equalTo: y, constant: paddingY).isActive = true
+		}
+		
+		if width != 0 {
+			widthAnchor.constraint(equalToConstant: width).isActive = true
+		}
+		
+		if height != 0 {
+			heightAnchor.constraint(equalToConstant: height).isActive = true
 		}
 	}
 }

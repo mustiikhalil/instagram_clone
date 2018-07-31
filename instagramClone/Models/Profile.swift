@@ -9,11 +9,14 @@
 import Foundation
 
 struct Profile {
+	
 	let profileURL: String
 	let username: String
+	let imageData: Data
 	
-	init(dictonary: [String: Any]) {
+	init(dictonary: [String: Any], imageData: Data) {
 		username = dictonary["username"] as? String ?? ""
 		profileURL = dictonary["profileLink"] as? String ?? ""
+		self.imageData = imageData
 	}
 }

@@ -88,6 +88,10 @@ extension SignUpVC {
 				print(err)
 				return
 			}
+			
+			guard let mainTabBar = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarVC else {return}
+			mainTabBar.setupViewControllers()
+			self.dismiss(animated: true, completion: nil)
 		}
 	}
 

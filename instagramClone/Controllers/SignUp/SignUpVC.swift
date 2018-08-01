@@ -20,12 +20,14 @@ class SignUpVC: UIViewController {
 	
 	let emailTF: MKTextField = {
 		let tf = MKTextField(placeholder: .Email, color: UIColor.rgb(red: 248, green: 248, blue: 248), keyboardType: .emailAddress)
+		tf.autocorrectionType = .no
 		tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
 		return tf
 	}()
 	
 	let userNameTF: MKTextField = {
 		let tf = MKTextField(placeholder: .Username, color: UIColor.rgb(red: 248, green: 248, blue: 248))
+		tf.autocorrectionType = .no
 		tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
 		return tf
 	}()
@@ -43,6 +45,21 @@ class SignUpVC: UIViewController {
 		button.isEnabled = false
 		return button
 	}()
+	
+	
+	let alreadyHaveAccountButton: UIButton = {
+		
+		let button = UIButton(type: .system)
+		let attruibutedText = NSMutableAttributedString(string: "Already have an account?  ", attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)])
+		attruibutedText.append(NSAttributedString(string: "Sign In.", attributes: [NSAttributedStringKey.foregroundColor: UIColor.rgb(red: 17, green: 164, blue: 237), NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)]))
+		button.setAttributedTitle(attruibutedText, for: .normal)
+		button.addTarget(self, action: #selector(handleTransitionToSignInVC), for: .touchUpInside)
+		return button
+	}()
+	
+	@objc fileprivate func handleTransitionToSignInVC() {
+		navigationController?.popViewController(animated: true)
+	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()

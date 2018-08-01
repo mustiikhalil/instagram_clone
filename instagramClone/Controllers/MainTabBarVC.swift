@@ -7,11 +7,20 @@
 //
 
 import UIKit
+import Firebase
 
 class MainTabBarVC: UITabBarController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		if Auth.auth().currentUser == nil {
+			DispatchQueue.main.async {
+				let navController = UINavigationController(rootViewController: LoginVC())
+				self.present(navController, animated: false, completion: nil)
+			}
+			return
+		}
 		
 		tabBar.tintColor = .black
 		let layout = UICollectionViewFlowLayout()

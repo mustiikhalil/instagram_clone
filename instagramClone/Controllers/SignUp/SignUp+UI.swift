@@ -13,14 +13,18 @@ extension SignUpVC {
 	// MARK:- Setting up UI & Constraints
 	
 	func setupUI() {
+		navigationController?.isNavigationBarHidden = true
 		setConstraintsAndAddSubViews()
 	}
 	
 	fileprivate func setConstraintsAndAddSubViews() {
 		view.addSubview(plusPhotoButton)
+		view.addSubview(alreadyHaveAccountButton)
 		plusPhotoButton.anchor(leading: nil, top: view.safeAreaLayoutGuide.topAnchor, trailing: nil, bottom: nil, paddingLeading: 0, paddingTop: 40, paddingTailing: 0, paddingBottom: 0, width: 140, height: 140)
 		plusPhotoButton.anchorCenter(X: view.centerXAnchor, Y: nil, paddingX: 0, paddingY: 0, width: 0, height: 0)
 		setupInputFields()
+		
+		alreadyHaveAccountButton.anchor(leading: view.leadingAnchor, top: nil, trailing: view.trailingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingLeading: 0, paddingTop: 0, paddingTailing: 0, paddingBottom: 0, width: 0, height: 34)
 	}
 	
 	fileprivate func setupInputFields() {

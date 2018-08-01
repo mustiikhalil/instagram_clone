@@ -25,6 +25,7 @@ class UserProfileVC: UICollectionViewController {
 		
 		setupCollectionView()
 		fetchUser()
+		setupLogOutButton()
 	}
 	
 	func fetchUser() {
@@ -67,5 +68,28 @@ class UserProfileVC: UICollectionViewController {
 			}
 		}.resume()
 	}
-
+	
+	fileprivate func setupLogOutButton() {
+		navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "gear").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleLogout))
+	}
+	
+	@objc fileprivate func handleLogout() {
+		let alertController = UIAlertController(title: "Logout", message: "Are you sure?", preferredStyle: .actionSheet)
+		
+		alertController.addAction(UIAlertAction(title: "Logout", style: .destructive, handler: { (_) in
+			
+			do {
+				try Auth.auth().signOut()
+				self.present(LoginVC(), animated: true, completion: nil)
+				
+			} catch let SignOutErr {
+				print(SignOutErr)
+				print("Failed to sign out")
+			}
+		}))
+		
+		alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+		
+		present(alertController, animated: true, completion: nil)
+	}
 }

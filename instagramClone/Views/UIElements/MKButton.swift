@@ -25,13 +25,13 @@ class MKButton: UIButton {
 }
 
 enum ButtonType {
-	case signup, signin
+	case signup, login
 	
 	func ID() -> String {
 		switch self {
 			
-		case .signin:
-			return "Sign In"
+		case .login:
+			return "Log In"
 		default:
 			return "Sign Up"
 		}

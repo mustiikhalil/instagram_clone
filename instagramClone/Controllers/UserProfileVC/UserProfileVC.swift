@@ -80,7 +80,9 @@ class UserProfileVC: UICollectionViewController {
 			
 			do {
 				try Auth.auth().signOut()
-				self.present(LoginVC(), animated: true, completion: nil)
+				
+				let navController = UINavigationController(rootViewController: LoginVC())
+				self.present(navController, animated: true, completion: nil)
 				
 			} catch let SignOutErr {
 				print(SignOutErr)

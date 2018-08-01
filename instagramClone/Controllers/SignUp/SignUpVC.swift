@@ -20,12 +20,14 @@ class SignUpVC: UIViewController {
 	
 	let emailTF: MKTextField = {
 		let tf = MKTextField(placeholder: .Email, color: UIColor.rgb(red: 248, green: 248, blue: 248), keyboardType: .emailAddress)
+		tf.autocorrectionType = .no
 		tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
 		return tf
 	}()
 	
 	let userNameTF: MKTextField = {
 		let tf = MKTextField(placeholder: .Username, color: UIColor.rgb(red: 248, green: 248, blue: 248))
+		tf.autocorrectionType = .no
 		tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
 		return tf
 	}()
@@ -56,7 +58,7 @@ class SignUpVC: UIViewController {
 	}()
 	
 	@objc fileprivate func handleTransitionToSignInVC() {
-		navigationController?.popViewController(animated: false)
+		navigationController?.popViewController(animated: true)
 	}
 	
 	override func viewDidLoad() {

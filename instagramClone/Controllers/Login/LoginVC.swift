@@ -24,6 +24,7 @@ class LoginVC: UIViewController {
 	
 	let emailTF: MKTextField = {
 		let TF = MKTextField(placeholder: .Email, color: UIColor.rgb(red: 248, green: 248, blue: 248), keyboardType: .emailAddress)
+		TF.autocorrectionType = .no
 		TF.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
 		return TF
 	}()
@@ -37,6 +38,7 @@ class LoginVC: UIViewController {
 	
 	let loginButton: MKButton = {
 		let button = MKButton(title: .login, titleColor: .white, backgroundColor: UIColor.rgb(red: 149, green: 204, blue: 244), raduis: 5)
+		button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
 		return button
 	}()
 	
@@ -65,6 +67,6 @@ class LoginVC: UIViewController {
 	
 	@objc fileprivate func handleTransitionToSignUpVC() {
 		
-		navigationController?.pushViewController(SignUpVC(), animated: false)
+		navigationController?.pushViewController(SignUpVC(), animated: true)
 	}
 }

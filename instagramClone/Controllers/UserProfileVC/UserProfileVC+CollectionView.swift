@@ -9,8 +9,17 @@
 import UIKit
 
 extension UserProfileVC: UICollectionViewDelegateFlowLayout {
-	
-	func setupCollectionView() {
+    
+    func setupUI() {
+        setupCollectionView()
+        setupLogOutButton()
+    }
+    
+    fileprivate func setupLogOutButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "gear").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleLogout))
+    }
+        	
+	fileprivate func setupCollectionView() {
 		collectionView?.backgroundColor = .white
 		collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellID)
 		collectionView?.register(UserProfileHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: header)

@@ -38,7 +38,7 @@ extension UserProfileVC: UICollectionViewDelegateFlowLayout {
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		let width = (view.frame.width - 2) / 3
+		let width = (view.safeAreaLayoutGuide.layoutFrame.width - 2) / 3
 		return CGSize(width: width, height: width)
 	}
 	
@@ -55,5 +55,10 @@ extension UserProfileVC: UICollectionViewDelegateFlowLayout {
 		return cell
 	}
 	
+    // fixes the problem if the collection view not resizing the view after two rotations
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        collectionView?.collectionViewLayout.invalidateLayout()
+    }
 	
 }

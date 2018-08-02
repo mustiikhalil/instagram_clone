@@ -31,7 +31,7 @@ class MainTabBarVC: UITabBarController {
 	
 	func setupViewControllers() {
 		
-		let layout = UICollectionViewFlowLayout()
+		let layout = Layout()
 		let userProfileVC = UserProfileVC(collectionViewLayout: layout)
 		let navController = UINavigationController(rootViewController: userProfileVC)
 		

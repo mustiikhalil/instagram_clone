@@ -16,8 +16,8 @@ class MainTabBarVC: UITabBarController {
 		
 		if Auth.auth().currentUser == nil {
 			DispatchQueue.main.async {
-				let navController = UINavigationController(rootViewController: LoginVC())
-				self.present(navController, animated: false, completion: nil)
+				
+				self.present(ViewControllersBuilder.Login.getViewController(), animated: false, completion: nil)
 			}
 			return
 		}
@@ -30,15 +30,33 @@ class MainTabBarVC: UITabBarController {
 	}
 	
 	func setupViewControllers() {
-		
-		let layout = UICollectionViewFlowLayout()
-		let userProfileVC = UserProfileVC(collectionViewLayout: layout)
-		let navController = UINavigationController(rootViewController: userProfileVC)
-		
-		navController.tabBarItem.image = #imageLiteral(resourceName: "profile_unselected")
-		navController.tabBarItem.selectedImage = #imageLiteral(resourceName: "profile_selected")
-		
-		viewControllers = [navController, UIViewController()]
+        
+        let homeNavController = ViewControllersBuilder.Home.getViewController(layout: UICollectionViewFlowLayout())
+        let searchNavController = ViewControllersBuilder.Search.getViewController()
+        let plusNavController = ViewControllersBuilder.Camera.getViewController()
+        let heartsNavController = ViewControllersBuilder.Hearts.getViewController()
+        let userProfileNavController = ViewControllersBuilder.User.getViewController(layout: UICollectionViewFlowLayout())
+        
+		viewControllers = [ homeNavController,
+                            searchNavController,
+                            plusNavController,
+                            heartsNavController,
+                            userProfileNavController
+        ]
+        
+        // Modify tab bar insets
+        guard let items = tabBar.items else {return}
+        
+        items.forEach { (item) in
+            item.imageInsets = UIEdgeInsets(top: 4, left: 0, bottom: -4, right: 0)
+        }
 	}
 	
+}
+
+class HomeVC: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 }

@@ -31,6 +31,7 @@
 		DFBE45612111BB360019E53C /* LoginVC+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBE45602111BB360019E53C /* LoginVC+UI.swift */; };
 		DFBE45632111D4970019E53C /* LoginVC+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBE45622111D4970019E53C /* LoginVC+Firebase.swift */; };
 		DFBEF228210E3AEA00EFFC48 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DFBEF227210E3AEA00EFFC48 /* GoogleService-Info.plist */; };
+		DFE7CFB9211575750023B045 /* ViewControllersBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE7CFB8211575750023B045 /* ViewControllersBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		DFBE45602111BB360019E53C /* LoginVC+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginVC+UI.swift"; sourceTree = "<group>"; };
 		DFBE45622111D4970019E53C /* LoginVC+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginVC+Firebase.swift"; sourceTree = "<group>"; };
 		DFBEF227210E3AEA00EFFC48 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DFE7CFB8211575750023B045 /* ViewControllersBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllersBuilder.swift; sourceTree = "<group>"; };
 		E52F55A837118F672EAB1512 /* Pods_instagramClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_instagramClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -191,6 +193,7 @@
 			children = (
 				DF6AD30B210CDAEE002F7D41 /* UIColor.swift */,
 				DF81E757210D1E00003E5C86 /* UIView.swift */,
+				DFE7CFB8211575750023B045 /* ViewControllersBuilder.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 			files = (
 				DF5109FC2110945500128279 /* MKLabel.swift in Sources */,
 				DF6AD2FB210C9311002F7D41 /* SignUpVC.swift in Sources */,
+				DFE7CFB9211575750023B045 /* ViewControllersBuilder.swift in Sources */,
 				DF286E86210E575A00B4D722 /* SignUp+PickPhoto.swift in Sources */,
 				DF21F58F210F62C800B7A634 /* UserProfileHeaderView.swift in Sources */,
 				DFBE455F2111B24F0019E53C /* LoginVC.swift in Sources */,

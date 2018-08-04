@@ -11,7 +11,7 @@ import Firebase
 
 extension SignUpVC {
 	
-	// MARK:- Firebase
+	//MARK:- Firebase
 	@objc func handleSignUp() {
 		signUp()
 	}
@@ -62,10 +62,11 @@ extension SignUpVC {
 		
 		upload.putData(uploadData, metadata: nil, completion: { (metadata, err) in
 			
-			guard let data = metadata else {
+			guard let _ = metadata else {
 				onFailure()
 				return
 			}
+            
 			upload.downloadURL(completion: { (url, err) in
 				guard let downloadURL = url else {
 					onFailure()
@@ -77,8 +78,7 @@ extension SignUpVC {
 		})
 	}
 	
-	// MARK:- Creating User after uploading the image
-	
+	//MARK:- Creating User after uploading the image
 	func createUser(_ user: User, withProfilePicture url: String){
 		let data = ["username": userNameTF.text!,"profileLink": url]
 		let value = [user.uid: data]

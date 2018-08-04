@@ -10,7 +10,6 @@ import UIKit
 
 class LoginVC: UIViewController {
 	
-
 	let dontHaveAccountButton: UIButton = {
 		let button = UIButton(type: .system)
 		let attruibutedText = NSMutableAttributedString(string: "Don't have an account?  ", attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)])
@@ -20,7 +19,6 @@ class LoginVC: UIViewController {
 		button.addTarget(self, action: #selector(handleTransitionToSignUpVC), for: .touchUpInside)
 		return button
 	}()
-	
 	
 	let emailTF: MKTextField = {
 		let TF = MKTextField(placeholder: .Email, color: UIColor.rgb(red: 248, green: 248, blue: 248), keyboardType: .emailAddress)
@@ -53,7 +51,6 @@ class LoginVC: UIViewController {
 		logo.anchorCenter(X: view.centerXAnchor, Y: view.centerYAnchor, paddingX: 0, paddingY: 0, width: 200, height: 50)
 		return view
 	}()
-	
 	
 	override var preferredStatusBarStyle: UIStatusBarStyle {
 		return .lightContent

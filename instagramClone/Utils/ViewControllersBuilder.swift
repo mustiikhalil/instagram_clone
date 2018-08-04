@@ -10,23 +10,23 @@ import UIKit
 
 
 enum ViewControllersBuilder {
+    
     case Home, // Main view controller
          User, // User Profile view controller
          Search, // Search view controller
          Camera, // Camera view controller
          Hearts, // Hearts & Likes view controller
-         Login // login view controller
+         Login, // login view controller
+         SignUp
     
-    func getViewController(layout: UICollectionViewFlowLayout? = nil) -> UINavigationController {
+    var getNavigationController: UINavigationController {
         
         switch self {
             case .Login:
                 return registerNavControllers(VC: LoginVC())
-            
             // user profile
             case .User:
-                
-                guard let layer = layout else {fatalError()}
+                let layer = UICollectionViewFlowLayout()
                 return registerNavControllers(VC: UserProfileVC(collectionViewLayout: layer), image: #imageLiteral(resourceName: "profile_selected"), unselectedImage: #imageLiteral(resourceName: "profile_unselected"))
             
             // Hearts and likes from users
@@ -40,15 +40,23 @@ enum ViewControllersBuilder {
             // Open Photos
             case .Camera:
                 return registerNavControllers(VC: HomeVC(), image: #imageLiteral(resourceName: "plus_unselected"), unselectedImage: #imageLiteral(resourceName: "plus_unselected"))
-            
             // Get the mainView
             default:
-                guard let layer = layout else {fatalError()}
+                let layer = UICollectionViewFlowLayout()
                 return registerNavControllers(VC: UserProfileVC(collectionViewLayout: layer), image: #imageLiteral(resourceName: "home_selected"), unselectedImage: #imageLiteral(resourceName: "home_unselected"))
         }
     }
     
-    private func registerNavControllers(VC: UIViewController, image: UIImage? = nil, unselectedImage: UIImage? = nil) -> UINavigationController {
+    var getViewController: UIViewController {
+        switch self {
+        case .SignUp:
+            return SignUpVC()
+        default:
+            fatalError()
+        }
+    }
+    
+    fileprivate func registerNavControllers(VC: UIViewController, image: UIImage? = nil, unselectedImage: UIImage? = nil) -> UINavigationController {
         
         let navController = UINavigationController(rootViewController: VC)
         if let selected = image {

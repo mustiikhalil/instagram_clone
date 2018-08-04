@@ -17,7 +17,7 @@ class MainTabBarVC: UITabBarController {
 		if Auth.auth().currentUser == nil {
 			DispatchQueue.main.async {
 				
-				self.present(ViewControllersBuilder.Login.getViewController(), animated: false, completion: nil)
+				self.present(ViewControllersBuilder.Login.getNavigationController, animated: false, completion: nil)
 			}
 			return
 		}
@@ -29,20 +29,13 @@ class MainTabBarVC: UITabBarController {
 		tabBar.tintColor = .black
 	}
 	
-	func setupViewControllers() {
+    func setupViewControllers() {
         
-        let homeNavController = ViewControllersBuilder.Home.getViewController(layout: UICollectionViewFlowLayout())
-        let searchNavController = ViewControllersBuilder.Search.getViewController()
-        let plusNavController = ViewControllersBuilder.Camera.getViewController()
-        let heartsNavController = ViewControllersBuilder.Hearts.getViewController()
-        let userProfileNavController = ViewControllersBuilder.User.getViewController(layout: UICollectionViewFlowLayout())
-        
-		viewControllers = [ homeNavController,
-                            searchNavController,
-                            plusNavController,
-                            heartsNavController,
-                            userProfileNavController
-        ]
+        viewControllers = [ ViewControllersBuilder.Home.getNavigationController,
+                            ViewControllersBuilder.Search.getNavigationController,
+                            ViewControllersBuilder.Camera.getNavigationController,
+                            ViewControllersBuilder.Hearts.getNavigationController,
+                            ViewControllersBuilder.User.getNavigationController ]
         
         // Modify tab bar insets
         guard let items = tabBar.items else {return}
@@ -51,7 +44,6 @@ class MainTabBarVC: UITabBarController {
             item.imageInsets = UIEdgeInsets(top: 4, left: 0, bottom: -4, right: 0)
         }
 	}
-	
 }
 
 class HomeVC: UIViewController {

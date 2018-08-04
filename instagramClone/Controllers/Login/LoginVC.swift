@@ -64,6 +64,6 @@ class LoginVC: UIViewController {
 	
 	@objc fileprivate func handleTransitionToSignUpVC() {
 		
-		navigationController?.pushViewController(SignUpVC(), animated: true)
+		navigationController?.pushViewController(ViewControllersBuilder.SignUp.getViewController, animated: true)
 	}
 }

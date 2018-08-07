@@ -19,12 +19,14 @@
 		DF3434FB21138933008CC71B /* UserProfileVC+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3434FA21138933008CC71B /* UserProfileVC+Networking.swift */; };
 		DF5109FA211092C500128279 /* UserProfileHeaderCell+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5109F9211092C500128279 /* UserProfileHeaderCell+UI.swift */; };
 		DF5109FC2110945500128279 /* MKLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5109FB2110945500128279 /* MKLabel.swift */; };
+		DF5A39BC2119780700AD09A5 /* PhotoSelectorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5A39BB2119780700AD09A5 /* PhotoSelectorVC.swift */; };
 		DF6AD2F9210C9311002F7D41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6AD2F8210C9311002F7D41 /* AppDelegate.swift */; };
 		DF6AD2FB210C9311002F7D41 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6AD2FA210C9311002F7D41 /* SignUpVC.swift */; };
 		DF6AD300210C9312002F7D41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF6AD2FF210C9312002F7D41 /* Assets.xcassets */; };
 		DF6AD303210C9312002F7D41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF6AD301210C9312002F7D41 /* LaunchScreen.storyboard */; };
 		DF6AD30C210CDAEE002F7D41 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6AD30B210CDAEE002F7D41 /* UIColor.swift */; };
 		DF6AD312210CDBF0002F7D41 /* MKTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6AD311210CDBF0002F7D41 /* MKTextField.swift */; };
+		DF6F2BCE2119B271003EB476 /* PhotoSelectorVC+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F2BCD2119B271003EB476 /* PhotoSelectorVC+UI.swift */; };
 		DF81E758210D1E00003E5C86 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF81E757210D1E00003E5C86 /* UIView.swift */; };
 		DF81E75A210D1EAF003E5C86 /* MKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF81E759210D1EAF003E5C86 /* MKButton.swift */; };
 		DFBE455F2111B24F0019E53C /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBE455E2111B24F0019E53C /* LoginVC.swift */; };
@@ -48,6 +50,7 @@
 		DF3434FA21138933008CC71B /* UserProfileVC+Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfileVC+Networking.swift"; sourceTree = "<group>"; };
 		DF5109F9211092C500128279 /* UserProfileHeaderCell+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfileHeaderCell+UI.swift"; sourceTree = "<group>"; };
 		DF5109FB2110945500128279 /* MKLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKLabel.swift; sourceTree = "<group>"; };
+		DF5A39BB2119780700AD09A5 /* PhotoSelectorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorVC.swift; sourceTree = "<group>"; };
 		DF6AD2F5210C9311002F7D41 /* instagramClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = instagramClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF6AD2F8210C9311002F7D41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DF6AD2FA210C9311002F7D41 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
@@ -56,6 +59,7 @@
 		DF6AD304210C9312002F7D41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF6AD30B210CDAEE002F7D41 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		DF6AD311210CDBF0002F7D41 /* MKTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKTextField.swift; sourceTree = "<group>"; };
+		DF6F2BCD2119B271003EB476 /* PhotoSelectorVC+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoSelectorVC+UI.swift"; sourceTree = "<group>"; };
 		DF81E757210D1E00003E5C86 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		DF81E759210D1EAF003E5C86 /* MKButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKButton.swift; sourceTree = "<group>"; };
 		DFBE455E2111B24F0019E53C /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -95,14 +99,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		DF21F58B210F57BB00B7A634 /* UserProfileVC */ = {
+		DF21F58B210F57BB00B7A634 /* UserProfile */ = {
 			isa = PBXGroup;
 			children = (
 				DF21F58C210F57CE00B7A634 /* UserProfileVC.swift */,
 				DF29A8B7210F9B49009D316A /* UserProfileVC+CollectionView.swift */,
 				DF3434FA21138933008CC71B /* UserProfileVC+Networking.swift */,
 			);
-			path = UserProfileVC;
+			path = UserProfile;
 			sourceTree = "<group>";
 		};
 		DF28F852210E442600427302 /* SignUp */ = {
@@ -143,6 +147,15 @@
 			path = UserProfileHeaderCell;
 			sourceTree = "<group>";
 		};
+		DF5A39BA211977C900AD09A5 /* PhotoSelector */ = {
+			isa = PBXGroup;
+			children = (
+				DF5A39BB2119780700AD09A5 /* PhotoSelectorVC.swift */,
+				DF6F2BCD2119B271003EB476 /* PhotoSelectorVC+UI.swift */,
+			);
+			path = PhotoSelector;
+			sourceTree = "<group>";
+		};
 		DF6AD2EC210C9311002F7D41 = {
 			isa = PBXGroup;
 			children = (
@@ -180,9 +193,10 @@
 		DF6AD30A210C9460002F7D41 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DF5A39BA211977C900AD09A5 /* PhotoSelector */,
 				DF21F589210F562F00B7A634 /* MainTabBarVC.swift */,
 				DFBE455D2111B23D0019E53C /* Login */,
-				DF21F58B210F57BB00B7A634 /* UserProfileVC */,
+				DF21F58B210F57BB00B7A634 /* UserProfile */,
 				DF28F852210E442600427302 /* SignUp */,
 			);
 			path = Controllers;
@@ -351,11 +365,13 @@
 				DFBE45612111BB360019E53C /* LoginVC+UI.swift in Sources */,
 				DF6AD312210CDBF0002F7D41 /* MKTextField.swift in Sources */,
 				DF21F58D210F57CE00B7A634 /* UserProfileVC.swift in Sources */,
+				DF5A39BC2119780700AD09A5 /* PhotoSelectorVC.swift in Sources */,
 				DF28F856210E530600427302 /* SignUp+Firebase.swift in Sources */,
 				DF21F58A210F562F00B7A634 /* MainTabBarVC.swift in Sources */,
 				DF5109FA211092C500128279 /* UserProfileHeaderCell+UI.swift in Sources */,
 				DF6AD30C210CDAEE002F7D41 /* UIColor.swift in Sources */,
 				DF3434FB21138933008CC71B /* UserProfileVC+Networking.swift in Sources */,
+				DF6F2BCE2119B271003EB476 /* PhotoSelectorVC+UI.swift in Sources */,
 				DF81E758210D1E00003E5C86 /* UIView.swift in Sources */,
 				DFBE45632111D4970019E53C /* LoginVC+Firebase.swift in Sources */,
 				DF29A8B8210F9B49009D316A /* UserProfileVC+CollectionView.swift in Sources */,

@@ -9,11 +9,11 @@
 import UIKit
 import Firebase
 
-class MainTabBarVC: UITabBarController {
+class MainTabBarVC: UITabBarController, UITabBarControllerDelegate {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+        
 		if Auth.auth().currentUser == nil {
 			DispatchQueue.main.async {
 				
@@ -21,6 +21,8 @@ class MainTabBarVC: UITabBarController {
 			}
 			return
 		}
+        
+        self.delegate = self
 		setupUI()
 		setupViewControllers()
 	}
@@ -44,6 +46,16 @@ class MainTabBarVC: UITabBarController {
             item.imageInsets = UIEdgeInsets(top: 4, left: 0, bottom: -4, right: 0)
         }
 	}
+    
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        let index = viewControllers?.index(of: viewController)
+    
+        if index == 2 {
+            present(ViewControllersBuilder.PhotoPicker.getNavigationController, animated: true, completion: nil)
+            return false
+        }
+        return true
+    }
 }
 
 class HomeVC: UIViewController {

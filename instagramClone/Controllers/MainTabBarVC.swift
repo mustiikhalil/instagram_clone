@@ -51,7 +51,7 @@ class MainTabBarVC: UITabBarController, UITabBarControllerDelegate {
         let index = viewControllers?.index(of: viewController)
     
         if index == 2 {
-            present(ViewControllersBuilder.PhotoPicker.getNavigationController, animated: true, completion: nil)
+            present(PhotoSelectorTabBar(), animated: true, completion: nil)
             return false
         }
         return true

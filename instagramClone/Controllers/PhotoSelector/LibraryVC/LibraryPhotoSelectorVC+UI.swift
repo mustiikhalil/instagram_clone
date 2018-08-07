@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension PhotoSelectorVC: UICollectionViewDelegateFlowLayout {
+extension LibraryPhotoSelectorVC: UICollectionViewDelegateFlowLayout {
     
     func setupUI() {
         setupNavigationBar()

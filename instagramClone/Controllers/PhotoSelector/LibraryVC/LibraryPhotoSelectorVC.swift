@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PhotoSelectorVC: UICollectionViewController {
+class LibraryPhotoSelectorVC: UICollectionViewController {
     
     let headerID = "HeaderID"
     let cellID = "CellID"

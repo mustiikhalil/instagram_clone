@@ -16,10 +16,11 @@ class PhotoSelectorTabBar: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let photoPickerVC = setupVC(vc: ViewControllersBuilder.PhotoPicker.getNavigationController, title: library)
-        let cameraVC = setupVC(vc: ViewControllersBuilder.PhotoPicker.getNavigationController, title: camera)
+        let libraryPhotoSelectorVC = setupVC(vc: ViewControllersBuilder.PhotoPicker.getNavigationController, title: library)
+        let cameraPhotoSelectorVC = setupVC(vc: ViewControllersBuilder.PhotoPicker.getNavigationController, title: camera)
         
-        viewControllers = [photoPickerVC,cameraVC]
+        viewControllers = [ libraryPhotoSelectorVC,
+                            cameraPhotoSelectorVC ]
     }
     
     func setupVC(vc: UIViewController, title: String) -> UIViewController {

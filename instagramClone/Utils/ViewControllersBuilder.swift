@@ -38,13 +38,16 @@ enum ViewControllersBuilder {
         case .Search:
             return registerNavControllers(VC: HomeVC(), image: #imageLiteral(resourceName: "search_selected"), unselectedImage: #imageLiteral(resourceName: "search_unselected"))
             
-        // Open Photos
+        // Open Library
         case .Camera:
             return registerNavControllers(VC: HomeVC(), image: #imageLiteral(resourceName: "plus_unselected"), unselectedImage: #imageLiteral(resourceName: "plus_unselected"))
-        // Get the mainView
+        
+        // Photo selector library
         case .PhotoPicker:
             let layer = UICollectionViewFlowLayout()
-            return registerNavControllers(VC: PhotoSelectorVC(collectionViewLayout: layer))
+            return registerNavControllers(VC: LibraryPhotoSelectorVC(collectionViewLayout: layer))
+            
+        // Get the mainView
         default:
             let layer = UICollectionViewFlowLayout()
             return registerNavControllers(VC: UserProfileVC(collectionViewLayout: layer), image: #imageLiteral(resourceName: "home_selected"), unselectedImage: #imageLiteral(resourceName: "home_unselected"))

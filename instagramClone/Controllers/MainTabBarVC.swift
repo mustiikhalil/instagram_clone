@@ -35,7 +35,7 @@ class MainTabBarVC: UITabBarController, UITabBarControllerDelegate {
         
         viewControllers = [ ViewControllersBuilder.Home.getNavigationController,
                             ViewControllersBuilder.Search.getNavigationController,
-                            ViewControllersBuilder.Camera.getNavigationController,
+                            ViewControllersBuilder.PhotoSelector.getNavigationController,
                             ViewControllersBuilder.Hearts.getNavigationController,
                             ViewControllersBuilder.User.getNavigationController ]
         

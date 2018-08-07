@@ -13,6 +13,7 @@ class LibraryPhotoSelectorVC: UICollectionViewController {
     
     let headerID = "HeaderID"
     let cellID = "CellID"
+    var imagesArray: [UIImage] = []
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -36,16 +37,27 @@ class LibraryPhotoSelectorVC: UICollectionViewController {
         print("fetching photos")
         let fetchOptions = PHFetchOptions()
         fetchOptions.fetchLimit = 10
+        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         let allPhotos = PHAsset.fetchAssets(with: .image, options: fetchOptions)
         
         allPhotos.enumerateObjects { (asset, count, stop) in
             
             let imageManager = PHImageManager.default()
             let targetSize = CGSize(width: 350, height: 350)
-            imageManager.requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFit, options: nil, resultHandler: { (image, info) in
-                <#code#>
+            let options = PHImageRequestOptions()
+            options.isSynchronous = true
+            
+            imageManager.requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFit, options: options, resultHandler: { (image, info) in
+                if let image = image {
+                    self.imagesArray.append(image)
+                }
+                if count == allPhotos.count - 1 {
+                    self.collectionView?.reloadData()
+                }
+                
             })
         }
+        
     }
     
 }

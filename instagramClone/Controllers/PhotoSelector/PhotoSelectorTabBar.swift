@@ -16,24 +16,11 @@ class PhotoSelectorTabBar: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let libraryPhotoSelectorVC = setupVC(vc: ViewControllersBuilder.PhotoPicker.getNavigationController, title: library)
-        let cameraPhotoSelectorVC = setupVC(vc: ViewControllersBuilder.PhotoPicker.getNavigationController, title: camera)
+        let libraryPhotoSelectorVC = ViewControllersBuilder.PhotoLibrary.getNavigationController
+        let cameraPhotoSelectorVC = ViewControllersBuilder.Camera.getNavigationController
         
         viewControllers = [ libraryPhotoSelectorVC,
                             cameraPhotoSelectorVC ]
     }
     
-    func setupVC(vc: UIViewController, title: String) -> UIViewController {
-        vc.tabBarItem.title = title
-        vc.tabBarItem.setTitleTextAttributes([
-            NSAttributedStringKey.foregroundColor: UIColor.lightGray,
-            NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14),
-            ], for: .normal)
-        vc.tabBarItem.setTitleTextAttributes([
-            NSAttributedStringKey.foregroundColor: UIColor.black,
-            NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14),
-            ], for: .selected)
-        vc.tabBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -14)
-        return vc
-    }
 }

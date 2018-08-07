@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A3E648ED64E55C3088555790 /* Pods_instagramClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E52F55A837118F672EAB1512 /* Pods_instagramClone.framework */; };
+		DF0CC6A42119D73E0032CFCB /* LibraryPhotoSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0CC6A32119D73E0032CFCB /* LibraryPhotoSelectorCell.swift */; };
+		DF0CC6A6211A36B00032CFCB /* Dictonary.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0CC6A5211A36B00032CFCB /* Dictonary.swift */; };
 		DF21F58A210F562F00B7A634 /* MainTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF21F589210F562F00B7A634 /* MainTabBarVC.swift */; };
 		DF21F58D210F57CE00B7A634 /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF21F58C210F57CE00B7A634 /* UserProfileVC.swift */; };
 		DF21F58F210F62C800B7A634 /* UserProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF21F58E210F62C800B7A634 /* UserProfileHeaderView.swift */; };
@@ -40,6 +42,8 @@
 /* Begin PBXFileReference section */
 		BAA7EC607766C7FEC41211D1 /* Pods-instagramClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-instagramClone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-instagramClone/Pods-instagramClone.debug.xcconfig"; sourceTree = "<group>"; };
 		DEC1DCED0FB2979497FC8610 /* Pods-instagramClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-instagramClone.release.xcconfig"; path = "Pods/Target Support Files/Pods-instagramClone/Pods-instagramClone.release.xcconfig"; sourceTree = "<group>"; };
+		DF0CC6A32119D73E0032CFCB /* LibraryPhotoSelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryPhotoSelectorCell.swift; sourceTree = "<group>"; };
+		DF0CC6A5211A36B00032CFCB /* Dictonary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictonary.swift; sourceTree = "<group>"; };
 		DF21F589210F562F00B7A634 /* MainTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarVC.swift; sourceTree = "<group>"; };
 		DF21F58C210F57CE00B7A634 /* UserProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
 		DF21F58E210F62C800B7A634 /* UserProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHeaderView.swift; sourceTree = "<group>"; };
@@ -101,6 +105,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DF0CC6A22119D7130032CFCB /* LibraryPhotoSelectorCell */ = {
+			isa = PBXGroup;
+			children = (
+				DF0CC6A32119D73E0032CFCB /* LibraryPhotoSelectorCell.swift */,
+			);
+			path = LibraryPhotoSelectorCell;
+			sourceTree = "<group>";
+		};
 		DF21F58B210F57BB00B7A634 /* UserProfile */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +137,7 @@
 		DF29A8BB210F9BF7009D316A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				DF0CC6A22119D7130032CFCB /* LibraryPhotoSelectorCell */,
 				DF5109F82110929500128279 /* UserProfileHeaderCell */,
 			);
 			path = Cells;
@@ -219,6 +232,7 @@
 				DF6AD30B210CDAEE002F7D41 /* UIColor.swift */,
 				DF81E757210D1E00003E5C86 /* UIView.swift */,
 				DFE7CFB8211575750023B045 /* ViewControllersBuilder.swift */,
+				DF0CC6A5211A36B00032CFCB /* Dictonary.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -373,6 +387,7 @@
 				DF286E86210E575A00B4D722 /* SignUp+PickPhoto.swift in Sources */,
 				DF21F58F210F62C800B7A634 /* UserProfileHeaderView.swift in Sources */,
 				DFBE455F2111B24F0019E53C /* LoginVC.swift in Sources */,
+				DF0CC6A42119D73E0032CFCB /* LibraryPhotoSelectorCell.swift in Sources */,
 				DF29A8BA210F9BD8009D316A /* Profile.swift in Sources */,
 				DFBE45612111BB360019E53C /* LoginVC+UI.swift in Sources */,
 				DF6AD312210CDBF0002F7D41 /* MKTextField.swift in Sources */,
@@ -380,6 +395,7 @@
 				DF5A39BC2119780700AD09A5 /* LibraryPhotoSelectorVC.swift in Sources */,
 				DF28F856210E530600427302 /* SignUp+Firebase.swift in Sources */,
 				DF21F58A210F562F00B7A634 /* MainTabBarVC.swift in Sources */,
+				DF0CC6A6211A36B00032CFCB /* Dictonary.swift in Sources */,
 				DF5109FA211092C500128279 /* UserProfileHeaderCell+UI.swift in Sources */,
 				DF6AD30C210CDAEE002F7D41 /* UIColor.swift in Sources */,
 				DF3434FB21138933008CC71B /* UserProfileVC+Networking.swift in Sources */,

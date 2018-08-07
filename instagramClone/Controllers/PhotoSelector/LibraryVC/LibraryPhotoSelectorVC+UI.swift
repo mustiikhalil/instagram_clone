@@ -21,7 +21,7 @@ extension LibraryPhotoSelectorVC: UICollectionViewDelegateFlowLayout {
     fileprivate func setupCollectionView() {
         collectionView?.backgroundColor = .white
         collectionView?.register(UICollectionViewCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerID)
-        collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellID)
+        collectionView?.register(LibraryPhotoSelectorCell.self, forCellWithReuseIdentifier: cellID)
     }
     
     fileprivate func setupNavigationBar() {
@@ -33,8 +33,8 @@ extension LibraryPhotoSelectorVC: UICollectionViewDelegateFlowLayout {
     //MARK:- Cell dequeueing
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
-        cell.backgroundColor = .blue
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! LibraryPhotoSelectorCell
+        cell.item = imagesArray[indexPath.item]
         return cell
     }
     
@@ -45,7 +45,7 @@ extension LibraryPhotoSelectorVC: UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return imagesArray.count
     }
     
     

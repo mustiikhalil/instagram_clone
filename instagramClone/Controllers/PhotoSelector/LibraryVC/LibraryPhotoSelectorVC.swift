@@ -13,7 +13,8 @@ class LibraryPhotoSelectorVC: UICollectionViewController {
     
     let headerID = "HeaderID"
     let cellID = "CellID"
-    var imagesArray: [UIImage] = []
+    var assetsArray: [Photo] = []
+    var selectedImage: Photo?
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -33,31 +34,45 @@ class LibraryPhotoSelectorVC: UICollectionViewController {
         print("handling selection")
     }
     
+    func getImagesWithAsset(asset: PHAsset, ofSize size: CGSize, options: PHImageRequestOptions? = nil, onSuccess: @escaping (_ image: UIImage?) -> Void ) {
+        let imageManager = PHImageManager.default()
+        imageManager.requestImage(for: asset, targetSize: size, contentMode: .default, options: options, resultHandler: { (image, info) in
+           onSuccess(image)
+        })
+    }
+    
     fileprivate func fetchPhotos() {
-        print("fetching photos")
-        let fetchOptions = PHFetchOptions()
-        fetchOptions.fetchLimit = 10
-        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        let allPhotos = PHAsset.fetchAssets(with: .image, options: fetchOptions)
-        
-        allPhotos.enumerateObjects { (asset, count, stop) in
-            
-            let imageManager = PHImageManager.default()
-            let targetSize = CGSize(width: 350, height: 350)
-            let options = PHImageRequestOptions()
-            options.isSynchronous = true
-            
-            imageManager.requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFit, options: options, resultHandler: { (image, info) in
-                if let image = image {
-                    self.imagesArray.append(image)
-                }
-                if count == allPhotos.count - 1 {
-                    self.collectionView?.reloadData()
-                }
-                
-            })
+        let allPhotos = PHAsset.fetchAssets(with: .image, options: assetsFetchOptions())
+        let options = PHImageRequestOptions()
+        options.isSynchronous = true
+        DispatchQueue.global(qos: .background).async {
+            allPhotos.enumerateObjects { (asset, count, stop) in
+                self.getImagesWithAsset(asset: asset, ofSize: CGSize(width: 200, height: 200), options: options, onSuccess: { image in
+                    self.addToArrays(image: image, asset: asset)
+                    if count == allPhotos.count - 1 {
+                        DispatchQueue.main.async {
+                            self.collectionView?.reloadData()
+                        }
+                    }
+                })
+            }
         }
-        
+    }
+    
+    fileprivate func assetsFetchOptions() -> PHFetchOptions {
+        let fetchOptions = PHFetchOptions()
+        fetchOptions.fetchLimit = 30
+        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        return fetchOptions
+    }
+    
+    fileprivate func addToArrays(image: UIImage?, asset: PHAsset) {
+        if let image = image {
+            self.assetsArray.append(Photo(image: image, asset: asset))
+            if self.selectedImage == nil {
+                self.selectedImage = Photo(image: image, asset: asset)
+            }
+        }
     }
     
 }

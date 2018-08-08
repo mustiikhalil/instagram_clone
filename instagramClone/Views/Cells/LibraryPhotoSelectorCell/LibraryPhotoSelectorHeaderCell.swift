@@ -1,26 +1,25 @@
 //
-//  LibraryPhotoSelectorCell.swift
+//  LibraryPhotoSelectorHeaderCell.swift
 //  instagramClone
 //
-//  Created by Mustafa Khalil on 8/7/18.
+//  Created by Mustafa Khalil on 8/8/18.
 //  Copyright © 2018 Mustafa Khalil. All rights reserved.
 //
 
 import UIKit
 
-class LibraryPhotoSelectorCell: UICollectionViewCell {
+class LibraryPhotoSelectorHeaderCell: UICollectionReusableView {
     
     let imageView: UIImageView = {
-        let image = UIImageView()
-        image.contentMode = .scaleAspectFill
-        image.clipsToBounds = true
-        return image
+        let iv = UIImageView()
+        iv.clipsToBounds = true
+        iv.contentMode = .scaleAspectFill
+        return iv
     }()
     
-    var item: Photo? {
+    var item: UIImage? {
         didSet {
-            guard let lowResImage = item?.lowResImage else {return}
-            imageView.image = lowResImage
+            self.setImage(item: item)
         }
     }
     
@@ -33,9 +32,13 @@ class LibraryPhotoSelectorCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupUI() {
+    fileprivate func setupUI() {
         addSubview(imageView)
         imageView.anchor(leading: leadingAnchor, top: topAnchor, trailing: trailingAnchor, bottom: bottomAnchor, paddingLeading: 0, paddingTop: 0, paddingTailing: 0, paddingBottom: 0, width: 0, height: 0)
     }
     
+    fileprivate func setImage(item: UIImage?) {
+        guard let image = item else {return}
+        imageView.image = image
+    }
 }

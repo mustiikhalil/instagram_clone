@@ -9,18 +9,20 @@
 import UIKit
 import Firebase
 
-class MainTabBarVC: UITabBarController {
+class MainTabBarVC: UITabBarController, UITabBarControllerDelegate {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+        
 		if Auth.auth().currentUser == nil {
 			DispatchQueue.main.async {
-				let navController = UINavigationController(rootViewController: LoginVC())
-				self.present(navController, animated: false, completion: nil)
+				
+				self.present(ViewControllersBuilder.Login.getNavigationController, animated: false, completion: nil)
 			}
 			return
 		}
+        
+        self.delegate = self
 		setupUI()
 		setupViewControllers()
 	}
@@ -29,16 +31,36 @@ class MainTabBarVC: UITabBarController {
 		tabBar.tintColor = .black
 	}
 	
-	func setupViewControllers() {
-		
-		let layout = Layout()
-		let userProfileVC = UserProfileVC(collectionViewLayout: layout)
-		let navController = UINavigationController(rootViewController: userProfileVC)
-		
-		navController.tabBarItem.image = #imageLiteral(resourceName: "profile_unselected")
-		navController.tabBarItem.selectedImage = #imageLiteral(resourceName: "profile_selected")
-		
-		viewControllers = [navController, UIViewController()]
+    func setupViewControllers() {
+        
+        viewControllers = [ ViewControllersBuilder.Home.getNavigationController,
+                            ViewControllersBuilder.Search.getNavigationController,
+                            ViewControllersBuilder.PhotoSelector.getNavigationController,
+                            ViewControllersBuilder.Hearts.getNavigationController,
+                            ViewControllersBuilder.User.getNavigationController ]
+        
+        // Modify tab bar insets
+        guard let items = tabBar.items else {return}
+        
+        items.forEach { (item) in
+            item.imageInsets = UIEdgeInsets(top: 4, left: 0, bottom: -4, right: 0)
+        }
 	}
-	
+    
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        let index = viewControllers?.index(of: viewController)
+    
+        if index == 2 {
+            present(PhotoSelectorTabBar(), animated: true, completion: nil)
+            return false
+        }
+        return true
+    }
+}
+
+class HomeVC: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 }

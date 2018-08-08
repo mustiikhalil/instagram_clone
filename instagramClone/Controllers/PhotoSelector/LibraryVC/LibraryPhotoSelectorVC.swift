@@ -15,6 +15,7 @@ class LibraryPhotoSelectorVC: UICollectionViewController {
     let cellID = "CellID"
     var assetsArray: [Photo] = []
     var selectedImage: Photo?
+    var header: LibraryPhotoSelectorHeaderCell?
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -31,7 +32,10 @@ class LibraryPhotoSelectorVC: UICollectionViewController {
     }
     
     @objc func handleSelection() {
-        print("handling selection")
+        let sharePhotoController = SharingVC()
+        sharePhotoController.hidesBottomBarWhenPushed = true
+        sharePhotoController.image = header?.imageView.image
+        navigationController?.pushViewController(sharePhotoController, animated: true)
     }
     
     func getImagesWithAsset(asset: PHAsset, ofSize size: CGSize, options: PHImageRequestOptions? = nil, onSuccess: @escaping (_ image: UIImage?) -> Void ) {

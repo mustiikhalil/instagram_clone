@@ -12,6 +12,8 @@
 		DF0CC6A6211A36B00032CFCB /* Dictonary.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0CC6A5211A36B00032CFCB /* Dictonary.swift */; };
 		DF0CC6A8211B2F930032CFCB /* LibraryPhotoSelectorHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0CC6A7211B2F930032CFCB /* LibraryPhotoSelectorHeaderCell.swift */; };
 		DF0CC6AA211B409D0032CFCB /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0CC6A9211B409D0032CFCB /* Photo.swift */; };
+		DF0CC6AD211B49670032CFCB /* SharingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0CC6AC211B49670032CFCB /* SharingVC.swift */; };
+		DF0CC6AF211B55750032CFCB /* SharingVC+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0CC6AE211B55750032CFCB /* SharingVC+UI.swift */; };
 		DF21F58A210F562F00B7A634 /* MainTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF21F589210F562F00B7A634 /* MainTabBarVC.swift */; };
 		DF21F58D210F57CE00B7A634 /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF21F58C210F57CE00B7A634 /* UserProfileVC.swift */; };
 		DF21F58F210F62C800B7A634 /* UserProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF21F58E210F62C800B7A634 /* UserProfileHeaderView.swift */; };
@@ -48,6 +50,8 @@
 		DF0CC6A5211A36B00032CFCB /* Dictonary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictonary.swift; sourceTree = "<group>"; };
 		DF0CC6A7211B2F930032CFCB /* LibraryPhotoSelectorHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryPhotoSelectorHeaderCell.swift; sourceTree = "<group>"; };
 		DF0CC6A9211B409D0032CFCB /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		DF0CC6AC211B49670032CFCB /* SharingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingVC.swift; sourceTree = "<group>"; };
+		DF0CC6AE211B55750032CFCB /* SharingVC+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SharingVC+UI.swift"; sourceTree = "<group>"; };
 		DF21F589210F562F00B7A634 /* MainTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarVC.swift; sourceTree = "<group>"; };
 		DF21F58C210F57CE00B7A634 /* UserProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
 		DF21F58E210F62C800B7A634 /* UserProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHeaderView.swift; sourceTree = "<group>"; };
@@ -118,6 +122,15 @@
 			path = LibraryPhotoSelectorCell;
 			sourceTree = "<group>";
 		};
+		DF0CC6AB211B49550032CFCB /* SharingVC */ = {
+			isa = PBXGroup;
+			children = (
+				DF0CC6AC211B49670032CFCB /* SharingVC.swift */,
+				DF0CC6AE211B55750032CFCB /* SharingVC+UI.swift */,
+			);
+			path = SharingVC;
+			sourceTree = "<group>";
+		};
 		DF21F58B210F57BB00B7A634 /* UserProfile */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,6 +192,7 @@
 		DF5A39BA211977C900AD09A5 /* PhotoSelector */ = {
 			isa = PBXGroup;
 			children = (
+				DF0CC6AB211B49550032CFCB /* SharingVC */,
 				DF3EF7B32119B7CC00C82118 /* LibraryVC */,
 				DF6F2BCF2119B37E003EB476 /* PhotoSelectorTabBar.swift */,
 			);
@@ -397,11 +411,13 @@
 				DFBE455F2111B24F0019E53C /* LoginVC.swift in Sources */,
 				DF0CC6A42119D73E0032CFCB /* LibraryPhotoSelectorCell.swift in Sources */,
 				DF29A8BA210F9BD8009D316A /* Profile.swift in Sources */,
+				DF0CC6AF211B55750032CFCB /* SharingVC+UI.swift in Sources */,
 				DFBE45612111BB360019E53C /* LoginVC+UI.swift in Sources */,
 				DF6AD312210CDBF0002F7D41 /* MKTextField.swift in Sources */,
 				DF21F58D210F57CE00B7A634 /* UserProfileVC.swift in Sources */,
 				DF5A39BC2119780700AD09A5 /* LibraryPhotoSelectorVC.swift in Sources */,
 				DF28F856210E530600427302 /* SignUp+Firebase.swift in Sources */,
+				DF0CC6AD211B49670032CFCB /* SharingVC.swift in Sources */,
 				DF21F58A210F562F00B7A634 /* MainTabBarVC.swift in Sources */,
 				DF0CC6A6211A36B00032CFCB /* Dictonary.swift in Sources */,
 				DF5109FA211092C500128279 /* UserProfileHeaderCell+UI.swift in Sources */,

@@ -19,11 +19,16 @@ enum ViewControllersBuilder {
     Login, // login view controller
     SignUp,
     PhotoLibrary,
-    Camera
+    Camera,
+    Sharing
     
     var getNavigationController: UINavigationController {
         
         switch self {
+        case .Home:
+            let layer = UICollectionViewFlowLayout()
+            return registerNavControllers(VC: UserProfileVC(collectionViewLayout: layer), image: #imageLiteral(resourceName: "home_selected"), unselectedImage: #imageLiteral(resourceName: "home_unselected"))
+            
         case .Login:
             return registerNavControllers(VC: LoginVC())
         // user profile
@@ -50,22 +55,13 @@ enum ViewControllersBuilder {
             
         case .Camera:
             return registerNavControllers(VC: HomeVC(), title: .camera)
+        
         // Get the mainView
-        default:
-            let layer = UICollectionViewFlowLayout()
-            return registerNavControllers(VC: UserProfileVC(collectionViewLayout: layer), image: #imageLiteral(resourceName: "home_selected"), unselectedImage: #imageLiteral(resourceName: "home_unselected"))
-        }
-    }
-    
-    var getViewController: UIViewController {
-        switch self {
-        case .SignUp:
-            return SignUpVC()
         default:
             fatalError()
         }
     }
-    
+        
     fileprivate func registerNavControllers(VC: UIViewController, image: UIImage? = nil, unselectedImage: UIImage? = nil, title: WordDictionary? = nil) -> UINavigationController {
         
         let navController = UINavigationController(rootViewController: VC)

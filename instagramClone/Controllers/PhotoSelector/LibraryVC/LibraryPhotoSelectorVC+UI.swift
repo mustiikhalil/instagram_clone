@@ -35,6 +35,8 @@ extension LibraryPhotoSelectorVC: UICollectionViewDelegateFlowLayout {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.selectedImage = assetsArray[indexPath.item]
+        let indexPath = IndexPath(item: 0, section: 0)
+        self.collectionView?.scrollToItem(at: indexPath, at: .bottom, animated: true)
         self.collectionView?.reloadData()
     }
     
@@ -48,7 +50,7 @@ extension LibraryPhotoSelectorVC: UICollectionViewDelegateFlowLayout {
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerID, for: indexPath) as! LibraryPhotoSelectorHeaderCell
-        
+        self.header = headerCell
         setupCell(cell: headerCell)
         
         return headerCell

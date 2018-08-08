@@ -21,7 +21,7 @@ extension UIView {
 		}
 		
 		if let bottomA = bottom {
-			bottomAnchor.constraint(equalTo: bottomA, constant: paddingBottom).isActive = true
+			bottomAnchor.constraint(equalTo: bottomA, constant: -paddingBottom).isActive = true
 		}
 		
 		if let trailingA = trailing {

@@ -21,7 +21,7 @@ extension UserProfileVC: UICollectionViewDelegateFlowLayout {
         	
 	fileprivate func setupCollectionView() {
 		collectionView?.backgroundColor = .white
-		collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellID)
+		collectionView?.register(UserProfileCell.self, forCellWithReuseIdentifier: cellID)
 		collectionView?.register(UserProfileHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: header)
 	}
 	
@@ -43,7 +43,7 @@ extension UserProfileVC: UICollectionViewDelegateFlowLayout {
 	// MARK:- Main Cells in the collection View
 	
 	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return 7
+		return images.count
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -59,8 +59,8 @@ extension UserProfileVC: UICollectionViewDelegateFlowLayout {
 	}
 	
 	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
-		cell.backgroundColor = .purple
+		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! UserProfileCell
+		cell.post = images[indexPath.item]
 		return cell
 	}
 	

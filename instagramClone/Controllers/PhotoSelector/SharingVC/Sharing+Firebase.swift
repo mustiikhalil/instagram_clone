@@ -10,6 +10,7 @@ import Firebase
 
 extension SharingVC {
     
+    // gets all the elements needed to share
     @objc func handleSharing() {
         
         guard let UID = Auth.auth().currentUser?.uid else {return}
@@ -26,16 +27,18 @@ extension SharingVC {
         sharingStarted(withUID: UID, withCaption: caption, withFilename: filename, imageDimensions: dimensions, withData: data)
     }
     
+    // starts the sharing process
     fileprivate func sharingStarted(withUID UID: String, withCaption caption: String, withFilename filename: String, imageDimensions: Dimensions , withData data: Data) {
         
         handleUploadingImage(withFilename: filename, image: data) { (url) in
-            let post = Post(url: url, caption: caption, dimensions: imageDimensions)
+            let post = Post(url: url, caption: caption, dimensions: imageDimensions, image: nil)
             self.handleSavingPostToDatabase(withUID: UID, withPost: post) {
                 self.dismiss(animated: true, completion: nil)
             }
         }
     }
     
+    // uploads the image to firebase
     fileprivate func handleUploadingImage(withFilename: String, image: Data, onSuccess: @escaping (String) -> Void) {
         
         let storageReference =  Storage.storage().reference().child("Shared").child(withFilename)
@@ -61,6 +64,7 @@ extension SharingVC {
         }
     }
     
+    // adds the post to the database
     fileprivate func handleSavingPostToDatabase(withUID uid: String, withPost post: Post, onSuccess: @escaping () -> Void) {
         let userRef = Database.database().reference().child("posts").child(uid)
         let ref = userRef.childByAutoId()

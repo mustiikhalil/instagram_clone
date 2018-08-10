@@ -12,15 +12,14 @@ class UserProfileHeaderView: UICollectionReusableView {
 	
 	var profile: Profile? {
 		didSet{
-			setupAfterNetworkCalls()
+			setupHeaderViewAfterRetrivingUserInformation()
 		}
 	}
 	
-	let profileImageView: UIImageView = {
-		let iv = UIImageView()
+	let profileImageView: MKImageView = {
+		let iv = MKImageView()
 		iv.backgroundColor = .red
 		iv.layer.cornerRadius = 80/2
-		iv.clipsToBounds = true
 		return iv
 	}()
 	
@@ -77,10 +76,11 @@ class UserProfileHeaderView: UICollectionReusableView {
 		setupUI()
 	}
 	
-	fileprivate func setupAfterNetworkCalls() {
-		guard let imageData = profile?.imageData, let username = profile?.username else {return}
+	fileprivate func setupHeaderViewAfterRetrivingUserInformation() {
+		guard let username = profile?.username else {return}
+        guard let url = profile?.profileURL else {return}
 		self.usernameLabel.text = username
-		self.profileImageView.image = UIImage(data: imageData)
+		self.profileImageView.loadImage(url: url)
 	}
 	
 	required init?(coder aDecoder: NSCoder) {

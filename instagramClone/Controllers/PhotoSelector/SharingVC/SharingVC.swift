@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SharingVC: UIViewController {
     
@@ -41,9 +42,5 @@ class SharingVC: UIViewController {
         super.viewDidLoad()
         setupUI()
     }
-    
-    @objc func handleSharing() {
-        print("handleSharing")
-    }
-    
+        
 }

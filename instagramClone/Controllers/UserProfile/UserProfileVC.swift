@@ -15,14 +15,6 @@ class UserProfileVC: UICollectionViewController {
 	let cellID = "idCell"
     var images: [Post] = []
     
-    var posts: [Post]? {
-        didSet {
-            guard let posts = posts else {return}
-            self.images = posts
-            self.collectionView?.reloadData()
-        }
-    }
-    
 	var profile: Profile? {
 		didSet {
 			self.navigationItem.title = profile?.username ?? ""
@@ -33,10 +25,8 @@ class UserProfileVC: UICollectionViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupUI()
-        DispatchQueue.global(qos: .background).async {
-            self.fetchUser()
-            self.fetchPosts()
-        }
+        self.fetchUser()
+        self.fetchPosts()
 	}
     
     @objc func handleLogout() {

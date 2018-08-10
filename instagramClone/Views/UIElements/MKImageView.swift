@@ -10,6 +10,8 @@ import UIKit
 
 class MKImageView: UIImageView {
     
+    var lastURLUsedToLoadImage: String?
+    
     init() {
         super.init(frame: .zero)
         clipsToBounds = true
@@ -20,7 +22,14 @@ class MKImageView: UIImageView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    fileprivate func downloadImage(url: URL, postURL: String) {
+    func loadImage(url: String) {
+        guard let imageURL = URL(string: url) else { return }
+        downloadImage(url: imageURL)
+    }
+    
+    fileprivate func downloadImage(url: URL) {
+        
+        lastURLUsedToLoadImage = url.absoluteString
         URLSession.shared.dataTask(with: url) { (data, response, err) in
             
             if let err = err {
@@ -29,7 +38,7 @@ class MKImageView: UIImageView {
                 return
             }
             
-            if url.absoluteString != postURL {
+            if url.absoluteString != self.lastURLUsedToLoadImage {
                 return
             }
             
@@ -37,12 +46,6 @@ class MKImageView: UIImageView {
             DispatchQueue.main.async {
                 self.image = UIImage(data: data)
             }
-            }.resume()
-    }
-    
-    func loadImage(url: String) {
-        
-        guard let imageURL = URL(string: url) else { return }
-        downloadImage(url: imageURL, postURL: url)
+        }.resume()
     }
 }

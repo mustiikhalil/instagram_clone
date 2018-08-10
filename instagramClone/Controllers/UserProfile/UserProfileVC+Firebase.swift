@@ -12,31 +12,24 @@ import Firebase
 extension UserProfileVC {
     
     func fetchPosts() {
-        fetchPostsFromDatabase(onSuccess: { (posts) in
-            self.posts = posts
-        }) { (err) in
-            print(err)
-            print("err Handling the request")
-        }
+        fetchOrderedPosts()
     }
     
-    func fetchPostsFromDatabase(onSuccess: @escaping ([Post]) -> Void, onFailure: @escaping (Error) -> Void) {
+    //MARK:- Fetches the posts from the database
+    fileprivate func fetchOrderedPosts() {
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let userRef = Database.database().reference().child("posts").child(uid)
         
-        userRef.observeSingleEvent(of: .value, andPreviousSiblingKeyWith: { (snap, string) in
-            guard let dictonaries = snap.value as? [String: Any] else {return}
-            
-            let posts = dictonaries.map({ (key,value) -> Post in
-                guard let dictornary = value as? [String: Any] else { return Post(url: "", caption: "", dimensions: Dimensions(width: 0, height: 0), image: nil) }
-                return Post(dictonary: dictornary)
-            })
-            onSuccess(posts)
+        userRef.queryOrdered(byChild: "creationDate").observe(.childAdded, with: { (snapshot) in
+            guard let dictonary = snapshot.value as? [String: Any] else {return}
+            self.images.append(Post(dictonary: dictonary))
+            self.images.sort(by: { $0.timestamp > $1.timestamp})
+            self.collectionView?.reloadData()
         }) { (err) in
-            return err
+            print(err)
         }
     }
-        
+    
     //MARK:- Fetches the user from the database
     func fetchUser() {
         fetchUserFromDatabase { (dictonary) in

@@ -47,7 +47,7 @@ extension SharingVC {
             if let err = err {
                 self.navigationItem.rightBarButtonItem?.isEnabled = true
                 print(err)
-                print("Failed")
+                print("Failed uploading image")
                 return
             }
             storageReference.downloadURL(completion: { (url, err) in

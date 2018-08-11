@@ -8,6 +8,8 @@
 
 import UIKit
 
+var imageCach = NSCache<NSString, UIImage>()
+
 class MKImageView: UIImageView {
     
     var lastURLUsedToLoadImage: String?
@@ -28,8 +30,13 @@ class MKImageView: UIImageView {
     }
     
     fileprivate func downloadImage(url: URL) {
-        
         lastURLUsedToLoadImage = url.absoluteString
+        
+        if let image = imageCach.object(forKey: url.absoluteString as NSString) {
+            self.image = image
+            return
+        }
+
         URLSession.shared.dataTask(with: url) { (data, response, err) in
             
             if let err = err {
@@ -41,10 +48,13 @@ class MKImageView: UIImageView {
             if url.absoluteString != self.lastURLUsedToLoadImage {
                 return
             }
-            
+            print("here")
             guard let data = data else { return }
+            guard let imageValue = UIImage(data: data) else {return}
+            imageCach.setObject(imageValue, forKey: url.absoluteString as NSString)
+            
             DispatchQueue.main.async {
-                self.image = UIImage(data: data)
+                self.image = imageValue
             }
         }.resume()
     }

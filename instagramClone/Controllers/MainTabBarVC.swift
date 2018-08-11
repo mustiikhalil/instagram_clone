@@ -58,7 +58,7 @@ class MainTabBarVC: UITabBarController, UITabBarControllerDelegate {
     }
 }
 
-class HomeVC: UIViewController {
+class JustAView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

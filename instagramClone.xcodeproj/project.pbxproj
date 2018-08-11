@@ -41,10 +41,13 @@
 		DF81E758210D1E00003E5C86 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF81E757210D1E00003E5C86 /* UIView.swift */; };
 		DF81E75A210D1EAF003E5C86 /* MKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF81E759210D1EAF003E5C86 /* MKButton.swift */; };
 		DF9E1658211D9BBB00224C99 /* Sharing+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9E1657211D9BBB00224C99 /* Sharing+Firebase.swift */; };
+		DFB0E542211EBD2100B48230 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB0E541211EBD2100B48230 /* HomeVC.swift */; };
 		DFBE455F2111B24F0019E53C /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBE455E2111B24F0019E53C /* LoginVC.swift */; };
 		DFBE45612111BB360019E53C /* LoginVC+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBE45602111BB360019E53C /* LoginVC+UI.swift */; };
 		DFBE45632111D4970019E53C /* LoginVC+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBE45622111D4970019E53C /* LoginVC+Firebase.swift */; };
 		DFBEF228210E3AEA00EFFC48 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DFBEF227210E3AEA00EFFC48 /* GoogleService-Info.plist */; };
+		DFD28B68211EE1C900653A97 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD28B67211EE1C900653A97 /* HomeCell.swift */; };
+		DFD28B6B211EE30300653A97 /* CellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD28B6A211EE30300653A97 /* CellType.swift */; };
 		DFE7CFB9211575750023B045 /* ViewControllersBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE7CFB8211575750023B045 /* ViewControllersBuilder.swift */; };
 /* End PBXBuildFile section */
 
@@ -86,10 +89,13 @@
 		DF81E757210D1E00003E5C86 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		DF81E759210D1EAF003E5C86 /* MKButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKButton.swift; sourceTree = "<group>"; };
 		DF9E1657211D9BBB00224C99 /* Sharing+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sharing+Firebase.swift"; sourceTree = "<group>"; };
+		DFB0E541211EBD2100B48230 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		DFBE455E2111B24F0019E53C /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		DFBE45602111BB360019E53C /* LoginVC+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginVC+UI.swift"; sourceTree = "<group>"; };
 		DFBE45622111D4970019E53C /* LoginVC+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginVC+Firebase.swift"; sourceTree = "<group>"; };
 		DFBEF227210E3AEA00EFFC48 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DFD28B67211EE1C900653A97 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
+		DFD28B6A211EE30300653A97 /* CellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellType.swift; sourceTree = "<group>"; };
 		DFE7CFB8211575750023B045 /* ViewControllersBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllersBuilder.swift; sourceTree = "<group>"; };
 		E52F55A837118F672EAB1512 /* Pods_instagramClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_instagramClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -166,6 +172,7 @@
 		DF29A8BB210F9BF7009D316A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				DFD28B69211EE1CD00653A97 /* HomeCell */,
 				DF483406211DF45000B6F6AD /* UserProfileCell */,
 				DF0CC6A22119D7130032CFCB /* LibraryPhotoSelectorCell */,
 				DF5109F82110929500128279 /* UserProfileHeaderCell */,
@@ -257,6 +264,7 @@
 		DF6AD30A210C9460002F7D41 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DFB0E540211EBD1200B48230 /* Home */,
 				DF5A39BA211977C900AD09A5 /* PhotoSelector */,
 				DF21F589210F562F00B7A634 /* MainTabBarVC.swift */,
 				DFBE455D2111B23D0019E53C /* Login */,
@@ -273,6 +281,7 @@
 				DF81E757210D1E00003E5C86 /* UIView.swift */,
 				DFE7CFB8211575750023B045 /* ViewControllersBuilder.swift */,
 				DF0CC6A5211A36B00032CFCB /* Dictonary.swift */,
+				DFD28B6A211EE30300653A97 /* CellType.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -297,6 +306,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		DFB0E540211EBD1200B48230 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				DFB0E541211EBD2100B48230 /* HomeVC.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		DFBE455D2111B23D0019E53C /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,6 +322,14 @@
 				DFBE45622111D4970019E53C /* LoginVC+Firebase.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		DFD28B69211EE1CD00653A97 /* HomeCell */ = {
+			isa = PBXGroup;
+			children = (
+				DFD28B67211EE1C900653A97 /* HomeCell.swift */,
+			);
+			path = HomeCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -431,6 +456,7 @@
 				DF286E86210E575A00B4D722 /* SignUp+PickPhoto.swift in Sources */,
 				DF21F58F210F62C800B7A634 /* UserProfileHeaderView.swift in Sources */,
 				DF0CC6A8211B2F930032CFCB /* LibraryPhotoSelectorHeaderCell.swift in Sources */,
+				DFD28B68211EE1C900653A97 /* HomeCell.swift in Sources */,
 				DF9E1658211D9BBB00224C99 /* Sharing+Firebase.swift in Sources */,
 				DFBE455F2111B24F0019E53C /* LoginVC.swift in Sources */,
 				DF0CC6A42119D73E0032CFCB /* LibraryPhotoSelectorCell.swift in Sources */,
@@ -444,10 +470,12 @@
 				DF5A39BC2119780700AD09A5 /* LibraryPhotoSelectorVC.swift in Sources */,
 				DF28F856210E530600427302 /* SignUp+Firebase.swift in Sources */,
 				DF0CC6AD211B49670032CFCB /* SharingVC.swift in Sources */,
+				DFB0E542211EBD2100B48230 /* HomeVC.swift in Sources */,
 				DF536937211DA76D0056206D /* Dimensions.swift in Sources */,
 				DF21F58A210F562F00B7A634 /* MainTabBarVC.swift in Sources */,
 				DF0CC6A6211A36B00032CFCB /* Dictonary.swift in Sources */,
 				DF5109FA211092C500128279 /* UserProfileHeaderCell+UI.swift in Sources */,
+				DFD28B6B211EE30300653A97 /* CellType.swift in Sources */,
 				DF6AD30C210CDAEE002F7D41 /* UIColor.swift in Sources */,
 				DF3434FB21138933008CC71B /* UserProfileVC+Firebase.swift in Sources */,
 				DF6F2BCE2119B271003EB476 /* LibraryPhotoSelectorVC+UI.swift in Sources */,

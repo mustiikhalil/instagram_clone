@@ -11,8 +11,6 @@ import Photos
 
 class LibraryPhotoSelectorVC: UICollectionViewController {
     
-    let headerID = "HeaderID"
-    let cellID = "CellID"
     var assetsArray: [Photo] = []
     var selectedImage: Photo?
     var header: LibraryPhotoSelectorHeaderCell?
@@ -23,7 +21,7 @@ class LibraryPhotoSelectorVC: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
+        setupUI(withHeaderID: .headerCell, cellID: .cellID)
         fetchPhotos()
     }
     

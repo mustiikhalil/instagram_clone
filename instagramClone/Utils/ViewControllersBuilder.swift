@@ -27,7 +27,7 @@ enum ViewControllersBuilder {
         switch self {
         case .Home:
             let layer = UICollectionViewFlowLayout()
-            return registerNavControllers(VC: UserProfileVC(collectionViewLayout: layer), image: #imageLiteral(resourceName: "home_selected"), unselectedImage: #imageLiteral(resourceName: "home_unselected"))
+            return registerNavControllers(VC: HomeVC(collectionViewLayout: layer), image: #imageLiteral(resourceName: "home_selected"), unselectedImage: #imageLiteral(resourceName: "home_unselected"))
             
         case .Login:
             return registerNavControllers(VC: LoginVC())
@@ -38,15 +38,15 @@ enum ViewControllersBuilder {
             
         // Hearts and likes from users
         case .Hearts:
-            return registerNavControllers(VC: HomeVC(), image: #imageLiteral(resourceName: "like_selected") ,unselectedImage: #imageLiteral(resourceName: "like_unselected"))
+            return registerNavControllers(VC: JustAView(), image: #imageLiteral(resourceName: "like_selected") ,unselectedImage: #imageLiteral(resourceName: "like_unselected"))
             
         // Search for users
         case .Search:
-            return registerNavControllers(VC: HomeVC(), image: #imageLiteral(resourceName: "search_selected"), unselectedImage: #imageLiteral(resourceName: "search_unselected"))
+            return registerNavControllers(VC: JustAView(), image: #imageLiteral(resourceName: "search_selected"), unselectedImage: #imageLiteral(resourceName: "search_unselected"))
             
         // Open Library
         case .PhotoSelector:
-            return registerNavControllers(VC: HomeVC(), image: #imageLiteral(resourceName: "plus_unselected"), unselectedImage: #imageLiteral(resourceName: "plus_unselected"))
+            return registerNavControllers(VC: JustAView(), image: #imageLiteral(resourceName: "plus_unselected"), unselectedImage: #imageLiteral(resourceName: "plus_unselected"))
         
         // Photo selector library
         case .PhotoLibrary:
@@ -54,7 +54,7 @@ enum ViewControllersBuilder {
             return registerNavControllers(VC: LibraryPhotoSelectorVC(collectionViewLayout: layer), title: .library)
             
         case .Camera:
-            return registerNavControllers(VC: HomeVC(), title: .camera)
+            return registerNavControllers(VC: JustAView(), title: .camera)
         
         // Get the mainView
         default:

@@ -10,9 +10,7 @@ import UIKit
 import Firebase
 
 class UserProfileVC: UICollectionViewController {
-	
-	let header = "headerID"
-	let cellID = "idCell"
+
     var images: [Post] = []
     
 	var profile: Profile? {
@@ -24,7 +22,7 @@ class UserProfileVC: UICollectionViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		setupUI()
+		setupUI(withHeaderID: .headerCell, cellID: .cellID)
         self.fetchUser()
         self.fetchPosts()
 	}

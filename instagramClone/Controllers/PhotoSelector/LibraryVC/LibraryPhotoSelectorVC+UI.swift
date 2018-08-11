@@ -10,18 +10,13 @@ import UIKit
 
 extension LibraryPhotoSelectorVC: UICollectionViewDelegateFlowLayout {
     
-    func setupUI() {
-        setupNavigationBar()
-        setupCollectionView()
-    }
-    
-    
     //MARK:- Setup view
-    
-    fileprivate func setupCollectionView() {
+    func setupUI(withHeaderID headerId: CellType, cellID: CellType)  {
+        setupNavigationBar()
         collectionView?.backgroundColor = .white
-        collectionView?.register(LibraryPhotoSelectorHeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerID)
-        collectionView?.register(LibraryPhotoSelectorCell.self, forCellWithReuseIdentifier: cellID)
+        collectionView?.register(LibraryPhotoSelectorHeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId.rawValue)
+        collectionView?.register(LibraryPhotoSelectorCell.self, forCellWithReuseIdentifier: cellID.rawValue)
+        
     }
     
     fileprivate func setupNavigationBar() {
@@ -43,13 +38,13 @@ extension LibraryPhotoSelectorVC: UICollectionViewDelegateFlowLayout {
     //MARK:- Cell dequeueing
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! LibraryPhotoSelectorCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellType.cellID.rawValue, for: indexPath) as! LibraryPhotoSelectorCell
         cell.item = assetsArray[indexPath.item]
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerID, for: indexPath) as! LibraryPhotoSelectorHeaderCell
+        let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: CellType.headerCell.rawValue, for: indexPath) as! LibraryPhotoSelectorHeaderCell
         self.header = headerCell
         setupCell(cell: headerCell)
         

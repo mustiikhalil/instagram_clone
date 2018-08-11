@@ -10,8 +10,10 @@ import UIKit
 
 extension UserProfileVC: UICollectionViewDelegateFlowLayout {
     
-    func setupUI() {
-        setupCollectionView()
+    func setupUI(withHeaderID headerId: CellType, cellID: CellType)  {
+        collectionView?.backgroundColor = .white
+        collectionView?.register(UserProfileCell.self, forCellWithReuseIdentifier: cellID.rawValue)
+        collectionView?.register(UserProfileHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId.rawValue)
         setupLogOutButton()
     }
     
@@ -20,15 +22,13 @@ extension UserProfileVC: UICollectionViewDelegateFlowLayout {
     }
         	
 	fileprivate func setupCollectionView() {
-		collectionView?.backgroundColor = .white
-		collectionView?.register(UserProfileCell.self, forCellWithReuseIdentifier: cellID)
-		collectionView?.register(UserProfileHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: header)
+
 	}
 	
 	//MARK:- Header collection View functions
 	
 	override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-		let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: self.header, for: indexPath) as! UserProfileHeaderView
+		let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CellType.headerCell.rawValue, for: indexPath) as! UserProfileHeaderView
 		if let profile = self.profile {
 			header.profile = profile
 		}
@@ -59,7 +59,7 @@ extension UserProfileVC: UICollectionViewDelegateFlowLayout {
 	}
 	
 	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! UserProfileCell
+		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellType.cellID.rawValue, for: indexPath) as! UserProfileCell
 		cell.post = images[indexPath.item]
 		return cell
 	}

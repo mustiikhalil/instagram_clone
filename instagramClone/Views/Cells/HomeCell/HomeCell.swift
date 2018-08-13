@@ -17,11 +17,59 @@ class HomeCell: UICollectionViewCell {
         }
     }
     
-    let imageView: MKImageView = {
+    let userProfileImageView: MKImageView = {
         let iv = MKImageView()
-        iv.backgroundColor = .red
+        iv.layer.cornerRadius = 40 / 2
         return iv
     }()
+    
+    let usernameLabel: MKLabel = {
+        let label = MKLabel()
+        label.setupLabelForHomeViewWith(username: "Mustii welcome home")
+        return label
+    }()
+    
+    let imageView: MKImageView = {
+        let iv = MKImageView()
+        return iv
+    }()
+    
+    let optionsButton: MKButton = {
+        let mk = MKButton()
+        mk.setupMainViewButtons(type: .options)
+        return mk
+    }()
+    
+    let commentButton: MKButton = {
+        let mk = MKButton()
+        mk.setupMainViewButtons(type: .comment)
+        return mk
+    }()
+    
+    let shareButton: MKButton = {
+        let mk = MKButton()
+        mk.setupMainViewButtons(type: .share)
+        return mk
+    }()
+    
+    let ribbonButton: MKButton = {
+        let mk = MKButton()
+        mk.setupMainViewButtons(type: .ribbon)
+        return mk
+    }()
+    
+    let heartsButton: MKButton = {
+        let mk = MKButton()
+        mk.setupMainViewButtons(type: .heart)
+        return mk
+    }()
+    
+    let bookmarkButton: MKButton = {
+        let mk = MKButton()
+        mk.setupMainViewButtons(type: .ribbon)
+        return mk
+    }()
+    let captionLabel = MKLabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,14 +79,12 @@ class HomeCell: UICollectionViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func setupUI() {
-        addSubview(imageView)
-        imageView.anchor(leading: leadingAnchor, top: topAnchor, trailing: trailingAnchor, bottom: bottomAnchor, paddingLeading: 0, paddingTop: 0, paddingTailing: 0, paddingBottom: 0, width: 0, height: 0)
-        imageView.backgroundColor = .purple
-    }
-    
+        
     fileprivate func setupViewAfterNetworkCall(post: Post) {
+        guard let user = post.user else {return}
+        userProfileImageView.loadImage(url: user.profileURL)
         imageView.loadImage(url: post.url)
+        usernameLabel.text = user.username
+        captionLabel.setupLabelForHomeViewWith(caption: post.caption, username: user.username, time: post.timestamp)
     }
 }

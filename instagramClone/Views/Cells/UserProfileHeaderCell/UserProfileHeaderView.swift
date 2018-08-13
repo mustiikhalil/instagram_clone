@@ -49,14 +49,20 @@ class UserProfileHeaderView: UICollectionReusableView {
 		return button
 	}()
 	
-	let postsLabel: UILabel = {
-		return MKLabel(withNumber: "11", withText: "posts")
+	let postsLabel: MKLabel = {
+		let label = MKLabel()
+        label.setupLabelForProfileView(withNumber: "11", withText: "posts")
+        return label
 	}()
-	let followersLabel: UILabel = {
-		return MKLabel(withNumber: "11", withText: "followers")
+	let followersLabel: MKLabel = {
+        let label = MKLabel()
+        label.setupLabelForProfileView(withNumber: "11", withText: "followers")
+        return label
 	}()
-	let followingLabel: UILabel = {
-		return MKLabel(withNumber: "11", withText: "following")
+	let followingLabel: MKLabel = {
+        let label = MKLabel()
+        label.setupLabelForProfileView(withNumber: "11", withText: "following")
+        return label
 	}()
 	
 	let editProfileButton: UIButton = {

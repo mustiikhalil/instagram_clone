@@ -9,6 +9,9 @@
 import Foundation
 
 enum CellType: String {
-    case cellID = "cellId"
-    case headerCell = "headerID"
+    case cell = "cellId"
+    case header = "headerID"
+    var ID: String {
+        return self.rawValue
+    }
 }

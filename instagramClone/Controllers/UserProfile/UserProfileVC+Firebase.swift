@@ -22,8 +22,7 @@ extension UserProfileVC {
         
         userRef.queryOrdered(byChild: "creationDate").observe(.childAdded, with: { (snapshot) in
             guard let dictonary = snapshot.value as? [String: Any] else {return}
-            self.images.append(Post(dictonary: dictonary))
-            self.images.sort(by: { $0.timestamp > $1.timestamp})
+            self.images.insert(Post(dictonary: dictonary), at: 0)
             self.collectionView?.reloadData()
         }) { (err) in
             print(err)
@@ -32,20 +31,10 @@ extension UserProfileVC {
     
     //MARK:- Fetches the user from the database
     func fetchUser() {
-        fetchUserFromDatabase { (dictonary) in
-            self.profile = Profile(dictonary: dictonary)
+        guard let currentUserUID = Auth.auth().currentUser?.uid else {return}
+        Database.fetchUser(uid: currentUserUID) { (user) in
+            self.profile = user
         }
     }
-    
-    fileprivate func fetchUserFromDatabase(onSuccess: @escaping ([String: Any])-> Void ) {
-        
-        guard let UID = Auth.auth().currentUser?.uid else { return }
-        Database.database().reference().child("users").child(UID).observeSingleEvent(of: .value, with: { (snapshot) in
-            guard let dictonary = snapshot.value as? [String: Any] else { return }
-            onSuccess(dictonary)
-        }) { (err) in
-            print(err)
-        }
-    }
-    
 }
+

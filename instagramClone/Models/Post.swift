@@ -15,9 +15,16 @@ struct Post {
     private let _dimensions: Dimensions
     private let _date: Double
     private var _image: UIImage?
+    private let _user: Profile?
     
     var url: String {
         get { return _url }
+    }
+    
+    var user: Profile? {
+        get {
+            return _user
+        }
     }
     
     //gets the timestamp
@@ -25,15 +32,21 @@ struct Post {
         get { return _date }
     }
     
-    init(url: String, caption: String, dimensions: Dimensions, image: UIImage?) {
+    var caption: String {
+        get {return _caption}
+    }
+    
+    init(url: String, caption: String, dimensions: Dimensions, image: UIImage?, user: Profile? = nil) {
         _url = url
         _caption = caption
         _dimensions = dimensions
         _image = image
         _date = Date().timeIntervalSince1970
+        _user = user
     }
     
-    init(dictonary: [String: Any]) {
+    init(dictonary: [String: Any], user: Profile? = nil) {
+        _user = user
         _url = dictonary["imageURL"] as? String ?? ""
         _caption = dictonary["caption"] as? String ?? ""
         _dimensions = Dimensions(width: dictonary["imageWidth"] as? CGFloat ?? 0.0, height: dictonary["imageHeight"] as? CGFloat ?? 0.0)

@@ -12,9 +12,10 @@ struct Profile {
 	
 	let profileURL: String
 	let username: String
-	
-	init(dictonary: [String: Any]) {
+    let UID: String
+    init(uid: String, dictonary: [String: Any]) {
 		username = dictonary["username"] as? String ?? ""
 		profileURL = dictonary["profileLink"] as? String ?? ""
+        UID = uid
 	}
 }

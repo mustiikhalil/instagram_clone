@@ -52,7 +52,6 @@ class MKImageView: UIImageView {
             guard let data = data else { return }
             guard let imageValue = UIImage(data: data) else {return}
             imageCach.setObject(imageValue, forKey: url.absoluteString as NSString)
-            
             DispatchQueue.main.async {
                 self.image = imageValue
             }

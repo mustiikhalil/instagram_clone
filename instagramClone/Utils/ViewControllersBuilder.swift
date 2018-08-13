@@ -23,17 +23,15 @@ enum ViewControllersBuilder {
     Sharing
     
     var getNavigationController: UINavigationController {
-        
+        let layer = UICollectionViewFlowLayout()
         switch self {
         case .Home:
-            let layer = UICollectionViewFlowLayout()
             return registerNavControllers(VC: HomeVC(collectionViewLayout: layer), image: #imageLiteral(resourceName: "home_selected"), unselectedImage: #imageLiteral(resourceName: "home_unselected"))
             
         case .Login:
             return registerNavControllers(VC: LoginVC())
         // user profile
         case .User:
-            let layer = UICollectionViewFlowLayout()
             return registerNavControllers(VC: UserProfileVC(collectionViewLayout: layer), image: #imageLiteral(resourceName: "profile_selected"), unselectedImage: #imageLiteral(resourceName: "profile_unselected"))
             
         // Hearts and likes from users
@@ -42,7 +40,8 @@ enum ViewControllersBuilder {
             
         // Search for users
         case .Search:
-            return registerNavControllers(VC: JustAView(), image: #imageLiteral(resourceName: "search_selected"), unselectedImage: #imageLiteral(resourceName: "search_unselected"))
+            
+            return registerNavControllers(VC: SearchVC(collectionViewLayout: layer), image: #imageLiteral(resourceName: "search_selected"), unselectedImage: #imageLiteral(resourceName: "search_unselected"))
             
         // Open Library
         case .PhotoSelector:
@@ -50,7 +49,6 @@ enum ViewControllersBuilder {
         
         // Photo selector library
         case .PhotoLibrary:
-            let layer = UICollectionViewFlowLayout()
             return registerNavControllers(VC: LibraryPhotoSelectorVC(collectionViewLayout: layer), title: .library)
             
         case .Camera:

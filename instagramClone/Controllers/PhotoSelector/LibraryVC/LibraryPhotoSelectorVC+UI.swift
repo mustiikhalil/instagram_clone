@@ -38,13 +38,13 @@ extension LibraryPhotoSelectorVC: UICollectionViewDelegateFlowLayout {
     //MARK:- Cell dequeueing
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellType.cellID.rawValue, for: indexPath) as! LibraryPhotoSelectorCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellType.cell.ID, for: indexPath) as! LibraryPhotoSelectorCell
         cell.item = assetsArray[indexPath.item]
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: CellType.headerCell.rawValue, for: indexPath) as! LibraryPhotoSelectorHeaderCell
+        let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: CellType.header.ID, for: indexPath) as! LibraryPhotoSelectorHeaderCell
         self.header = headerCell
         setupCell(cell: headerCell)
         

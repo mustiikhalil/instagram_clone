@@ -31,7 +31,7 @@ extension SharingVC {
     fileprivate func sharingStarted(withUID UID: String, withCaption caption: String, withFilename filename: String, imageDimensions: Dimensions , withData data: Data) {
         
         handleUploadingImage(withFilename: filename, image: data) { (url) in
-            let post = Post(url: url, caption: caption, dimensions: imageDimensions, image: nil)
+            let post = Post(url: url, caption: caption, dimensions: imageDimensions, image: nil, user: nil)
             self.handleSavingPostToDatabase(withUID: UID, withPost: post) {
                 self.dismiss(animated: true, completion: nil)
             }

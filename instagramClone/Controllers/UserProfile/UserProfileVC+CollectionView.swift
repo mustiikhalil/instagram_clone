@@ -10,25 +10,21 @@ import UIKit
 
 extension UserProfileVC: UICollectionViewDelegateFlowLayout {
     
-    func setupUI(withHeaderID headerId: CellType, cellID: CellType)  {
+    func setupUI(withHeaderID header: CellType, cellID cell: CellType)  {
         collectionView?.backgroundColor = .white
-        collectionView?.register(UserProfileCell.self, forCellWithReuseIdentifier: cellID.rawValue)
-        collectionView?.register(UserProfileHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId.rawValue)
+        collectionView?.register(UserProfileCell.self, forCellWithReuseIdentifier: cell.ID)
+        collectionView?.register(UserProfileHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: header.ID)
         setupLogOutButton()
     }
     
     fileprivate func setupLogOutButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "gear").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleLogout))
     }
-        	
-	fileprivate func setupCollectionView() {
-
-	}
 	
 	//MARK:- Header collection View functions
 	
 	override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-		let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CellType.headerCell.rawValue, for: indexPath) as! UserProfileHeaderView
+		let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CellType.header.ID, for: indexPath) as! UserProfileHeaderView
 		if let profile = self.profile {
 			header.profile = profile
 		}
@@ -59,7 +55,7 @@ extension UserProfileVC: UICollectionViewDelegateFlowLayout {
 	}
 	
 	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellType.cellID.rawValue, for: indexPath) as! UserProfileCell
+		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellType.cell.ID, for: indexPath) as! UserProfileCell
 		cell.post = images[indexPath.item]
 		return cell
 	}

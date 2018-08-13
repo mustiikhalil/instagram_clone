@@ -21,7 +21,7 @@ class LibraryPhotoSelectorVC: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI(withHeaderID: .headerCell, cellID: .cellID)
+        setupUI(withHeaderID: .header, cellID: .cell)
         fetchPhotos()
     }
     

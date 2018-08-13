@@ -40,7 +40,8 @@ class SignUpVC: UIViewController {
 	}()
 	
 	let signUpButton: UIButton = {
-		let button = MKButton(title: .signup, titleColor: .white, backgroundColor: UIColor.rgb(red: 149, green: 204, blue: 244), raduis: 5)
+		let button = MKButton()
+        button.setUpLoginAndSignUPButtons(title: .signup, titleColor: .white, backgroundColor: UIColor.rgb(red: 149, green: 204, blue: 244), raduis: 5)
 		button.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
 		button.isEnabled = false
 		return button

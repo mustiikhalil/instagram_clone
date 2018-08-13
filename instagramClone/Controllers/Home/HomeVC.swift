@@ -16,36 +16,36 @@ class HomeVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI(withID: .cellID)
+        setupUI(withID: .cell)
         fetchPosts()
     }
     
     func fetchPosts() {
-        fetchUserPostsFromDatabase { (posts) in
-            self.posts = posts
-            self.collectionView?.reloadData()
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        Database.fetchUser(uid: uid) { (user) in
+            self.fetchPostsFromDatabaseWith(user: user, onSuccess: {
+                self.collectionView?.reloadData()
+            })
         }
     }
     
-    func fetchUserPostsFromDatabase(onSuccess: @escaping ([Post])-> Void) {
-        guard let UID = Auth.auth().currentUser?.uid else { return }
-        let userRef = Database.database().reference().child("posts").child(UID)
-        
+    fileprivate func fetchPostsFromDatabaseWith(user: Profile, onSuccess: @escaping ()-> Void) {
+        let userRef = Database.database().reference().child("posts").child(user.UID)
         userRef.observeSingleEvent(of: .value, andPreviousSiblingKeyWith: { (values, key) in
             guard let dictonary = values.value as? [String: Any] else { return }
-            let postsValue = dictonary.map({ (arg) -> Post in
-                let (_, value) = arg
-                return Post(dictonary: value as! [String : Any])
+            dictonary.forEach({ (key, value) in
+                guard let post = value as? [String: Any] else {return}
+                self.posts.insert(Post(dictonary: post, user: user), at: 0)
             })
-            onSuccess(postsValue)
+            onSuccess()
         }) { (err) in
             print(err)
         }
     }
-    
-    func setupUI(withID id: CellType) {
+
+    func setupUI(withID cell: CellType) {
         collectionView?.backgroundColor = .white
-        collectionView?.register(HomeCell.self, forCellWithReuseIdentifier: id.rawValue)
+        collectionView?.register(HomeCell.self, forCellWithReuseIdentifier: cell.ID)
         setupNavigationBar()
     }
     
@@ -58,13 +58,15 @@ class HomeVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellType.cellID.rawValue, for: indexPath) as! HomeCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellType.cell.ID, for: indexPath) as! HomeCell
         cell.post = posts[indexPath.item]
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 300)
+        
+        var height: CGFloat = 40 + 16 // username and profile image view
+        height += view.frame.width + 50 + 60
+        return CGSize(width: collectionView.frame.width, height: height)
     }
-    
 }

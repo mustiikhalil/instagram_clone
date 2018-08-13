@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  instagramClone
+//  instagram
 //
 //  Created by Mustafa Khalil on 7/28/18.
 //  Copyright © 2018 Mustafa Khalil. All rights reserved.

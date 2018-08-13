@@ -23,6 +23,12 @@ class SearchVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
         sb.delegate = self
         return sb
     }()
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        searchBar.isHidden = false
+    }
 
     
     override func viewDidLoad() {
@@ -51,7 +57,9 @@ class SearchVC: UICollectionViewController, UICollectionViewDelegateFlowLayout, 
             guard let dictonaries = snapshot.value as? [String: Any] else {return}
             dictonaries.forEach({ (key, value) in
                 guard let user = value as? [String: Any] else {return}
-                self.users.append(Profile(uid: key, dictonary: user))
+                if key != Auth.auth().currentUser?.uid {
+                    self.users.append(Profile(uid: key, dictonary: user))
+                }
             })
             self.users.sort(by: {$0.username.compare($1.username) == .orderedAscending})
             onSuccess()

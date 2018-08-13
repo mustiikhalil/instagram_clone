@@ -17,6 +17,7 @@ extension SearchVC {
         navBar.addSubview(searchBar)
         searchBar.anchor(leading: navBar.leadingAnchor, top: navBar.safeAreaLayoutGuide.topAnchor, trailing: navBar.trailingAnchor, bottom: navBar.bottomAnchor, paddingLeading: 8, paddingTop: 0, paddingTailing: 8, paddingBottom: 0, width: 0, height: 0)
         collectionView?.alwaysBounceVertical = true
+        collectionView?.keyboardDismissMode = .onDrag
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -31,5 +32,14 @@ extension SearchVC {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: 66)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        searchBar.isHidden = true
+        searchBar.resignFirstResponder()
+        let user = filteredUsers[indexPath.item]
+        let userProfile = UserProfileVC(collectionViewLayout: UICollectionViewFlowLayout())
+        userProfile.userId = user.UID
+        navigationController?.pushViewController(userProfile, animated: true)
     }
 }

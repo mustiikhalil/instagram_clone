@@ -19,12 +19,12 @@ class UserProfileVC: UICollectionViewController {
 			self.collectionView?.reloadData()
 		}
 	}
+    var userId: String?
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupUI(withHeaderID: .header, cellID: .cell)
-        self.fetchUser()
-        self.fetchPosts()
+        fetchData()
 	}
     
     @objc func handleLogout() {

@@ -11,13 +11,15 @@ import Firebase
 
 extension UserProfileVC {
     
-    func fetchPosts() {
-        fetchOrderedPosts()
+    func fetchData() {
+        fetchUser {
+            guard let uid = self.profile?.UID else {return}
+            self.fetchOrderedPosts(withUID: uid)
+        }
     }
-    
+   
     //MARK:- Fetches the posts from the database
-    fileprivate func fetchOrderedPosts() {
-        guard let uid = Auth.auth().currentUser?.uid else {return}
+    fileprivate func fetchOrderedPosts(withUID uid: String) {
         let userRef = Database.database().reference().child("posts").child(uid)
         
         userRef.queryOrdered(byChild: "creationDate").observe(.childAdded, with: { (snapshot) in
@@ -30,10 +32,11 @@ extension UserProfileVC {
     }
     
     //MARK:- Fetches the user from the database
-    func fetchUser() {
-        guard let currentUserUID = Auth.auth().currentUser?.uid else {return}
+    fileprivate func fetchUser(onSuccess: @escaping () -> Void) {
+        let currentUserUID = userId ?? Auth.auth().currentUser?.uid ?? ""
         Database.fetchUser(uid: currentUserUID) { (user) in
             self.profile = user
+            onSuccess()
         }
     }
 }

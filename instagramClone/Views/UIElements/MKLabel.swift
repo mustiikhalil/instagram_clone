@@ -41,6 +41,11 @@ class MKLabel: UILabel {
         numberOfLines = 0
         attributedText = customText
     }
+    
+    func setupLabelForNumberOfPosts(numberOfPosts: Int) {
+        let customText = NSMutableAttributedString(string: "\(numberOfPosts) posts", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 13), NSAttributedStringKey.foregroundColor: UIColor.gray])
+        attributedText = customText
+    }
 	
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")

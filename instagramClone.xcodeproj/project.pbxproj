@@ -19,6 +19,7 @@
 		DF101C9F2121CD4B0009AD23 /* Firebase+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF101C9E2121CD4B0009AD23 /* Firebase+Extension.swift */; };
 		DF101CA22121CFB10009AD23 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF101CA12121CFB10009AD23 /* SearchVC.swift */; };
 		DF101CA52121D5E30009AD23 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF101CA42121D5E30009AD23 /* SearchCell.swift */; };
+		DF101CA72121EB0E0009AD23 /* SearchVC+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF101CA62121EB0E0009AD23 /* SearchVC+UI.swift */; };
 		DF21F58A210F562F00B7A634 /* MainTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF21F589210F562F00B7A634 /* MainTabBarVC.swift */; };
 		DF21F58D210F57CE00B7A634 /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF21F58C210F57CE00B7A634 /* UserProfileVC.swift */; };
 		DF21F58F210F62C800B7A634 /* UserProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF21F58E210F62C800B7A634 /* UserProfileHeaderView.swift */; };
@@ -70,6 +71,7 @@
 		DF101C9E2121CD4B0009AD23 /* Firebase+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Firebase+Extension.swift"; sourceTree = "<group>"; };
 		DF101CA12121CFB10009AD23 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		DF101CA42121D5E30009AD23 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
+		DF101CA62121EB0E0009AD23 /* SearchVC+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchVC+UI.swift"; sourceTree = "<group>"; };
 		DF21F589210F562F00B7A634 /* MainTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarVC.swift; sourceTree = "<group>"; };
 		DF21F58C210F57CE00B7A634 /* UserProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
 		DF21F58E210F62C800B7A634 /* UserProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHeaderView.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				DF101CA12121CFB10009AD23 /* SearchVC.swift */,
+				DF101CA62121EB0E0009AD23 /* SearchVC+UI.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -491,6 +494,7 @@
 				DF5109FC2110945500128279 /* MKLabel.swift in Sources */,
 				DF6AD2FB210C9311002F7D41 /* SignUpVC.swift in Sources */,
 				DFE7CFB9211575750023B045 /* ViewControllersBuilder.swift in Sources */,
+				DF101CA72121EB0E0009AD23 /* SearchVC+UI.swift in Sources */,
 				DF6F2BD02119B37E003EB476 /* PhotoSelectorTabBar.swift in Sources */,
 				DF286E86210E575A00B4D722 /* SignUp+PickPhoto.swift in Sources */,
 				DF101CA22121CFB10009AD23 /* SearchVC.swift in Sources */,

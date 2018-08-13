@@ -11,6 +11,15 @@ import UIKit
 
 class SearchCells: UICollectionViewCell {
     
+    var user: Profile? {
+        didSet {
+            guard let user = user else {return}
+            self.userProfileImageView.loadImage(url: user.profileURL)
+            self.usernameLabel.setupLabelForHomeViewWith(username: user.username)
+            self.numberOfposts.setupLabelForNumberOfPosts(numberOfPosts: 2)
+        }
+    }
+    
     let userProfileImageView: MKImageView = {
         let iv = MKImageView()
         iv.layer.cornerRadius = 50/2
@@ -24,8 +33,8 @@ class SearchCells: UICollectionViewCell {
         return label
     }()
     
-    let numberOfposts: UILabel = {
-        let label = UILabel()
+    let numberOfposts: MKLabel = {
+        let label = MKLabel()
         label.text = "2 posts"
         return label
     }()

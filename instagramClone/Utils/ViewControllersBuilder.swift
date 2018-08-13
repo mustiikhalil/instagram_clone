@@ -64,10 +64,10 @@ enum ViewControllersBuilder {
         
         let navController = UINavigationController(rootViewController: VC)
         if let selected = image {
-            navController.tabBarItem.selectedImage = selected
+            navController.tabBarItem.selectedImage = selected.withRenderingMode(.alwaysOriginal)
         }
         if let unSelected = unselectedImage {
-            navController.tabBarItem.image = unSelected
+            navController.tabBarItem.image = unSelected.withRenderingMode(.alwaysOriginal)
         }
         if let title = title {
             navController.tabBarItem.title = title.rawValue

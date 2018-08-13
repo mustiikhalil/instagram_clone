@@ -1,5 +1,5 @@
 //
-//  HomeVC.swift for testing
+//  HomeVC.swift
 //  instagramClone
 //
 //  Created by Mustafa Khalil on 8/11/18.

@@ -34,48 +34,14 @@ class MKImageView: UIImageView {
         lastURLUsedToLoadImage = imageURL.absoluteString
         let imgDownloader = ImageDownloader(withURL: imageURL)
         operationQueue.addOperation {
-            imgDownloader.main(lastURL: self.lastURLUsedToLoadImage) {
+            imgDownloader.main(lastURL: self.lastURLUsedToLoadImage) { img in
                 DispatchQueue.main.async {
-                    self.image = imgDownloader.image
+                    self.image = img
                 }
+//                OperationQueue.main.addOperation {
+//                    self.image = img
+//                }
             }
         }
-    }
-}
-
-class ImageDownloader: Operation {
-    
-    private var _image: UIImage?
-    private let url: URL
-    
-    var image: UIImage? {
-        get {return _image}
-    }
-    
-    init(withURL: URL) {
-        url = withURL
-        super.init()
-    }
-    
-    func main(lastURL: String?, onSccuess: @escaping ()->Void){
-        
-        if let image = imageCache.object(forKey: url.absoluteString as NSString) {
-            self._image = image
-            print("getting from cache")
-            onSccuess()
-            return
-        }
-        
-        if url.absoluteString != lastURL {
-            return
-        }
-        
-        guard let data = try? Data(contentsOf: url) else {return}
-        let img = UIImage(data: data)
-        guard let imgValue = img else {return}
-        print("downloading data")
-        imageCache.setObject(imgValue, forKey: url.absoluteString as NSString)
-        _image = imgValue
-        onSccuess()
     }
 }

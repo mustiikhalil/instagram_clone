@@ -37,7 +37,7 @@ class MKLabel: UILabel {
         
         customText.append(NSAttributedString(string: "\n\n", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 4)]))
         
-        customText.append(NSAttributedString(string: "\("1 week ago")", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 13), NSAttributedStringKey.foregroundColor: UIColor.gray]))
+        customText.append(NSAttributedString(string: "\(Date(timeIntervalSince1970: time).timeAgoDisplay())", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 13), NSAttributedStringKey.foregroundColor: UIColor.gray]))
         numberOfLines = 0
         attributedText = customText
     }

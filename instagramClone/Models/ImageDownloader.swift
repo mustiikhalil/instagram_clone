@@ -11,10 +11,12 @@ import UIKit
 class ImageDownloader: Operation {
     
     private let url: URL
+    var image: UIImage?
     
     init(withURL: URL) {
         url = withURL
         super.init()
+        queuePriority = .veryHigh
     }
     
     func main(lastURL: String?, onSccuess: @escaping (UIImage)->Void){
@@ -27,7 +29,6 @@ class ImageDownloader: Operation {
         if url.absoluteString != lastURL {
             return
         }
-        
         guard let data = try? Data(contentsOf: url) else {return}
         let img = UIImage(data: data)
         guard let image = img else {return}

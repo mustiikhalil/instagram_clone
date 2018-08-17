@@ -68,8 +68,6 @@ class UserProfileHeaderView: UICollectionReusableView {
 	
 	lazy var editProfileButton: UIButton = {
 		let button = UIButton(type: .system)
-		button.setTitle("Edit Profile", for: .normal)
-		button.setTitleColor(.black, for: .normal)
 		button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
 		button.layer.borderWidth = 1
 		button.layer.cornerRadius = 2
@@ -82,12 +80,25 @@ class UserProfileHeaderView: UICollectionReusableView {
         guard let user = profile?.UID else {return}
         let ref = Database.database().reference().child("following").child(uid)
         let values = [user:1]
-        ref.updateChildValues(values) { (err, refDatabase) in
-            if let err = err {
-                print("failed to follow", err)
-                return
+        if editProfileButton.titleLabel?.text?.lowercased() == "follow" {
+            ref.updateChildValues(values) { (err, refDatabase) in
+                if let err = err {
+                    print("failed to follow", err)
+                    return
+                }
+                self.setupButton(type: .Unfollow)
             }
-            self.setupButton(title: ProfileHeaderButtonType.Unfollow.title, type: .Unfollow)
+        } else if editProfileButton.titleLabel?.text?.lowercased() == "unfollow" {
+            ref.child(user).removeValue { (err, data) in
+                if let err = err {
+                    print("couldn't unfollow")
+                    return
+                }
+                print("unfollow")
+                self.setupButton(type: .Follow)
+            }
+        } else {
+            print("edit profile")
         }
     }
 	
@@ -96,15 +107,24 @@ class UserProfileHeaderView: UICollectionReusableView {
         guard let auth = Auth.auth().currentUser?.uid else {return}
 		self.usernameLabel.text = user.username
 		self.profileImageView.loadImage(url: user.profileURL)
+        
         if auth == user.UID {
-            setupButton(title: "Edit Profile", type: .Edit)
+            setupButton(type: .Edit)
         } else {
-            setupButton(title: "Follow", type: .Follow)
+            Database.database().reference().child("following").child(auth).child(user.UID).observeSingleEvent(of: .value, with: { (snapshot) in
+                if let isFollowing = snapshot.value as? Int, isFollowing == 1 {
+                    self.setupButton(type: .Unfollow)
+                } else {
+                    self.setupButton(type: .Follow)
+                }
+            }) { (err) in
+                print("couldn't get the value", err)
+            }
         }
 	}
     
-    fileprivate func setupButton(title: String, type: ProfileHeaderButtonType) {
-        editProfileButton.setTitle(title, for: .normal)
+    fileprivate func setupButton(type: ProfileHeaderButtonType) {
+        editProfileButton.setTitle(type.title, for: .normal)
         editProfileButton.setTitleColor(type.titleColor, for: .normal)
         editProfileButton.backgroundColor = type.getColor
         editProfileButton.layer.borderColor = type.border.cgColor
@@ -122,7 +142,8 @@ class UserProfileHeaderView: UICollectionReusableView {
 }
 
 enum ProfileHeaderButtonType: String {
-    case Edit, Follow, Unfollow
+    case Edit = "Edit Profile"
+    case Follow, Unfollow
     
     var title: String {
         return self.rawValue

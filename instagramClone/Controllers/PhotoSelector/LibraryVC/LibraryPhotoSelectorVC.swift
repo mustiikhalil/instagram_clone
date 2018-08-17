@@ -22,7 +22,23 @@ class LibraryPhotoSelectorVC: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI(withHeaderID: .header, cellID: .cell)
-        fetchPhotos()
+        print("viewdidload")
+        PHPhotoLibrary.requestAuthorization { (status) in
+            switch status {
+            case .notDetermined:
+                break
+            case .restricted:
+                break
+            case .denied:
+                break
+            case .authorized:
+                self.fetchPhotos {
+                    DispatchQueue.main.async {
+                        self.collectionView?.reloadData()
+                    }
+                }
+            }
+        }
     }
     
     @objc func handleDismiss() {
@@ -43,18 +59,17 @@ class LibraryPhotoSelectorVC: UICollectionViewController {
         })
     }
     
-    fileprivate func fetchPhotos() {
+    fileprivate func fetchPhotos(onSuccess: @escaping ()->Void) {
         let allPhotos = PHAsset.fetchAssets(with: .image, options: assetsFetchOptions())
         let options = PHImageRequestOptions()
         options.isSynchronous = true
         DispatchQueue.global(qos: .background).async {
             allPhotos.enumerateObjects { (asset, count, stop) in
+                
                 self.getImagesWithAsset(asset: asset, ofSize: CGSize(width: 200, height: 200), options: options, onSuccess: { image in
                     self.addToArrays(image: image, asset: asset)
                     if count == allPhotos.count - 1 {
-                        DispatchQueue.main.async {
-                            self.collectionView?.reloadData()
-                        }
+                        onSuccess()
                     }
                 })
             }

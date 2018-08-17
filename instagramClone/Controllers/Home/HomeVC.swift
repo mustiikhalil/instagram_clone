@@ -31,11 +31,13 @@ class HomeVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     fileprivate func fetchPostsFromDatabaseWith(user: Profile, onSuccess: @escaping ()-> Void) {
         let userRef = Database.database().reference().child("posts").child(user.UID)
+        
         userRef.observeSingleEvent(of: .value, andPreviousSiblingKeyWith: { (values, key) in
             guard let dictonary = values.value as? [String: Any] else { return }
             dictonary.forEach({ (key, value) in
                 guard let post = value as? [String: Any] else {return}
-                self.posts.insert(Post(dictonary: post, user: user), at: 0)
+                self.posts.append(Post(dictonary: post, user: user))
+//                self.posts.insert(Post(dictonary: post, user: user), at: 0)
             })
             onSuccess()
         }) { (err) in

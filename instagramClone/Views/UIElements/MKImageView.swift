@@ -16,7 +16,7 @@ let operationQueue: OperationQueue = {
 }()
 
 class MKImageView: UIImageView {
-    
+    static var number = 1
     var lastURLUsedToLoadImage: String?
     
     init() {
@@ -38,9 +38,6 @@ class MKImageView: UIImageView {
                 DispatchQueue.main.async {
                     self.image = img
                 }
-//                OperationQueue.main.addOperation {
-//                    self.image = img
-//                }
             }
         }
     }

@@ -57,7 +57,6 @@
 		DFD28B6B211EE30300653A97 /* CellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD28B6A211EE30300653A97 /* CellType.swift */; };
 		DFDB750C21220B4F0004032B /* HomeVC+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDB750B21220B4F0004032B /* HomeVC+UI.swift */; };
 		DFE7CFB9211575750023B045 /* ViewControllersBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE7CFB8211575750023B045 /* ViewControllersBuilder.swift */; };
-		DFFB253A212447AA00E93AF5 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFB2539212447AA00E93AF5 /* ImageDownloader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -114,7 +113,6 @@
 		DFD28B6A211EE30300653A97 /* CellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellType.swift; sourceTree = "<group>"; };
 		DFDB750B21220B4F0004032B /* HomeVC+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeVC+UI.swift"; sourceTree = "<group>"; };
 		DFE7CFB8211575750023B045 /* ViewControllersBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllersBuilder.swift; sourceTree = "<group>"; };
-		DFFB2539212447AA00E93AF5 /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		E52F55A837118F672EAB1512 /* Pods_instagramClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_instagramClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -350,7 +348,6 @@
 				DF0CC6A9211B409D0032CFCB /* Photo.swift */,
 				DF536934211DA74C0056206D /* Post.swift */,
 				DF536936211DA76D0056206D /* Dimensions.swift */,
-				DFFB2539212447AA00E93AF5 /* ImageDownloader.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -525,7 +522,6 @@
 				DF5A39BC2119780700AD09A5 /* LibraryPhotoSelectorVC.swift in Sources */,
 				DF28F856210E530600427302 /* SignUp+Firebase.swift in Sources */,
 				DF0CC6AD211B49670032CFCB /* SharingVC.swift in Sources */,
-				DFFB253A212447AA00E93AF5 /* ImageDownloader.swift in Sources */,
 				DF4002B921248C4000320CF0 /* DateFormatter.swift in Sources */,
 				DFB0E542211EBD2100B48230 /* HomeVC.swift in Sources */,
 				DF536937211DA76D0056206D /* Dimensions.swift in Sources */,

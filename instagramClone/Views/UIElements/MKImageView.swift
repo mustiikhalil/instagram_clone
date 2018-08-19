@@ -31,23 +31,33 @@ class MKImageView: UIImageView {
     
     func loadImage(url: String) {
         guard let imageURL = URL(string: url) else { return }
+        downloadImage(url: imageURL)
+    }
+    
+    fileprivate func downloadImage(url imageURL: URL) {
+        lastURLUsedToLoadImage = imageURL.absoluteString
         if let image = imageCache.object(forKey: imageURL.absoluteString as NSString) {
             print("getting from cache")
             self.image = image
             return
         }
-        DispatchQueue.global(qos: .background).async {
-            if imageURL.absoluteString  == self.lastURLUsedToLoadImage {
+        URLSession.shared.dataTask(with: imageURL) { (data, urlResponse, err) in
+            
+            if let err = err {
+                print("Couldn't fetch the images", err)
                 return
             }
-            guard let data = try? Data(contentsOf: imageURL) else {return}
-            let img = UIImage(data: data)
-            guard let image = img else {return}
-            print("downloading data")
-            imageCache.setObject(image, forKey: imageURL.absoluteString as NSString)
-            DispatchQueue.main.async {
-                self.image = img
+            
+            if imageURL.absoluteString != self.lastURLUsedToLoadImage {
+                return
             }
-        }
+            guard let imageData = data else {return}
+            guard let image = UIImage(data: imageData) else {return}
+            imageCache.setObject(image, forKey: imageURL.absoluteString as NSString)
+            print("downloading image")
+            DispatchQueue.main.async {
+                self.image = image
+            }
+        }.resume()
     }
 }

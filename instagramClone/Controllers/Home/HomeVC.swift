@@ -17,19 +17,31 @@ class HomeVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI(withID: .cell)
-        fetchPosts()
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        getFollowedUsers(uid: uid) { (dictonary) in
+            for (key, value) in dictonary {
+                self.fetchPosts(uid: key)
+            }
+        }
     }
     
-    func fetchPosts() {
-        guard let uid = Auth.auth().currentUser?.uid else {return}
+    func fetchPosts(uid: String) {
+        
         Database.fetchUser(uid: uid) { (user) in
             self.fetchPostsFromDatabaseWith(user: user, onSuccess: {
+                self.posts.sort(by: {$0.timestamp > $1.timestamp})
                 self.collectionView?.reloadData()
-                self.posts.forEach({ (post) in
-                    print(post.url)
-                    print(Date(timeIntervalSince1970: post.timestamp).timeAgoDisplay())
-                })
             })
+        }
+    }
+    
+    fileprivate func getFollowedUsers(uid: String, onSuccess: @escaping ([String: Any])-> Void) {
+        Database.database().reference().child("following").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let dictonary = snapshot.value as? [String: Any] else {return}
+            onSuccess(dictonary)
+        }) { (err) in
+            print(err, "failed fetching users")
+            
         }
     }
     

@@ -23,7 +23,7 @@ class HomeVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     func fetch() {
         guard let uid = Auth.auth().currentUser?.uid else {return}
         getFollowedUsers(uid: uid) { (dictonary) in
-            for (key, value) in dictonary {
+            for (key, _) in dictonary {
                 self.fetchPosts(uid: key)
             }
         }

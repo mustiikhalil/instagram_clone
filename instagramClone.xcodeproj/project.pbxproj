@@ -37,6 +37,7 @@
 		DF536935211DA74C0056206D /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF536934211DA74C0056206D /* Post.swift */; };
 		DF536937211DA76D0056206D /* Dimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF536936211DA76D0056206D /* Dimensions.swift */; };
 		DF5A39BC2119780700AD09A5 /* LibraryPhotoSelectorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5A39BB2119780700AD09A5 /* LibraryPhotoSelectorVC.swift */; };
+		DF5BC3C9212B7E5200E34BB4 /* ImageViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5BC3C8212B7E5200E34BB4 /* ImageViewerVC.swift */; };
 		DF6AD2F9210C9311002F7D41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6AD2F8210C9311002F7D41 /* AppDelegate.swift */; };
 		DF6AD2FB210C9311002F7D41 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6AD2FA210C9311002F7D41 /* SignUpVC.swift */; };
 		DF6AD300210C9312002F7D41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF6AD2FF210C9312002F7D41 /* Assets.xcassets */; };
@@ -97,6 +98,7 @@
 		DF536934211DA74C0056206D /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		DF536936211DA76D0056206D /* Dimensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimensions.swift; sourceTree = "<group>"; };
 		DF5A39BB2119780700AD09A5 /* LibraryPhotoSelectorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryPhotoSelectorVC.swift; sourceTree = "<group>"; };
+		DF5BC3C8212B7E5200E34BB4 /* ImageViewerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewerVC.swift; sourceTree = "<group>"; };
 		DF6AD2F5210C9311002F7D41 /* instagramClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = instagramClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF6AD2F8210C9311002F7D41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DF6AD2FA210C9311002F7D41 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
@@ -373,6 +375,7 @@
 			children = (
 				DF7B8E95212B1442004B9682 /* CameraVC.swift */,
 				DF7B8E97212B1A07004B9682 /* CameraVC+UI.swift */,
+				DF5BC3C8212B7E5200E34BB4 /* ImageViewerVC.swift */,
 			);
 			path = CameraVC;
 			sourceTree = "<group>";
@@ -575,6 +578,7 @@
 				DFDB750C21220B4F0004032B /* HomeVC+UI.swift in Sources */,
 				DF7B8E98212B1A07004B9682 /* CameraVC+UI.swift in Sources */,
 				DF6F2BCE2119B271003EB476 /* LibraryPhotoSelectorVC+UI.swift in Sources */,
+				DF5BC3C9212B7E5200E34BB4 /* ImageViewerVC.swift in Sources */,
 				DF222971211E23D1001C3312 /* MKImageView.swift in Sources */,
 				DF81E758210D1E00003E5C86 /* UIView.swift in Sources */,
 				DFBE45632111D4970019E53C /* LoginVC+Firebase.swift in Sources */,

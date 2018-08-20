@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum ButtonType {
+enum MKButtonType {
     case signup, login, heart, share, ribbon, comment, options
     
     func ID() -> String {

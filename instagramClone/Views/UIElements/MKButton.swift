@@ -14,7 +14,7 @@ class MKButton: UIButton {
 		super.init(frame: .zero)
 	}
     
-    func setUpLoginAndSignUPButtons(title: ButtonType, titleColor: UIColor, backgroundColor background: UIColor, raduis: CGFloat) {
+    func setUpLoginAndSignUPButtons(title: MKButtonType, titleColor: UIColor, backgroundColor background: UIColor, raduis: CGFloat) {
         titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         setTitle(title.ID(), for: .normal)
         setTitleColor(titleColor, for: .normal)
@@ -22,7 +22,7 @@ class MKButton: UIButton {
         layer.cornerRadius = raduis
     }
     
-    func setupMainViewButtons(type: ButtonType) {
+    func setupMainViewButtons(type: MKButtonType) {
         switch type {
         case .comment:
             createButtonWith(image: #imageLiteral(resourceName: "comment"))

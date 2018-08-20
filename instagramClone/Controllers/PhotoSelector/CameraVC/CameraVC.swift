@@ -22,22 +22,29 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate {
         btn.addTarget(self, action: #selector(handleCaptering), for: .touchUpInside)
         return btn
     }()
+    
     let output = AVCapturePhotoOutput()
-
+    let captionSession = AVCaptureSession()
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
         setupCaptureSession()
-//        cameraView.c
+        setupUI()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        captionSession.stopRunning()
     }
     
     @objc func handleCaptering() {
         print("taking photo from normalView")
         let setting = AVCapturePhotoSettings()
+        guard let previewPhoto = setting.availablePreviewPhotoPixelFormatTypes.first else {return}
+        setting.previewPhotoFormat = [kCVPixelBufferPixelFormatTypeKey as String: previewPhoto]
         output.capturePhoto(with: setting, delegate: self)
     }
     
@@ -49,14 +56,14 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate {
         
         guard let imageData = photo.fileDataRepresentation() else { return }
         // needs debug
-        guard let image = UIImage(data: imageData)?.getInstagramImage(x: cameraView.frame.origin.x, y: cameraView.frame.origin.y, size: cameraView.frame.size) else { return }
-        print(image)
-
+        guard let image = UIImage(data: imageData) else {return}
+        let imageViewerVC = ImageViewerVC()
+        imageViewerVC.image = image
+        navigationController?.pushViewController(imageViewerVC, animated: true)
     }
     
     func setupCaptureSession() {
-        let captionSession = AVCaptureSession()
-        
+        output.isHighResolutionCaptureEnabled = true
         // 1. setup input
         let captureDevice = AVCaptureDevice.default(for: .video)
         do {
@@ -71,15 +78,21 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate {
         }
         
         // 2. setup output
+        
         if captionSession.canAddOutput(output) {
             captionSession.addOutput(output)
         }
         
         // 3. setup output preview
+
         let previewLayer = AVCaptureVideoPreviewLayer(session: captionSession)
-        previewLayer.frame = cameraView.frame
-        cameraView.layer.addSublayer(previewLayer)
-        captionSession.startRunning()
+        previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        previewLayer.connection?.videoOrientation = .portrait
+        DispatchQueue.main.async {
+            previewLayer.frame = self.cameraView.bounds
+            self.cameraView.layer.addSublayer(previewLayer)
+            self.captionSession.startRunning()
+        }
     }
     
 }

@@ -30,8 +30,9 @@ class FullCameraVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
         setupCaptureSession()
+        setupUI()
+        
     }
     
     func setupCaptureSession() {

@@ -12,12 +12,13 @@ import UIKit
 extension UIImage {
     
     func getInstagramImage(x: CGFloat, y: CGFloat, size: CGSize) -> UIImage {
+        let imgWidth = self.size.width
         let imgOrigin = CGPoint(x: x, y: y)
-        guard let imageRef = self.cgImage?.cropping(to: CGRect(origin: imgOrigin, size: size)) else {
+        guard let imageRef = self.cgImage?.cropping(to: CGRect(origin: imgOrigin, size: CGSize(width: imgWidth, height: imgWidth))) else {
             print("Fail to crop image")
             return UIImage()
         }
-        return UIImage(cgImage: imageRef, scale: 1.0, orientation: .down)
+        return UIImage(cgImage: imageRef)
     }
 }
 

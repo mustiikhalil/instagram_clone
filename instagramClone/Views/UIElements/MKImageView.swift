@@ -30,6 +30,7 @@ class MKImageView: UIImageView {
     }
     
     func loadImage(url: String) {
+        self.image = nil
         guard let imageURL = URL(string: url) else { return }
         downloadImage(url: imageURL)
     }

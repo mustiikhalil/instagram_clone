@@ -11,13 +11,22 @@ import UIKit
 extension HomeVC {
     
     func setupUI(withID cell: CellType) {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        collectionView?.refreshControl = refreshControl
         collectionView?.backgroundColor = .white
         collectionView?.register(HomeCell.self, forCellWithReuseIdentifier: cell.ID)
         setupNavigationBar()
     }
     
+    @objc func handleRefresh() {
+        posts.removeAll()
+        fetch()
+    }
+    
     func setupNavigationBar() {
-        navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "logo2"))
+        navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "Instagram_logo"))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "camera3").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleLiveCameraVC))
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

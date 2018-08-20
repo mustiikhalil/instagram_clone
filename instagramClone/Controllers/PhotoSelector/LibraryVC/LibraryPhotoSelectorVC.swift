@@ -22,7 +22,6 @@ class LibraryPhotoSelectorVC: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI(withHeaderID: .header, cellID: .cell)
-        print("viewdidload")
         PHPhotoLibrary.requestAuthorization { (status) in
             switch status {
             case .notDetermined:

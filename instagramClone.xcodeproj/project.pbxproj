@@ -45,6 +45,12 @@
 		DF6AD312210CDBF0002F7D41 /* MKTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6AD311210CDBF0002F7D41 /* MKTextField.swift */; };
 		DF6F2BCE2119B271003EB476 /* LibraryPhotoSelectorVC+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F2BCD2119B271003EB476 /* LibraryPhotoSelectorVC+UI.swift */; };
 		DF6F2BD02119B37E003EB476 /* PhotoSelectorTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F2BCF2119B37E003EB476 /* PhotoSelectorTabBar.swift */; };
+		DF7B8E96212B1442004B9682 /* CameraVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B8E95212B1442004B9682 /* CameraVC.swift */; };
+		DF7B8E98212B1A07004B9682 /* CameraVC+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B8E97212B1A07004B9682 /* CameraVC+UI.swift */; };
+		DF7B8E9A212B2A2A004B9682 /* CaptureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B8E99212B2A2A004B9682 /* CaptureButton.swift */; };
+		DF7B8E9C212B2FD7004B9682 /* FullCameraVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B8E9B212B2FD7004B9682 /* FullCameraVC.swift */; };
+		DF7B8E9F212B3040004B9682 /* FullCameraVC+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B8E9E212B3040004B9682 /* FullCameraVC+UI.swift */; };
+		DF7B8EA1212B3A68004B9682 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B8EA0212B3A68004B9682 /* UIImage.swift */; };
 		DF81E758210D1E00003E5C86 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF81E757210D1E00003E5C86 /* UIView.swift */; };
 		DF81E75A210D1EAF003E5C86 /* MKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF81E759210D1EAF003E5C86 /* MKButton.swift */; };
 		DF9E1658211D9BBB00224C99 /* Sharing+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9E1657211D9BBB00224C99 /* Sharing+Firebase.swift */; };
@@ -101,6 +107,12 @@
 		DF6AD311210CDBF0002F7D41 /* MKTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKTextField.swift; sourceTree = "<group>"; };
 		DF6F2BCD2119B271003EB476 /* LibraryPhotoSelectorVC+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LibraryPhotoSelectorVC+UI.swift"; sourceTree = "<group>"; };
 		DF6F2BCF2119B37E003EB476 /* PhotoSelectorTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorTabBar.swift; sourceTree = "<group>"; };
+		DF7B8E95212B1442004B9682 /* CameraVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraVC.swift; sourceTree = "<group>"; };
+		DF7B8E97212B1A07004B9682 /* CameraVC+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CameraVC+UI.swift"; sourceTree = "<group>"; };
+		DF7B8E99212B2A2A004B9682 /* CaptureButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureButton.swift; sourceTree = "<group>"; };
+		DF7B8E9B212B2FD7004B9682 /* FullCameraVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullCameraVC.swift; sourceTree = "<group>"; };
+		DF7B8E9E212B3040004B9682 /* FullCameraVC+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FullCameraVC+UI.swift"; sourceTree = "<group>"; };
+		DF7B8EA0212B3A68004B9682 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		DF81E757210D1E00003E5C86 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		DF81E759210D1EAF003E5C86 /* MKButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKButton.swift; sourceTree = "<group>"; };
 		DF9E1657211D9BBB00224C99 /* Sharing+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sharing+Firebase.swift"; sourceTree = "<group>"; };
@@ -229,6 +241,7 @@
 				DF81E759210D1EAF003E5C86 /* MKButton.swift */,
 				DF5109FB2110945500128279 /* MKLabel.swift */,
 				DF222970211E23D1001C3312 /* MKImageView.swift */,
+				DF7B8E99212B2A2A004B9682 /* CaptureButton.swift */,
 			);
 			path = UIElements;
 			sourceTree = "<group>";
@@ -262,6 +275,7 @@
 		DF5A39BA211977C900AD09A5 /* PhotoSelector */ = {
 			isa = PBXGroup;
 			children = (
+				DF7B8E93212B1429004B9682 /* CameraVC */,
 				DF0CC6AB211B49550032CFCB /* SharingVC */,
 				DF3EF7B32119B7CC00C82118 /* LibraryVC */,
 				DF6F2BCF2119B37E003EB476 /* PhotoSelectorTabBar.swift */,
@@ -308,6 +322,7 @@
 		DF6AD30A210C9460002F7D41 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DF7B8E9D212B3001004B9682 /* FullCamera */,
 				DF101CA02121CF9E0009AD23 /* Search */,
 				DFB0E540211EBD1200B48230 /* Home */,
 				DF5A39BA211977C900AD09A5 /* PhotoSelector */,
@@ -328,6 +343,7 @@
 				DF0CC6A5211A36B00032CFCB /* Dictonary.swift */,
 				DFD28B6A211EE30300653A97 /* CellType.swift */,
 				DF101C9B2121C5A60009AD23 /* ButtonType.swift */,
+				DF7B8EA0212B3A68004B9682 /* UIImage.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -350,6 +366,24 @@
 				DF536936211DA76D0056206D /* Dimensions.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		DF7B8E93212B1429004B9682 /* CameraVC */ = {
+			isa = PBXGroup;
+			children = (
+				DF7B8E95212B1442004B9682 /* CameraVC.swift */,
+				DF7B8E97212B1A07004B9682 /* CameraVC+UI.swift */,
+			);
+			path = CameraVC;
+			sourceTree = "<group>";
+		};
+		DF7B8E9D212B3001004B9682 /* FullCamera */ = {
+			isa = PBXGroup;
+			children = (
+				DF7B8E9B212B2FD7004B9682 /* FullCameraVC.swift */,
+				DF7B8E9E212B3040004B9682 /* FullCameraVC+UI.swift */,
+			);
+			path = FullCamera;
 			sourceTree = "<group>";
 		};
 		DFB0E540211EBD1200B48230 /* Home */ = {
@@ -500,6 +534,7 @@
 				DF5109FC2110945500128279 /* MKLabel.swift in Sources */,
 				DF6AD2FB210C9311002F7D41 /* SignUpVC.swift in Sources */,
 				DFE7CFB9211575750023B045 /* ViewControllersBuilder.swift in Sources */,
+				DF7B8E9F212B3040004B9682 /* FullCameraVC+UI.swift in Sources */,
 				DF101CA72121EB0E0009AD23 /* SearchVC+UI.swift in Sources */,
 				DF6F2BD02119B37E003EB476 /* PhotoSelectorTabBar.swift in Sources */,
 				DF286E86210E575A00B4D722 /* SignUp+PickPhoto.swift in Sources */,
@@ -525,15 +560,20 @@
 				DF4002B921248C4000320CF0 /* DateFormatter.swift in Sources */,
 				DFB0E542211EBD2100B48230 /* HomeVC.swift in Sources */,
 				DF536937211DA76D0056206D /* Dimensions.swift in Sources */,
+				DF7B8E9A212B2A2A004B9682 /* CaptureButton.swift in Sources */,
+				DF7B8E9C212B2FD7004B9682 /* FullCameraVC.swift in Sources */,
+				DF7B8E96212B1442004B9682 /* CameraVC.swift in Sources */,
 				DF101C9C2121C5A60009AD23 /* ButtonType.swift in Sources */,
 				DF21F58A210F562F00B7A634 /* MainTabBarVC.swift in Sources */,
 				DF0CC6A6211A36B00032CFCB /* Dictonary.swift in Sources */,
 				DF5109FA211092C500128279 /* UserProfileHeaderCell+UI.swift in Sources */,
+				DF7B8EA1212B3A68004B9682 /* UIImage.swift in Sources */,
 				DFD28B6B211EE30300653A97 /* CellType.swift in Sources */,
 				DF101CA52121D5E30009AD23 /* SearchCell.swift in Sources */,
 				DF6AD30C210CDAEE002F7D41 /* UIColor.swift in Sources */,
 				DF3434FB21138933008CC71B /* UserProfileVC+Firebase.swift in Sources */,
 				DFDB750C21220B4F0004032B /* HomeVC+UI.swift in Sources */,
+				DF7B8E98212B1A07004B9682 /* CameraVC+UI.swift in Sources */,
 				DF6F2BCE2119B271003EB476 /* LibraryPhotoSelectorVC+UI.swift in Sources */,
 				DF222971211E23D1001C3312 /* MKImageView.swift in Sources */,
 				DF81E758210D1E00003E5C86 /* UIView.swift in Sources */,

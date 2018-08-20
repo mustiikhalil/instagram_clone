@@ -17,6 +17,10 @@ class HomeVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI(withID: .cell)
+        fetch()
+    }
+    
+    func fetch() {
         guard let uid = Auth.auth().currentUser?.uid else {return}
         getFollowedUsers(uid: uid) { (dictonary) in
             for (key, value) in dictonary {
@@ -29,6 +33,7 @@ class HomeVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
         
         Database.fetchUser(uid: uid) { (user) in
             self.fetchPostsFromDatabaseWith(user: user, onSuccess: {
+                self.collectionView?.refreshControl?.endRefreshing()
                 self.posts.sort(by: {$0.timestamp > $1.timestamp})
                 self.collectionView?.reloadData()
             })
@@ -59,5 +64,10 @@ class HomeVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
         }) { (err) in
             print(err)
         }
+    }
+    
+    @objc func handleLiveCameraVC() {
+        let cameraVC = FullCameraVC()
+        present(cameraVC, animated: true, completion: nil)
     }
 }

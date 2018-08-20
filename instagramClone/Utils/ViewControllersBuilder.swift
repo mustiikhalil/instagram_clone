@@ -52,7 +52,7 @@ enum ViewControllersBuilder {
             return registerNavControllers(VC: LibraryPhotoSelectorVC(collectionViewLayout: layer), title: .library)
             
         case .Camera:
-            return registerNavControllers(VC: JustAView(), title: .camera)
+            return registerNavControllers(VC: CameraVC(), title: .camera)
         
         // Get the mainView
         default:

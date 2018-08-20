@@ -9,12 +9,12 @@
 import Foundation
 
 enum DescriptionDate: String {
-    case second = "Seconds Ago"
-    case min = "Minutes Ago"
-    case hour = "Hours Ago"
-    case day = "Days Ago"
-    case week = "Weeks Ago"
-    case year = "Years Ago"
+    case second = "SECONDS AGO"
+    case min = "MINUTES AGO"
+    case hour = "HOURS AGO"
+    case day = "DAYS AGO"
+    case week = "WEEKS AGO"
+    case year = "YEARS AGO"
     func getDescription(value: Int) -> String {
         return "\(value) " + self.rawValue
     }

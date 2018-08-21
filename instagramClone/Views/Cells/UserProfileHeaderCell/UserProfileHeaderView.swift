@@ -91,7 +91,7 @@ class UserProfileHeaderView: UICollectionReusableView {
         } else if editProfileButton.titleLabel?.text?.lowercased() == "unfollow" {
             ref.child(user).removeValue { (err, data) in
                 if let err = err {
-                    print("couldn't unfollow")
+                    print("couldn't unfollow", err)
                     return
                 }
                 print("unfollow")

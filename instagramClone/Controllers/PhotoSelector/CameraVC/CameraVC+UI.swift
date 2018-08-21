@@ -25,7 +25,7 @@ extension CameraVC {
     fileprivate func setupCameraView() {
         view.addSubview(cameraView)
         cameraView.anchor(leading: view.leadingAnchor, top: view.safeAreaLayoutGuide.topAnchor, trailing: view.trailingAnchor, bottom: nil, paddingLeading: 0, paddingTop: 0, paddingTailing: 0, paddingBottom: 0, width: 0, height: 0)
-        cameraView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6).isActive = true
+        cameraView.heightAnchor.constraint(equalTo: cameraView.widthAnchor).isActive = true
     }
     
     fileprivate func setupCaptureButton() {

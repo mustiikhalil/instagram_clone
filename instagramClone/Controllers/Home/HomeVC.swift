@@ -35,6 +35,7 @@ class HomeVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
             self.fetchPostsFromDatabaseWith(user: user, onSuccess: {
                 self.collectionView?.refreshControl?.endRefreshing()
                 self.posts.sort(by: {$0.timestamp > $1.timestamp})
+                print(self.posts.count)
                 self.collectionView?.reloadData()
             })
         }

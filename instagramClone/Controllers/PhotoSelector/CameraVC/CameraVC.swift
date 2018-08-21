@@ -36,10 +36,6 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate {
         setupUI()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        captionSession.stopRunning()
-    }
-    
     @objc func handleCaptering() {
         print("taking photo from normalView")
         let setting = AVCapturePhotoSettings()
@@ -56,7 +52,7 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate {
         
         guard let imageData = photo.fileDataRepresentation() else { return }
         // needs debug
-        guard let image = UIImage(data: imageData) else {return}
+        guard let image = UIImage(data: imageData)?.getInstagramImage(x: cameraView.frame.size.width, y: cameraView.frame.size.height, frame: cameraView.frame) else {return}
         let imageViewerVC = ImageViewerVC()
         imageViewerVC.image = image
         navigationController?.pushViewController(imageViewerVC, animated: true)

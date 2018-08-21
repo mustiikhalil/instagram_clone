@@ -13,8 +13,7 @@ extension Database {
     static func fetchUser(uid: String, onSuccess: @escaping (Profile) -> Void) {
         Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
             guard let dictonary = snapshot.value as? [String: Any] else { return }
-            guard let value = dictonary as? [String : Any] else {return}
-            let user = Profile(uid: uid, dictonary: value)
+            let user = Profile(uid: uid, dictonary: dictonary)
             onSuccess(user)
         }) { (err) in
             print(err)

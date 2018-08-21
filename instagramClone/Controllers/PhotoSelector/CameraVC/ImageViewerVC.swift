@@ -22,9 +22,15 @@ class ImageViewerVC: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+//        tabBarController?.tabBar.isHidden = true
     }
     
     
@@ -55,5 +61,7 @@ class ImageViewerVC: UIViewController {
         sharingVC.image = capturedImage.image
         navigationController?.pushViewController(sharingVC, animated: true)
     }
+    
+    
 }
 

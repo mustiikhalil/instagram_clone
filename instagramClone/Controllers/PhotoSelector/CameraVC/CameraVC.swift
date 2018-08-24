@@ -37,7 +37,6 @@ class CameraVC: UIViewController, AVCapturePhotoCaptureDelegate {
     }
     
     @objc func handleCaptering() {
-        print("taking photo from normalView")
         let setting = AVCapturePhotoSettings()
         guard let previewPhoto = setting.availablePreviewPhotoPixelFormatTypes.first else {return}
         setting.previewPhotoFormat = [kCVPixelBufferPixelFormatTypeKey as String: previewPhoto]

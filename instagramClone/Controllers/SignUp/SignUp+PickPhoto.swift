@@ -18,17 +18,17 @@ extension SignUpVC: UIImagePickerControllerDelegate, UINavigationControllerDeleg
 		imagePickerController.allowsEditing = true
 		present(imagePickerController, animated: true, completion: nil)
 	}
-	
-	func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-		
-		if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
-			plusPhotoButton.setImage(editedImage.withRenderingMode(.alwaysOriginal), for: .normal)
-		} else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
-			plusPhotoButton.setImage(originalImage.withRenderingMode(.alwaysOriginal), for: .normal)
-		}
-		setupImagePickerAfterUserPicking()
-		
-		dismiss(animated: true, completion: nil)
-	}
-	
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            plusPhotoButton.setImage(editedImage.withRenderingMode(.alwaysOriginal), for: .normal)
+        } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            plusPhotoButton.setImage(originalImage.withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        setupImagePickerAfterUserPicking()
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
 }

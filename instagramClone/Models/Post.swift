@@ -9,7 +9,7 @@
 import UIKit
 
 struct Post {
-    
+    private let _Key: String?
     private let _url: String
     private let _caption: String
     private let _dimensions: Dimensions
@@ -27,6 +27,12 @@ struct Post {
         }
     }
     
+    var key: String? {
+        get {
+            return _Key
+        }
+    }
+    
     //gets the timestamp
     var timestamp: Double {
         get { return _date }
@@ -36,21 +42,24 @@ struct Post {
         get {return _caption}
     }
     
-    init(url: String, caption: String, dimensions: Dimensions, image: UIImage?, user: Profile? = nil) {
+    init(url: String, caption: String, dimensions: Dimensions, image: UIImage?, user: Profile? = nil) { //? = nil
         _url = url
         _caption = caption
         _dimensions = dimensions
         _image = image
         _date = Date().timeIntervalSince1970
         _user = user
+        _Key = nil
     }
     
-    init(dictonary: [String: Any], user: Profile? = nil) {
+    init(dictonary: [String: Any], user: Profile? = nil, key: String? = nil) {
         _user = user
         _url = dictonary["imageURL"] as? String ?? ""
         _caption = dictonary["caption"] as? String ?? ""
         _dimensions = Dimensions(width: dictonary["imageWidth"] as? CGFloat ?? 0.0, height: dictonary["imageHeight"] as? CGFloat ?? 0.0)
         _date = dictonary["creationDate"] as? Double ?? 0.0
+        _Key = key
+        print(_Key, " with Key value")
     }
     
     func toDictonary() -> [String: Any] {

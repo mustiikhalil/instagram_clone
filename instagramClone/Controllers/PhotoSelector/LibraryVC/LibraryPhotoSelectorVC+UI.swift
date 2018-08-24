@@ -14,7 +14,7 @@ extension LibraryPhotoSelectorVC: UICollectionViewDelegateFlowLayout {
     func setupUI(withHeaderID headerId: CellType, cellID: CellType)  {
         setupNavigationBar()
         collectionView?.backgroundColor = .white
-        collectionView?.register(LibraryPhotoSelectorHeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId.rawValue)
+        collectionView?.register(LibraryPhotoSelectorHeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId.rawValue)
         collectionView?.register(LibraryPhotoSelectorCell.self, forCellWithReuseIdentifier: cellID.rawValue)
         
     }
@@ -44,7 +44,7 @@ extension LibraryPhotoSelectorVC: UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: CellType.header.ID, for: indexPath) as! LibraryPhotoSelectorHeaderCell
+        let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CellType.header.ID, for: indexPath) as! LibraryPhotoSelectorHeaderCell
         self.header = headerCell
         setupCell(cell: headerCell)
         

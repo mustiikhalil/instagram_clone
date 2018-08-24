@@ -13,7 +13,7 @@ extension UserProfileVC: UICollectionViewDelegateFlowLayout {
     func setupUI(withHeaderID header: CellType, cellID cell: CellType)  {
         collectionView?.backgroundColor = .white
         collectionView?.register(UserProfileCell.self, forCellWithReuseIdentifier: cell.ID)
-        collectionView?.register(UserProfileHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: header.ID)
+        collectionView?.register(UserProfileHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: header.ID)
         setupLogOutButton()
     }
     

@@ -17,7 +17,7 @@ extension SharingVC {
         
         let caption = textView.text ?? ""
         guard let image = imageView.image else { return }
-        let imageData = UIImageJPEGRepresentation(image, 0.4)
+        let imageData = image.jpegData(compressionQuality: 0.4)
         guard let data = imageData else { return }
         let dimensions = Dimensions(width: image.size.width, height: image.size.height)
         let filename = NSUUID().uuidString

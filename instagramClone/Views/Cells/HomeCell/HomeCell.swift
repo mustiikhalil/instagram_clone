@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol HomePostCellDelegate {
+    func didTapComment(withPost: Post)
+}
+
 class HomeCell: UICollectionViewCell {
     
     var post: Post? {
@@ -16,6 +20,8 @@ class HomeCell: UICollectionViewCell {
             setupViewAfterNetworkCall(post: post)
         }
     }
+    
+    var delegate: HomePostCellDelegate?
     
     let userProfileImageView: MKImageView = {
         let iv = MKImageView()
@@ -40,9 +46,10 @@ class HomeCell: UICollectionViewCell {
         return mk
     }()
     
-    let commentButton: MKButton = {
+    lazy var commentButton: MKButton = {
         let mk = MKButton()
         mk.setupMainViewButtons(type: .comment)
+        mk.addTarget(self, action: #selector(handleComment), for: .touchUpInside)
         return mk
     }()
     
@@ -73,6 +80,7 @@ class HomeCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         setupUI()
     }
     
@@ -86,5 +94,10 @@ class HomeCell: UICollectionViewCell {
         imageView.loadImage(url: post.url)
         usernameLabel.text = user.username
         captionLabel.setupLabelForHomeViewWith(caption: post.caption, username: user.username, time: post.timestamp)
+    }
+    
+    @objc private func handleComment() {
+        guard let post = post else {return}
+        delegate?.didTapComment(withPost: post)
     }
 }

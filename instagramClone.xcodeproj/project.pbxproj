@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A3E648ED64E55C3088555790 /* Pods_instagramClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E52F55A837118F672EAB1512 /* Pods_instagramClone.framework */; };
+		DF089F99212C43D300C1B007 /* PreviewPhotoContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF089F98212C43D300C1B007 /* PreviewPhotoContainerView.swift */; };
+		DF089F9B212C504200C1B007 /* SlidingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF089F9A212C504200C1B007 /* SlidingAnimation.swift */; };
 		DF0CC6A42119D73E0032CFCB /* LibraryPhotoSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0CC6A32119D73E0032CFCB /* LibraryPhotoSelectorCell.swift */; };
 		DF0CC6A6211A36B00032CFCB /* Dictonary.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0CC6A5211A36B00032CFCB /* Dictonary.swift */; };
 		DF0CC6A8211B2F930032CFCB /* LibraryPhotoSelectorHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0CC6A7211B2F930032CFCB /* LibraryPhotoSelectorHeaderCell.swift */; };
@@ -63,11 +65,14 @@
 		DFD28B68211EE1C900653A97 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD28B67211EE1C900653A97 /* HomeCell.swift */; };
 		DFD28B6B211EE30300653A97 /* CellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD28B6A211EE30300653A97 /* CellType.swift */; };
 		DFDB750C21220B4F0004032B /* HomeVC+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDB750B21220B4F0004032B /* HomeVC+UI.swift */; };
+		DFF9821A21302F93006AFBB9 /* CommentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF9821921302F93006AFBB9 /* CommentVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BAA7EC607766C7FEC41211D1 /* Pods-instagramClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-instagramClone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-instagramClone/Pods-instagramClone.debug.xcconfig"; sourceTree = "<group>"; };
 		DEC1DCED0FB2979497FC8610 /* Pods-instagramClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-instagramClone.release.xcconfig"; path = "Pods/Target Support Files/Pods-instagramClone/Pods-instagramClone.release.xcconfig"; sourceTree = "<group>"; };
+		DF089F98212C43D300C1B007 /* PreviewPhotoContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewPhotoContainerView.swift; sourceTree = "<group>"; };
+		DF089F9A212C504200C1B007 /* SlidingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidingAnimation.swift; sourceTree = "<group>"; };
 		DF0CC6A32119D73E0032CFCB /* LibraryPhotoSelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryPhotoSelectorCell.swift; sourceTree = "<group>"; };
 		DF0CC6A5211A36B00032CFCB /* Dictonary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictonary.swift; sourceTree = "<group>"; };
 		DF0CC6A7211B2F930032CFCB /* LibraryPhotoSelectorHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryPhotoSelectorHeaderCell.swift; sourceTree = "<group>"; };
@@ -125,6 +130,7 @@
 		DFD28B67211EE1C900653A97 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		DFD28B6A211EE30300653A97 /* CellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellType.swift; sourceTree = "<group>"; };
 		DFDB750B21220B4F0004032B /* HomeVC+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeVC+UI.swift"; sourceTree = "<group>"; };
+		DFF9821921302F93006AFBB9 /* CommentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentVC.swift; sourceTree = "<group>"; };
 		E52F55A837118F672EAB1512 /* Pods_instagramClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_instagramClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -322,6 +328,7 @@
 		DF6AD30A210C9460002F7D41 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DFF9821821302F85006AFBB9 /* Comment */,
 				DF7B8E9D212B3001004B9682 /* FullCamera */,
 				DF101CA02121CF9E0009AD23 /* Search */,
 				DFB0E540211EBD1200B48230 /* Home */,
@@ -382,6 +389,8 @@
 			children = (
 				DF7B8E9B212B2FD7004B9682 /* FullCameraVC.swift */,
 				DF7B8E9E212B3040004B9682 /* FullCameraVC+UI.swift */,
+				DF089F98212C43D300C1B007 /* PreviewPhotoContainerView.swift */,
+				DF089F9A212C504200C1B007 /* SlidingAnimation.swift */,
 			);
 			path = FullCamera;
 			sourceTree = "<group>";
@@ -412,6 +421,14 @@
 				DF101C992121B4F90009AD23 /* HomeCell+UI.swift */,
 			);
 			path = HomeCell;
+			sourceTree = "<group>";
+		};
+		DFF9821821302F85006AFBB9 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				DFF9821921302F93006AFBB9 /* CommentVC.swift */,
+			);
+			path = Comment;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -448,6 +465,7 @@
 				TargetAttributes = {
 					DF6AD2F4210C9311002F7D41 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -493,12 +511,14 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -555,6 +575,7 @@
 				DF101C9A2121B4F90009AD23 /* HomeCell+UI.swift in Sources */,
 				DF5A39BC2119780700AD09A5 /* LibraryPhotoSelectorVC.swift in Sources */,
 				DF28F856210E530600427302 /* SignUp+Firebase.swift in Sources */,
+				DF089F9B212C504200C1B007 /* SlidingAnimation.swift in Sources */,
 				DF0CC6AD211B49670032CFCB /* SharingVC.swift in Sources */,
 				DF4002B921248C4000320CF0 /* DateFormatter.swift in Sources */,
 				DFB0E542211EBD2100B48230 /* HomeVC.swift in Sources */,
@@ -567,6 +588,7 @@
 				DF0CC6A6211A36B00032CFCB /* Dictonary.swift in Sources */,
 				DF5109FA211092C500128279 /* UserProfileHeaderCell+UI.swift in Sources */,
 				DF7B8EA1212B3A68004B9682 /* UIImage.swift in Sources */,
+				DF089F99212C43D300C1B007 /* PreviewPhotoContainerView.swift in Sources */,
 				DFD28B6B211EE30300653A97 /* CellType.swift in Sources */,
 				DF101CA52121D5E30009AD23 /* SearchCell.swift in Sources */,
 				DF6AD30C210CDAEE002F7D41 /* UIColor.swift in Sources */,
@@ -574,6 +596,7 @@
 				DFDB750C21220B4F0004032B /* HomeVC+UI.swift in Sources */,
 				DF7B8E98212B1A07004B9682 /* CameraVC+UI.swift in Sources */,
 				DF6F2BCE2119B271003EB476 /* LibraryPhotoSelectorVC+UI.swift in Sources */,
+				DFF9821A21302F93006AFBB9 /* CommentVC.swift in Sources */,
 				DF5BC3C9212B7E5200E34BB4 /* ImageViewerVC.swift in Sources */,
 				DF222971211E23D1001C3312 /* MKImageView.swift in Sources */,
 				DF81E758210D1E00003E5C86 /* UIView.swift in Sources */,
@@ -729,7 +752,7 @@
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = one.mmk.instagramClone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -751,7 +774,7 @@
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = one.mmk.instagramClone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};

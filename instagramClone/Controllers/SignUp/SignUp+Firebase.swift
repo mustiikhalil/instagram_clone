@@ -55,7 +55,7 @@ extension SignUpVC {
 		guard let image = self.plusPhotoButton.imageView?.image else {
 			return
 		}
-		guard let uploadData = UIImageJPEGRepresentation(image, 0.3) else {return}
+		guard let uploadData = image.jpegData(compressionQuality: 0.3) else {return}
 
 		let storageRef = Storage.storage().reference()
 		let upload = storageRef.child("profile_images").child(NSUUID().uuidString)

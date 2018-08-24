@@ -12,8 +12,8 @@ class LoginVC: UIViewController {
 	
 	let dontHaveAccountButton: UIButton = {
 		let button = UIButton(type: .system)
-		let attruibutedText = NSMutableAttributedString(string: "Don't have an account?  ", attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)])
-		attruibutedText.append(NSAttributedString(string: "Sign Up.", attributes: [NSAttributedStringKey.foregroundColor: UIColor.rgb(red: 17, green: 164, blue: 237), NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)]))
+		let attruibutedText = NSMutableAttributedString(string: "Don't have an account?  ", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)])
+		attruibutedText.append(NSAttributedString(string: "Sign Up.", attributes: [NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 17, green: 164, blue: 237), NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14)]))
 		
 		button.setAttributedTitle(attruibutedText, for: .normal)
 		button.addTarget(self, action: #selector(handleTransitionToSignUpVC), for: .touchUpInside)

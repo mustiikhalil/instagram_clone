@@ -58,8 +58,8 @@ class HomeVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
             guard let dictonary = values.value as? [String: Any] else { return }
             dictonary.forEach({ (key, value) in
                 guard let post = value as? [String: Any] else {return}
-                
-                self.posts.insert(Post(dictonary: post, user: user), at: 0)
+                print(key)
+                self.posts.insert(Post(dictonary: post, user: user, key: key), at: 0)
             })
             onSuccess()
         }) { (err) in

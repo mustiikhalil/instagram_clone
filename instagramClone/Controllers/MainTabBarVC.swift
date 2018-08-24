@@ -9,8 +9,9 @@
 import UIKit
 import Firebase
 
-class MainTabBarVC: UITabBarController, UITabBarControllerDelegate {
+class MainTabBarVC: UITabBarController, UITabBarControllerDelegate, AnimationTypeProtocol {
 	
+    var isMain: Bool = true
 	override func viewDidLoad() {
 		super.viewDidLoad()
         
@@ -79,12 +80,12 @@ func registerNavControllers(VC: UIViewController, image: UIImage? = nil, unselec
     if let title = title {
         navController.tabBarItem.title = title.rawValue
         navController.tabBarItem.setTitleTextAttributes([
-            NSAttributedStringKey.foregroundColor: UIColor.lightGray,
-            NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14),
+            NSAttributedString.Key.foregroundColor: UIColor.lightGray,
+            NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14),
             ], for: .normal)
         navController.tabBarItem.setTitleTextAttributes([
-            NSAttributedStringKey.foregroundColor: UIColor.black,
-            NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14),
+            NSAttributedString.Key.foregroundColor: UIColor.black,
+            NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14),
             ], for: .selected)
         navController.tabBarItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -14)
     }

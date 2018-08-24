@@ -18,8 +18,8 @@ class MKLabel: UILabel {
 	}
     
     func setupLabelForProfileView(withNumber: String, withText: String) {
-        let customText = NSMutableAttributedString(string: "\(withNumber)\n", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)])
-        customText.append(NSMutableAttributedString(string: "\(withText)", attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]))
+        let customText = NSMutableAttributedString(string: "\(withNumber)\n", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14)])
+        customText.append(NSMutableAttributedString(string: "\(withText)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]))
         textAlignment = .center
         numberOfLines = 0
         attributedText = customText
@@ -31,19 +31,19 @@ class MKLabel: UILabel {
     }
     
     func setupLabelForHomeViewWith(caption: String, username: String, time: Double) {
-        let customText = NSMutableAttributedString(string: "\(username) ", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)])
+        let customText = NSMutableAttributedString(string: "\(username) ", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14)])
         
-        customText.append(NSAttributedString(string: caption, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]))
+        customText.append(NSAttributedString(string: caption, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]))
         
-        customText.append(NSAttributedString(string: "\n\n", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 4)]))
+        customText.append(NSAttributedString(string: "\n\n", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 4)]))
         
-        customText.append(NSAttributedString(string: "\(Date(timeIntervalSince1970: time).timeAgoDisplay())", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 10), NSAttributedStringKey.foregroundColor: UIColor.gray]))
+        customText.append(NSAttributedString(string: "\(Date(timeIntervalSince1970: time).timeAgoDisplay())", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 10), NSAttributedString.Key.foregroundColor: UIColor.gray]))
         numberOfLines = 0
         attributedText = customText
     }
     
     func setupLabelForNumberOfPosts(numberOfPosts: Int) {
-        let customText = NSMutableAttributedString(string: "\(numberOfPosts) posts", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 13), NSAttributedStringKey.foregroundColor: UIColor.gray])
+        let customText = NSMutableAttributedString(string: "\(numberOfPosts) posts", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13), NSAttributedString.Key.foregroundColor: UIColor.gray])
         attributedText = customText
     }
 	

@@ -59,7 +59,7 @@ struct Post {
         _dimensions = Dimensions(width: dictonary["imageWidth"] as? CGFloat ?? 0.0, height: dictonary["imageHeight"] as? CGFloat ?? 0.0)
         _date = dictonary["creationDate"] as? Double ?? 0.0
         _Key = key
-        print(_Key, " with Key value")
+        print("\(_Key ?? "") with Key value")
     }
     
     func toDictonary() -> [String: Any] {

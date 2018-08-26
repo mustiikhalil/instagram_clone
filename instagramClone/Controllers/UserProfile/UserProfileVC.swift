@@ -48,3 +48,14 @@ class UserProfileVC: UICollectionViewController {
         present(alertController, animated: true, completion: nil)
     }
 }
+
+extension UserProfileVC: PostViewWillAppear {
+    
+    func pushToPostView(post: Post) {
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
+        let postVC = PostViewVC()
+        postVC.post = post
+        postVC.profile = profile
+        navigationController?.pushViewController(postVC, animated: true)
+    }
+}

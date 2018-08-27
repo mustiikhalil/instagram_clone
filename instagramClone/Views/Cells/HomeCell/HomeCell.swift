@@ -10,6 +10,8 @@ import UIKit
 
 protocol HomePostCellDelegate {
     func didTapComment(withPost: Post)
+    func didTapUsername(withPost: Post)
+    func didTapHearts(with Cell: HomeCell)
 }
 
 class HomeCell: UICollectionViewCell {
@@ -65,9 +67,10 @@ class HomeCell: UICollectionViewCell {
         return mk
     }()
     
-    let heartsButton: MKButton = {
+    lazy var heartsButton: MKButton = {
         let mk = MKButton()
         mk.setupMainViewButtons(type: .heart)
+        mk.addTarget(self, action: #selector(handleLike), for: .touchUpInside)
         return mk
     }()
     
@@ -76,12 +79,17 @@ class HomeCell: UICollectionViewCell {
         mk.setupMainViewButtons(type: .ribbon)
         return mk
     }()
-    let captionLabel = MKLabel()
+    let captionLabel: UITextView = {
+        let txt = UITextView()
+        txt.allowsEditingTextAttributes = false
+        txt.isScrollEnabled = false
+        return txt
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         setupUI()
+        setupTap()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -93,11 +101,39 @@ class HomeCell: UICollectionViewCell {
         userProfileImageView.loadImage(url: user.profileURL)
         imageView.loadImage(url: post.url)
         usernameLabel.text = user.username
-        captionLabel.setupLabelForHomeViewWith(caption: post.caption, username: user.username, time: post.timestamp)
+        heartsButton.setImage(post.isLiked == false ? #imageLiteral(resourceName: "like_unselected").withRenderingMode(.alwaysOriginal) : #imageLiteral(resourceName: "like_selected").withRenderingMode(.alwaysOriginal), for: .normal)
+        setupLabelForHomeViewWith(caption: post.caption, username: user.username, time: post.timestamp)
+    }
+    
+    func setupLabelForHomeViewWith(caption: String, username: String, time: Double) {
+        let customText = NSMutableAttributedString(string: "\(username) ", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14)])
+        
+        customText.append(NSAttributedString(string: caption, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]))
+        
+        customText.append(NSAttributedString(string: "\n\n", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 4)]))
+        
+        customText.append(NSAttributedString(string: "\(Date(timeIntervalSince1970: time).timeAgoDisplay())", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 10), NSAttributedString.Key.foregroundColor: UIColor.gray]))
+        captionLabel.attributedText = customText
+    }
+    
+    fileprivate func setupTap() {
+        let usernameTap = UITapGestureRecognizer(target: self, action: #selector(handleUsernameTapped))
+        usernameLabel.addGestureRecognizer(usernameTap)
+        usernameLabel.isUserInteractionEnabled = true
+    }
+    
+    @objc func handleLike() {
+        guard let post = post else {return}
+        delegate?.didTapHearts(with: self)
     }
     
     @objc private func handleComment() {
         guard let post = post else {return}
         delegate?.didTapComment(withPost: post)
+    }
+    
+    @objc private func handleUsernameTapped() {
+        guard let post = post else {return}
+        delegate?.didTapUsername(withPost: post)
     }
 }

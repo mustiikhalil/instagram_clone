@@ -15,7 +15,7 @@ struct Post {
     private let _dimensions: Dimensions
     private let _date: Double
     private var _image: UIImage?
-    private let _user: Profile?
+    private var _user: Profile?
     
     var url: String {
         get { return _url }
@@ -24,6 +24,9 @@ struct Post {
     var user: Profile? {
         get {
             return _user
+        }
+        set {
+            _user = newValue
         }
     }
     
@@ -42,6 +45,8 @@ struct Post {
         get {return _caption}
     }
     
+    var isLiked = false
+    
     init(url: String, caption: String, dimensions: Dimensions, image: UIImage?, user: Profile? = nil) { //? = nil
         _url = url
         _caption = caption
@@ -59,7 +64,6 @@ struct Post {
         _dimensions = Dimensions(width: dictonary["imageWidth"] as? CGFloat ?? 0.0, height: dictonary["imageHeight"] as? CGFloat ?? 0.0)
         _date = dictonary["creationDate"] as? Double ?? 0.0
         _Key = key
-        print("\(_Key ?? "") with Key value")
     }
     
     func toDictonary() -> [String: Any] {

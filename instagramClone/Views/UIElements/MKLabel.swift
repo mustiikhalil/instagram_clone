@@ -29,19 +29,7 @@ class MKLabel: UILabel {
         text = username
         font = UIFont.boldSystemFont(ofSize: 14)
     }
-    
-    func setupLabelForHomeViewWith(caption: String, username: String, time: Double) {
-        let customText = NSMutableAttributedString(string: "\(username) ", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14)])
         
-        customText.append(NSAttributedString(string: caption, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]))
-        
-        customText.append(NSAttributedString(string: "\n\n", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 4)]))
-        
-        customText.append(NSAttributedString(string: "\(Date(timeIntervalSince1970: time).timeAgoDisplay())", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 10), NSAttributedString.Key.foregroundColor: UIColor.gray]))
-        numberOfLines = 0
-        attributedText = customText
-    }
-    
     func setupLabelForNumberOfPosts(numberOfPosts: Int) {
         let customText = NSMutableAttributedString(string: "\(numberOfPosts) posts", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13), NSAttributedString.Key.foregroundColor: UIColor.gray])
         attributedText = customText

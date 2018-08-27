@@ -42,7 +42,7 @@ extension LoginVC {
 		
 		if isFormValid {
 			loginButton.isEnabled = true
-			loginButton.backgroundColor = UIColor.rgb(red: 17, green: 164, blue: 237)
+			loginButton.backgroundColor = .instagramBlue
 			
 		} else {
 			loginButton.isEnabled = false

@@ -10,6 +10,7 @@ import Foundation
 
 enum CellType: String {
     case cell = "cellId"
+    case secondaryCell = "secondCellId"
     case header = "headerID"
     var ID: String {
         return self.rawValue

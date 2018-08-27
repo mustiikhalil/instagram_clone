@@ -34,9 +34,8 @@ class HomeVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
         Database.fetchUser(uid: uid) { (user) in
             self.fetchPostsFromDatabaseWith(user: user, onSuccess: {
                 self.collectionView?.refreshControl?.endRefreshing()
-                self.posts.sort(by: {$0.timestamp > $1.timestamp})
-                print(self.posts.count)
                 self.collectionView?.reloadData()
+                self.collectionView.collectionViewLayout.invalidateLayout()
             })
         }
     }
@@ -57,11 +56,21 @@ class HomeVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
         userRef.queryOrdered(byChild: "creationDate").observeSingleEvent(of: .value, andPreviousSiblingKeyWith: { (values, key) in
             guard let dictonary = values.value as? [String: Any] else { return }
             dictonary.forEach({ (key, value) in
-                guard let post = value as? [String: Any] else {return}
-                print(key)
-                self.posts.insert(Post(dictonary: post, user: user, key: key), at: 0)
+                guard let dictonary = value as? [String: Any] else {return}
+                var post = Post(dictonary: dictonary, user: user, key: key)
+                
+                guard let uid = Auth.auth().currentUser?.uid else {return}
+                Database.database().reference().child("likes").child(key).child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+                    if let hasLiked = snapshot.value as? Int, hasLiked == 1 {
+                        post.isLiked = true
+                    }
+                    self.posts.insert(post, at: 0)
+                    self.posts.sort(by: {$0.timestamp > $1.timestamp})
+                    onSuccess()
+                }, withCancel: { (err) in
+                    print(err, "failed to fetch likes")
+                })
             })
-            onSuccess()
         }) { (err) in
             print(err)
         }
@@ -70,5 +79,41 @@ class HomeVC: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     @objc func handleLiveCameraVC() {
         let cameraVC = FullCameraVC()
         present(cameraVC, animated: true, completion: nil)
+    }
+}
+
+extension HomeVC: HomePostCellDelegate {
+    
+    
+    func didTapHearts(with Cell: HomeCell) {
+        guard let indexPath = collectionView?.indexPath(for: Cell) else {return}
+        var post = posts[indexPath.item]
+        guard let postID = post.key else {return}
+        guard let UID = Auth.auth().currentUser?.uid else {return}
+        
+        let dictonary = [UID: post.isLiked ? 0 : 1]
+        Database.database().reference().child("likes").child(postID).updateChildValues(dictonary) { (err, database) in
+            if let err = err {
+                print("Err liking posts: ", err)
+            }
+            post.isLiked = !post.isLiked
+            self.posts[indexPath.item] = post
+            self.collectionView.reloadItems(at: [indexPath])
+        }
+    }
+    
+    func didTapComment(withPost post: Post) {
+        guard let navController = navigationController else {return}
+        let commentVC = CommentVC(collectionViewLayout: UICollectionViewFlowLayout())
+        commentVC.post = post
+        navController.pushViewController(commentVC, animated: true)
+    }
+    
+    func didTapUsername(withPost: Post) {
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
+        guard let navController = navigationController else {return}
+        let profileVC = UserProfileVC(collectionViewLayout: UICollectionViewFlowLayout())
+        profileVC.userId = withPost.user?.UID
+        navController.pushViewController(profileVC, animated: true)
     }
 }

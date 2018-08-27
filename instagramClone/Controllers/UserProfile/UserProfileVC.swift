@@ -12,6 +12,7 @@ import Firebase
 class UserProfileVC: UICollectionViewController {
 
     var images: [Post] = []
+    var isGridView = true
     
 	var profile: Profile? {
 		didSet {
@@ -20,10 +21,11 @@ class UserProfileVC: UICollectionViewController {
 		}
 	}
     var userId: String?
-	
+    var isDeviceOwner = false
+    
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		setupUI(withHeaderID: .header, cellID: .cell)
+		setupUI(withHeaderID: .header, cellID: .cell, secondaryCell: .secondaryCell)
         fetchData()
 	}
     

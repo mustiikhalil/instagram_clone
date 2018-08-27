@@ -35,7 +35,9 @@ class MainTabBarVC: UITabBarController, UITabBarControllerDelegate, AnimationTyp
     func setupViewControllers() {
         let layout = UICollectionViewFlowLayout()
         let homeVC = registerNavControllers(VC: HomeVC(collectionViewLayout: layout), image: #imageLiteral(resourceName: "home_selected"), unselectedImage: #imageLiteral(resourceName: "home_unselected"))
-        let userVC = registerNavControllers(VC: UserProfileVC(collectionViewLayout: layout), image: #imageLiteral(resourceName: "profile_selected"), unselectedImage: #imageLiteral(resourceName: "profile_unselected"))
+        let userProfileVC = UserProfileVC(collectionViewLayout: layout)
+        userProfileVC.isDeviceOwner = true
+        let userVC = registerNavControllers(VC: userProfileVC, image: #imageLiteral(resourceName: "profile_selected"), unselectedImage: #imageLiteral(resourceName: "profile_unselected"))
         let heartsVC = registerNavControllers(VC: JustAView(), image: #imageLiteral(resourceName: "like_selected") ,unselectedImage: #imageLiteral(resourceName: "like_unselected"))
         let searchVC = registerNavControllers(VC: SearchVC(collectionViewLayout: layout), image: #imageLiteral(resourceName: "search_selected"), unselectedImage: #imageLiteral(resourceName: "search_unselected"))
         let cameraVC = registerNavControllers(VC: JustAView(), image: #imageLiteral(resourceName: "plus_unselected"), unselectedImage: #imageLiteral(resourceName: "plus_unselected"))

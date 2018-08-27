@@ -43,7 +43,7 @@ extension SignUpVC {
 		
 		if isFormValid {
 			signUpButton.isEnabled = true
-			signUpButton.backgroundColor = UIColor.rgb(red: 17, green: 164, blue: 237)
+			signUpButton.backgroundColor = .instagramBlue
 			
 		} else {
 			signUpButton.isEnabled = false

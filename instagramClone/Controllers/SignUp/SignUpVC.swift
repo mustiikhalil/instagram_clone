@@ -52,7 +52,7 @@ class SignUpVC: UIViewController {
 		
 		let button = UIButton(type: .system)
 		let attruibutedText = NSMutableAttributedString(string: "Already have an account?  ", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)])
-		attruibutedText.append(NSAttributedString(string: "Sign In.", attributes: [NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 17, green: 164, blue: 237), NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14)]))
+		attruibutedText.append(NSAttributedString(string: "Sign In.", attributes: [NSAttributedString.Key.foregroundColor: UIColor.instagramBlue, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14)]))
 		button.setAttributedTitle(attruibutedText, for: .normal)
 		button.addTarget(self, action: #selector(handleTransitionToSignInVC), for: .touchUpInside)
 		return button

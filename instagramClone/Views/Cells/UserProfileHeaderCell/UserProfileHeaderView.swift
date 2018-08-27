@@ -9,6 +9,16 @@
 import UIKit
 import Firebase
 
+protocol UserProfileHeaderDelegate {
+    
+    func didChangeToListView()
+    
+    /**
+     Changes to gridView when Toggled
+    */
+    func didChangeToGridView()
+}
+
 class UserProfileHeaderView: UICollectionReusableView {
 	
 	var profile: Profile? {
@@ -31,22 +41,24 @@ class UserProfileHeaderView: UICollectionReusableView {
 		return label
 	}()
 	
-	let gridButton: UIButton = {
+	lazy var gridButton: UIButton = {
 		let button = UIButton(type: .system)
+        button.addTarget(self, action: #selector(handleChangeToGridView), for: .touchUpInside)
 		button.setImage(#imageLiteral(resourceName: "grid"), for: .normal)
 		return button
 	}()
 	
-	let listButton: UIButton = {
+	lazy var listButton: UIButton = {
 		let button = UIButton(type: .system)
 		button.setImage(#imageLiteral(resourceName: "list"), for: .normal)
-		button.tintColor = UIColor(white: 0, alpha: 0.1)
+        button.addTarget(self, action: #selector(handleChangeToListView), for: .touchUpInside)
+		button.tintColor = .instagramGrey
 		return button
 	}()
 	let bookmarkButton: UIButton = {
 		let button = UIButton(type: .system)
 		button.setImage(#imageLiteral(resourceName: "ribbon"), for: .normal)
-		button.tintColor = UIColor(white: 0, alpha: 0.1)
+		button.tintColor = .instagramGrey
 		return button
 	}()
 	
@@ -74,6 +86,23 @@ class UserProfileHeaderView: UICollectionReusableView {
         button.addTarget(self, action: #selector(handleEditOrFollow), for: .touchUpInside)
 		return button
 	}()
+    
+    var delegate: UserProfileHeaderDelegate?
+    
+    @objc func handleChangeToListView() {
+        toggleColorForButtons(gridColor: .instagramGrey, listColor: .instagramBlue)
+        delegate?.didChangeToListView()
+    }
+    
+    @objc func handleChangeToGridView() {
+        toggleColorForButtons(gridColor: .instagramBlue, listColor: .instagramGrey)
+        delegate?.didChangeToGridView()
+    }
+    
+    fileprivate func toggleColorForButtons(gridColor: UIColor, listColor: UIColor) {
+        gridButton.tintColor = gridColor
+        listButton.tintColor = listColor
+    }
 	
     @objc func handleEditOrFollow() {
         guard let uid = Auth.auth().currentUser?.uid else {return}
@@ -153,7 +182,7 @@ enum ProfileHeaderButtonType: String {
         case .Edit, .Unfollow:
             return UIColor.white
         case .Follow:
-            return UIColor.rgb(red: 17, green: 164, blue: 237)
+            return .instagramBlue
         }
     }
     

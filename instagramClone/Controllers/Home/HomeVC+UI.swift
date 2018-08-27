@@ -34,27 +34,23 @@ extension HomeVC {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if posts.count > indexPath.row {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellType.cell.ID, for: indexPath) as! HomeCell
+            cell.post = posts[indexPath.item]
+            cell.delegate = self
+            return cell
+        }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellType.cell.ID, for: indexPath) as! HomeCell
-        cell.post = posts[indexPath.item]
-        cell.delegate = self
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
         var height: CGFloat = 40 + 16 // username and profile image view
-        height += view.frame.width + 50 + 60
+        height += view.frame.width + 50 + 56
         return CGSize(width: collectionView.frame.width, height: height)
     }
 
-}
-
-extension HomeVC: HomePostCellDelegate {
-    
-    func didTapComment(withPost post: Post) {
-        guard let navController = navigationController else {return}
-        let commentVC = CommentVC(collectionViewLayout: UICollectionViewFlowLayout())
-        commentVC.post = post
-        navController.pushViewController(commentVC, animated: true)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.5
     }
 }

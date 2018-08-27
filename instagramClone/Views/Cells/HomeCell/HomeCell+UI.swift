@@ -36,8 +36,8 @@ extension HomeCell {
         stackView.axis = .horizontal
         addSubview(stackView)
         addSubview(bookmarkButton)
-        stackView.anchor(leading: leadingAnchor, top: imageView.bottomAnchor, trailing: nil, bottom: nil, paddingLeading: 8, paddingTop: 0, paddingTailing: 0, paddingBottom: 0, width: 120, height: 50)
-        bookmarkButton.anchor(leading: nil, top: imageView.bottomAnchor, trailing: trailingAnchor, bottom: nil, paddingLeading: 0, paddingTop: 0, paddingTailing: 8, paddingBottom: 0, width: 40, height: 50)
+        stackView.anchor(leading: leadingAnchor, top: imageView.bottomAnchor, trailing: nil, bottom: nil, paddingLeading: 8, paddingTop: 0, paddingTailing: 0, paddingBottom: 0, width: 120, height: 44)
+        bookmarkButton.anchor(leading: nil, top: imageView.bottomAnchor, trailing: trailingAnchor, bottom: nil, paddingLeading: 0, paddingTop: 0, paddingTailing: 8, paddingBottom: 0, width: 40, height: 44)
     }
     
 }

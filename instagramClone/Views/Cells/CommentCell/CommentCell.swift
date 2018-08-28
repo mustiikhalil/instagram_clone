@@ -20,6 +20,8 @@ class CommentCell: UICollectionViewCell {
     let textView: UITextView = {
         let textView = UITextView()
         textView.allowsEditingTextAttributes = false
+        textView.isUserInteractionEnabled = false
+        
         textView.isScrollEnabled = false
         return textView
     }()

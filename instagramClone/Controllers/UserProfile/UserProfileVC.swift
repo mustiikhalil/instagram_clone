@@ -13,6 +13,8 @@ class UserProfileVC: UICollectionViewController {
 
     var images: [Post] = []
     var isGridView = true
+    var isFinishedPaging = false
+    let maxPostFetch: UInt = 9
     
 	var profile: Profile? {
 		didSet {

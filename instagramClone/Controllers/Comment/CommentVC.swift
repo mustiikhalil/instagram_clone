@@ -24,52 +24,14 @@ class CommentVC: UICollectionViewController {
     var comments: [Comment] = []
     
     lazy var containerView: UIView = {
-        let containerView = UIView()
-        containerView.backgroundColor = .white
-        containerView.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
-       
-        let sendButton = UIButton(type: .system)
-        sendButton.setTitle("Post", for: .normal)
-        sendButton.setTitleColor(.black, for: .normal)
-        sendButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        sendButton.addTarget(self, action: #selector(handleComment), for: .touchUpInside)
-        
-        containerView.addSubview(sendButton)
-        containerView.addSubview(commentTextField)
-        sendButton.anchor(leading: nil, top: containerView.topAnchor, trailing: containerView.trailingAnchor, bottom: containerView.bottomAnchor, paddingLeading: 12, paddingTop: 0, paddingTailing: 12, paddingBottom: 0, width: 50, height: 0)
-        commentTextField.anchor(leading: containerView.leadingAnchor, top: containerView.topAnchor, trailing: sendButton.leadingAnchor, bottom: containerView.bottomAnchor, paddingLeading: 12, paddingTop: 0, paddingTailing: 0, paddingBottom: 0, width: 0, height: 0)
-        
-        let lineSeparator = UIView()
-        lineSeparator.backgroundColor = UIColor.rgb(red: 230, green: 230, blue: 230)
-        containerView.addSubview(lineSeparator)
-        lineSeparator.anchor(leading: containerView.leadingAnchor, top: containerView.topAnchor, trailing: containerView.trailingAnchor, bottom: nil, paddingLeading: 0, paddingTop: 0, paddingTailing: 0, paddingBottom: 0, width: 0, height: 0.5)
-        
-        return containerView
-    }()
-    
-    let commentTextField: UITextField = {
-        let tf = UITextField()
-        tf.placeholder = "Enter comment..."
-        return tf
+        let accessoryView = CommentInputAccessoryView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 50))
+        accessoryView.delegate = self
+        return accessoryView
     }()
     
     override var inputAccessoryView: UIView? {
         get {
             return containerView
-        }
-    }
-    
-    @objc func handleComment() {
-        guard let commentText = commentTextField.text, !commentText.isEmpty else { return }
-        guard let postID = _post?.key else {return}
-        guard let UID = Auth.auth().currentUser?.uid else {return}
-        let profile = Profile(uid: UID, dictonary: [:])
-        let comment = Comment(id: postID, comment: commentText, user: profile)
-        Database.database().reference().child("comments").child(comment.id).childByAutoId().updateChildValues(comment.toDictonary) { (err, databaseRef) in
-            if let err = err {
-                print("faced error commenting ", err)
-            }
-            print("wonderful <3")
         }
     }
     
@@ -150,4 +112,22 @@ extension CommentVC: UICollectionViewDelegateFlowLayout {
         return cell
     }
     
+}
+
+extension CommentVC: CommentInputAccessoryProtocol {
+    
+    func saveCommentToDatabase(text commentText: String, onSuccess: @escaping ()->Void) {
+        
+        guard let postID = _post?.key else {return}
+        guard let UID = Auth.auth().currentUser?.uid else {return}
+        let profile = Profile(uid: UID, dictonary: [:])
+        let comment = Comment(id: postID, comment: commentText, user: profile)
+        Database.database().reference().child("comments").child(comment.id).childByAutoId().updateChildValues(comment.toDictonary) { (err, databaseRef) in
+            if let err = err {
+                print("faced error commenting ", err)
+            }
+            onSuccess()
+        }
+        
+    }
 }

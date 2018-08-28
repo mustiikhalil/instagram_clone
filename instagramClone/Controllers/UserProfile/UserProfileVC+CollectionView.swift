@@ -66,6 +66,11 @@ extension UserProfileVC: UICollectionViewDelegateFlowLayout {
 	}
 	
 	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        if indexPath.item == images.count - 1 && !isFinishedPaging {
+            fetchPagenatedPosts()
+        }
+        
         if isGridView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellType.cell.ID, for: indexPath) as! UserProfileCell
             cell.delegate = self

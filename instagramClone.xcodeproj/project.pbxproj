@@ -65,6 +65,8 @@
 		DFBEF228210E3AEA00EFFC48 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DFBEF227210E3AEA00EFFC48 /* GoogleService-Info.plist */; };
 		DFD28B68211EE1C900653A97 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD28B67211EE1C900653A97 /* HomeCell.swift */; };
 		DFD28B6B211EE30300653A97 /* CellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD28B6A211EE30300653A97 /* CellType.swift */; };
+		DFD5F428213588E30012A518 /* CommentInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD5F427213588E30012A518 /* CommentInputAccessoryView.swift */; };
+		DFD5F42A21359D520012A518 /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD5F42921359D520012A518 /* InputTextView.swift */; };
 		DFDB750C21220B4F0004032B /* HomeVC+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDB750B21220B4F0004032B /* HomeVC+UI.swift */; };
 		DFF9821A21302F93006AFBB9 /* CommentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF9821921302F93006AFBB9 /* CommentVC.swift */; };
 		DFF9821C213057AE006AFBB9 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF9821B213057AE006AFBB9 /* Comment.swift */; };
@@ -133,6 +135,8 @@
 		DFBEF227210E3AEA00EFFC48 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DFD28B67211EE1C900653A97 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		DFD28B6A211EE30300653A97 /* CellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellType.swift; sourceTree = "<group>"; };
+		DFD5F427213588E30012A518 /* CommentInputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentInputAccessoryView.swift; sourceTree = "<group>"; };
+		DFD5F42921359D520012A518 /* InputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextView.swift; sourceTree = "<group>"; };
 		DFDB750B21220B4F0004032B /* HomeVC+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeVC+UI.swift"; sourceTree = "<group>"; };
 		DFF9821921302F93006AFBB9 /* CommentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentVC.swift; sourceTree = "<group>"; };
 		DFF9821B213057AE006AFBB9 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
@@ -263,6 +267,8 @@
 				DF5109FB2110945500128279 /* MKLabel.swift */,
 				DF222970211E23D1001C3312 /* MKImageView.swift */,
 				DF7B8E99212B2A2A004B9682 /* CaptureButton.swift */,
+				DFD5F427213588E30012A518 /* CommentInputAccessoryView.swift */,
+				DFD5F42921359D520012A518 /* InputTextView.swift */,
 			);
 			path = UIElements;
 			sourceTree = "<group>";
@@ -581,6 +587,7 @@
 				DFF9821C213057AE006AFBB9 /* Comment.swift in Sources */,
 				DF7B8E9F212B3040004B9682 /* FullCameraVC+UI.swift in Sources */,
 				DF101CA72121EB0E0009AD23 /* SearchVC+UI.swift in Sources */,
+				DFD5F42A21359D520012A518 /* InputTextView.swift in Sources */,
 				DF6F2BD02119B37E003EB476 /* PhotoSelectorTabBar.swift in Sources */,
 				DF286E86210E575A00B4D722 /* SignUp+PickPhoto.swift in Sources */,
 				DF101CA22121CFB10009AD23 /* SearchVC.swift in Sources */,
@@ -616,6 +623,7 @@
 				DF5109FA211092C500128279 /* UserProfileHeaderCell+UI.swift in Sources */,
 				DFF9821F21305C35006AFBB9 /* CommentCell.swift in Sources */,
 				DF7B8EA1212B3A68004B9682 /* UIImage.swift in Sources */,
+				DFD5F428213588E30012A518 /* CommentInputAccessoryView.swift in Sources */,
 				DF089F99212C43D300C1B007 /* PreviewPhotoContainerView.swift in Sources */,
 				DFD28B6B211EE30300653A97 /* CellType.swift in Sources */,
 				DF101CA52121D5E30009AD23 /* SearchCell.swift in Sources */,

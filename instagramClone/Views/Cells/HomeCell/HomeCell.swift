@@ -123,7 +123,6 @@ class HomeCell: UICollectionViewCell {
     }
     
     @objc func handleLike() {
-        guard let post = post else {return}
         delegate?.didTapHearts(with: self)
     }
     

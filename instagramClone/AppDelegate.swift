@@ -8,9 +8,10 @@
 
 import UIKit
 import Firebase
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate { //MessagingDelegate
 
 	var window: UIWindow?
 
@@ -23,9 +24,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		window = UIWindow()
 		window?.makeKeyAndVisible()
 		window?.rootViewController = MainTabBarVC()
-		
+        attemptToRegisterNotifications(application: application)
 		return true
 	}
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        print("registered for notifications: ", deviceToken)
+    }
+    
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        print("recived token: ", fcmToken)
+    }
+    
+    fileprivate func attemptToRegisterNotifications(application: UIApplication) {
+        
+        Messaging.messaging().delegate = self
+        
+        let options: UNAuthorizationOptions = [.alert, .badge, .sound]
+        UNUserNotificationCenter.current().requestAuthorization(options: options) { (granted, err) in
+            if let err = err {
+                print("not granted: ", err)
+            }
+            
+            if granted {
+                print("Auth")
+            } else {
+                print("Auth denied")
+            }
+        }
+        application.registerForRemoteNotifications()
+    }
 
 	func applicationWillResignActive(_ application: UIApplication) {
 		// Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

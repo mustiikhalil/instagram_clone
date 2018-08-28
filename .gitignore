@@ -79,7 +79,7 @@ build
 ### Objective-C ###
 # OS X
 .DS_Store
-
+*.entitlements
 # Xcode
 build/
 *.pbxuser

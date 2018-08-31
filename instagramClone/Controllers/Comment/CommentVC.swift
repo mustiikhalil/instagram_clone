@@ -84,7 +84,6 @@ extension CommentVC: UICollectionViewDelegateFlowLayout {
         collectionView.alwaysBounceVertical = true
         collectionView.keyboardDismissMode = .interactive
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: -50, right: 0)
-        collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: -50, right: 0)
         collectionView.register(CommentCell.self, forCellWithReuseIdentifier: CellType.cell.ID)
     }
     
@@ -126,6 +125,8 @@ extension CommentVC: CommentInputAccessoryProtocol {
             if let err = err {
                 print("faced error commenting ", err)
             }
+            let index = IndexPath(item: self.comments.count-1, section: 0)
+            self.collectionView.scrollToItem(at: index, at: .bottom, animated: true)
             onSuccess()
         }
         

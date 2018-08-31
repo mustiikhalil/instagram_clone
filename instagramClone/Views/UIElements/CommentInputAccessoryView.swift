@@ -55,6 +55,7 @@ class CommentInputAccessoryView: UIView {
         delegate?.saveCommentToDatabase(text: commentText) {
             self.commentTextView.text = ""
             self.commentTextView.showPlaceHolder()
+            
         }
     }
     

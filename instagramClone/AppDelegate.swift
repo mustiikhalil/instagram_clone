@@ -11,7 +11,7 @@ import Firebase
 import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate { //MessagingDelegate
+class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUserNotificationCenterDelegate { //MessagingDelegate
 
 	var window: UIWindow?
 
@@ -36,9 +36,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate { //Mes
         print("recived token: ", fcmToken)
     }
     
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler(.alert)
+    }
+    
     fileprivate func attemptToRegisterNotifications(application: UIApplication) {
         
         Messaging.messaging().delegate = self
+        UNUserNotificationCenter.current().delegate = self
         
         let options: UNAuthorizationOptions = [.alert, .badge, .sound]
         UNUserNotificationCenter.current().requestAuthorization(options: options) { (granted, err) in

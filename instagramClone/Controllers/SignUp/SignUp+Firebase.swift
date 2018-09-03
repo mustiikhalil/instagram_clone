@@ -80,7 +80,8 @@ extension SignUpVC {
 	
 	//MARK:- Creating User after uploading the image
 	func createUser(_ user: User, withProfilePicture url: String){
-		let data = ["username": userNameTF.text!,"profileLink": url]
+        guard let fcm = Messaging.messaging().fcmToken else {return}
+        let data = ["username": userNameTF.text!,"profileLink": url, "fcmToken": fcm]
 		let value = [user.uid: data]
 		
 		Database.database().reference().child("users").updateChildValues(value) { (err, dataRef) in

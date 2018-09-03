@@ -11,7 +11,7 @@ import Firebase
 import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUserNotificationCenterDelegate { //MessagingDelegate
+class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUserNotificationCenterDelegate { 
 
 	var window: UIWindow?
 
@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
     }
     
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
-        print("recived token: ", fcmToken)
+        
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
@@ -58,6 +58,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
             }
         }
         application.registerForRemoteNotifications()
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        let userInfo = response.notification.request.content.userInfo
+        
+        if let followerId = userInfo["followerId"] as? String {
+            
+            let userProfileVC = UserProfileVC(collectionViewLayout: UICollectionViewFlowLayout())
+            userProfileVC.userId = followerId
+            
+            if let mainTabController = window?.rootViewController as? MainTabBarVC {
+                
+                mainTabController.presentedViewController?.dismiss(animated: true, completion: nil)
+                
+                if let homeNav = mainTabController.viewControllers?[mainTabController.selectedIndex] as? UINavigationController {
+                    homeNav.pushViewController(userProfileVC, animated: true)
+                }
+            }
+        }
     }
 
 	func applicationWillResignActive(_ application: UIApplication) {

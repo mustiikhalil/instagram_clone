@@ -30,6 +30,7 @@ extension UserProfileVC: UICollectionViewDelegateFlowLayout {
 	override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
 		let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CellType.header.ID, for: indexPath) as! UserProfileHeaderView
 		if let profile = self.profile {
+            header.headerItems = (images.count,0,0)
             header.delegate = self
 			header.profile = profile
 		}

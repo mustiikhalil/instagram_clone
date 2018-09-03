@@ -23,7 +23,7 @@ extension LoginVC {
 	}
 	
 	fileprivate func addAnchors() {
-		dontHaveAccountButton.anchor(leading: view.leadingAnchor, top: nil, trailing: view.trailingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingLeading: 0, paddingTop: 0, paddingTailing: 0, paddingBottom: 0, width: 0, height: 34)
+		dontHaveAccountButton.anchor(leading: view.leadingAnchor, top: nil, trailing: view.trailingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingLeading: 0, paddingTop: 0, paddingTailing: 0, paddingBottom: 4, width: 0, height: 34)
 		logoContainerView.anchor(leading: view.leadingAnchor, top: view.topAnchor, trailing: view.trailingAnchor, bottom: nil, paddingLeading: 0, paddingTop: 0, paddingTailing: 0, paddingBottom: 0, width: 0, height: 150)
 	}
 		

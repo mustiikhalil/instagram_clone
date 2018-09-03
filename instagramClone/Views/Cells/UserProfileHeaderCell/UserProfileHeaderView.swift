@@ -26,6 +26,14 @@ class UserProfileHeaderView: UICollectionReusableView {
 			setupHeaderViewAfterRetrivingUserInformation()
 		}
 	}
+    
+    var headerItems: (Int,Int,Int)? {
+        didSet {
+            postsLabel.setupLabelForProfileView(withNumber: headerItems?.0 ?? 0, withText: "posts")
+            followersLabel.setupLabelForProfileView(withNumber: headerItems?.1 ?? 0, withText: "followers")
+            followingLabel.setupLabelForProfileView(withNumber: headerItems?.2 ?? 0, withText: "followers")
+        }
+    }
 	
 	let profileImageView: MKImageView = {
 		let iv = MKImageView()
@@ -64,17 +72,17 @@ class UserProfileHeaderView: UICollectionReusableView {
 	
 	let postsLabel: MKLabel = {
 		let label = MKLabel()
-        label.setupLabelForProfileView(withNumber: "11", withText: "posts")
+        label.setupLabelForProfileView(withNumber: 0, withText: "posts")
         return label
 	}()
 	let followersLabel: MKLabel = {
         let label = MKLabel()
-        label.setupLabelForProfileView(withNumber: "11", withText: "followers")
+        label.setupLabelForProfileView(withNumber: 0, withText: "followers")
         return label
 	}()
 	let followingLabel: MKLabel = {
         let label = MKLabel()
-        label.setupLabelForProfileView(withNumber: "11", withText: "following")
+        label.setupLabelForProfileView(withNumber: 0, withText: "following")
         return label
 	}()
 	

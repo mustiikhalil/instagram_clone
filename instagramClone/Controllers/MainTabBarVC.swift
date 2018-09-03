@@ -18,7 +18,7 @@ class MainTabBarVC: UITabBarController, UITabBarControllerDelegate, AnimationTyp
 		if Auth.auth().currentUser == nil {
 			DispatchQueue.main.async {
 				
-				self.present(LoginVC(), animated: false, completion: nil)
+				self.present(UINavigationController(rootViewController: LoginVC()), animated: false, completion: nil)
 			}
 			return
 		}
@@ -33,13 +33,12 @@ class MainTabBarVC: UITabBarController, UITabBarControllerDelegate, AnimationTyp
 	}
 	
     func setupViewControllers() {
-        let layout = UICollectionViewFlowLayout()
-        let homeVC = registerNavControllers(VC: HomeVC(collectionViewLayout: layout), image: #imageLiteral(resourceName: "home_selected"), unselectedImage: #imageLiteral(resourceName: "home_unselected"))
-        let userProfileVC = UserProfileVC(collectionViewLayout: layout)
+        let homeVC = registerNavControllers(VC: HomeVC(collectionViewLayout: UICollectionViewFlowLayout()), image: #imageLiteral(resourceName: "home_selected"), unselectedImage: #imageLiteral(resourceName: "home_unselected"))
+        let userProfileVC = UserProfileVC(collectionViewLayout: UICollectionViewFlowLayout())
         userProfileVC.isDeviceOwner = true
         let userVC = registerNavControllers(VC: userProfileVC, image: #imageLiteral(resourceName: "profile_selected"), unselectedImage: #imageLiteral(resourceName: "profile_unselected"))
         let heartsVC = registerNavControllers(VC: JustAView(), image: #imageLiteral(resourceName: "like_selected") ,unselectedImage: #imageLiteral(resourceName: "like_unselected"))
-        let searchVC = registerNavControllers(VC: SearchVC(collectionViewLayout: layout), image: #imageLiteral(resourceName: "search_selected"), unselectedImage: #imageLiteral(resourceName: "search_unselected"))
+        let searchVC = registerNavControllers(VC: SearchVC(collectionViewLayout: UICollectionViewFlowLayout()), image: #imageLiteral(resourceName: "search_selected"), unselectedImage: #imageLiteral(resourceName: "search_unselected"))
         let cameraVC = registerNavControllers(VC: JustAView(), image: #imageLiteral(resourceName: "plus_unselected"), unselectedImage: #imageLiteral(resourceName: "plus_unselected"))
         viewControllers = [homeVC, searchVC, cameraVC, heartsVC, userVC ]
         

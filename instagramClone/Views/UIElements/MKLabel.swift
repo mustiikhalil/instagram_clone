@@ -17,7 +17,7 @@ class MKLabel: UILabel {
 		super.init(frame: frame)
 	}
     
-    func setupLabelForProfileView(withNumber: String, withText: String) {
+    func setupLabelForProfileView(withNumber: Int, withText: String) {
         let customText = NSMutableAttributedString(string: "\(withNumber)\n", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14)])
         customText.append(NSMutableAttributedString(string: "\(withText)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]))
         textAlignment = .center

@@ -13,6 +13,7 @@ extension HomeVC {
     func setupUI(withID cell: CellType) {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        collectionView?.isPrefetchingEnabled = false
         collectionView?.refreshControl = refreshControl
         collectionView?.backgroundColor = .white
         collectionView?.register(HomeCell.self, forCellWithReuseIdentifier: cell.ID)
